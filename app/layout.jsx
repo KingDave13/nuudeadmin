@@ -13,9 +13,9 @@ const RootLayout = ({ children }) => {
   return (
     <html lang='en'>
         <body>
-            <main className='bg-primary'>
-                <Navbar />
+            <main className='bg-primary md:px-16 px-6'>
                 <Sidebar />
+                <Navbar />
                 {children}
             </main>
         </body>
