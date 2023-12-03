@@ -2,8 +2,9 @@ import React from 'react'
 
 const Navbar = () => {
   return (
-    <div>Navbar</div>
+    <div className='text-white text-[50px] relative
+    '>Navbar</div>
   )
 }
 
-export default Navbar
+export default Navbar;
