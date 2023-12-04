@@ -38,8 +38,8 @@ const handleSideItemClick = (link) => {
 
   return (
     <div className={`${styles.paddingX} md:w-1/4 flex items-center fixed 
-      md:py-0 ss:py-6 py-5 md:px-16 ss:px-16 px-6 top-0 z-20 navsmooth 
-      font-manierRegular bg-primary`}
+      md:py-0 ss:py-6 py-5 md:px-16 ss:px-16 px-6 top-0 z-20 
+      font-manierRegular`}
     >
       <div className="w-full flex justify-between items-center mx-auto">
         <div className="flex flex-col items-center w-full
@@ -79,7 +79,7 @@ const handleSideItemClick = (link) => {
 
         {/* FOR MOBILE */}
         
-        <div className="md:hidden flex justify-between flex-1 items-center
+        {/* <div className="md:hidden flex justify-between flex-1 items-center
         mt-3">
             <Image
               src={logoalt}
@@ -136,7 +136,7 @@ const handleSideItemClick = (link) => {
               ))}
             </ul>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
