@@ -5,31 +5,16 @@ import { BsX } from 'react-icons/bs';
 import styles from '@styles/styles';
 import { HiOutlineMenuAlt3 } from 'react-icons/hi';
 import Image from 'next/image';
-import Link from 'next/link';
-import { navLinks } from '@constants';
-import { logoalt, logo } from '@public/assets';
+import { sideLinks } from '@constants';
+import { logoalt } from '@public/assets';
 import { useRouter } from 'next/navigation';
 
 const Navbar = () => {
   const [active, setActive] = useState('');
   const [toggle, setToggle] = useState(false);
   const menuRef = useRef(null);
-  const [isScrolled, setIsScrolled] = useState(false);
 
   const router = useRouter();
-
-  // Add an event listener to detect scrolling
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -45,99 +30,40 @@ const Navbar = () => {
     };
 }, []);
 
-const handleNavItemClick = (link) => {
-  if (router.pathname !== '/') {
-    router.push(`/#${link.id}`)
-  } else {
-    setActive(link.title);
-  }
+const handleSideItemClick = (link) => {
+  setActive(link.title);
+  // router.push(`/${link.id}`)
 };
 
   return (
     <nav className={`${styles.paddingX} w-full flex items-center fixed 
-      md:py-6 ss:py-6 py-5 md:px-16 ss:px-16 px-6 top-0 z-20 navsmooth 
-      font-manierRegular ${ isScrolled ? 'bg-white shadow-lg' : '' }`}
+      md:py-6 ss:py-6 py-5 top-0 z-20 navsmooth font-manierRegular`}
     >
       <div className="w-full flex justify-between items-center 
-      max-w-[95rem] mx-auto">
-        <div className="flex items-center justify-center w-full hidden md:flex">
-          <ul className="list-none flex flex-row gap-16">
-            {navLinks.slice(0, 2).map((link) => (
-              <li
-                key={link.id}
-                className={`${
-                  active === link.title
-                    ? 'text-secondary'
-                    : isScrolled ? 'text-primary' : 'text-white'
-                } hover:text-secondary grow3 text-[19px] text-decoration-none 
-                cursor-pointer`}
-                onClick={() => {
-                  handleNavItemClick(link);
-                }}
-              >
-                <a href={`#${link.id}`}>{link.title}</a>
-              </li>
-            ))}
-          </ul>
+      mx-auto">
+        <div className="flex items-center justify-center w-full hidden 
+        md:flex gap-5 flex-col">
+          <h1 className='text-secondary font-manierMedium text-[23px]'>
+            Admin Dashboard
+          </h1>
 
-          <Link href="/" 
-            onClick={(e) => {
-              e.preventDefault();
-              setActive('');
-              window.scrollTo({ 
-                top: 0, left: 0, 
-                behavior: 'smooth' });
-            }}
-            className='ml-44 mr-44'
-          >
-            <Image
-              src={isScrolled ? logo : logoalt}
-              alt="logo"
-              width={160}
-              height={'auto'}
-              className="object-contain"
-            />
-          </Link>
-
-          <ul className="list-none flex flex-row gap-16 hidden md:flex">
-            {navLinks.slice(2, 4).map((link) => (
-              <li
-                key={link.id}
-                className={`${
-                  active === link.title
-                    ? 'text-secondary'
-                    : isScrolled ? 'text-primary' : 'text-white'
-                } hover:text-secondary grow3 text-[19px] text-decoration-none 
-                cursor-pointer`}
-                onClick={() => {
-                  handleNavItemClick(link);
-                }}
-              >
-                <a href={`#${link.id}`}>{link.title}</a>
-              </li>
-            ))}
-          </ul>
+          <p className='text-white text-[18px]'>
+            Manage new membership requests, view info and communicate with 
+            <br></br>members and more.
+          </p>
         </div>
 
         {/* FOR MOBILE */}
         
         <div className="md:hidden flex justify-between flex-1 items-center
         mt-3">
-          <Link href="/" 
-            onClick={() => { setActive(''); 
-            window.scrollTo({ 
-              top: 0, left: 0, 
-              behavior: 'smooth' }); 
-          }}
-          >
-            <Image
-              src={isScrolled ? logo : logoalt}
-              alt="logo"
-              width={130}
-              height="auto"
-              className="object-contain"
-            />
-          </Link>
+          <Image
+            src={logoalt}
+            alt="logoalt"
+            width={130}
+            height="auto"
+            className="object-contain"
+          />
 
           <div className="flex items-center z-20">
             {toggle ? (
