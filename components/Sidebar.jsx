@@ -94,7 +94,6 @@ const handleSideItemClick = (link) => {
                   alt='logout'
                   width={18} 
                   height={18}
-                  className='hover:text-secondary' 
                 />
                 Logout
               </a>
