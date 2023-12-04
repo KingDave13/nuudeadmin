@@ -6,7 +6,7 @@ import styles from '@styles/styles';
 import { HiOutlineMenuAlt3 } from 'react-icons/hi';
 import Image from 'next/image';
 import { sideLinks } from '@constants';
-import { logoalt } from '@public/assets';
+import { logoalt, picture } from '@public/assets';
 import { useRouter } from 'next/navigation';
 
 const Navbar = () => {
@@ -51,6 +51,16 @@ const handleSideItemClick = (link) => {
             Manage new membership requests, view info and communicate with 
             <br></br>members and more.
           </p>
+        </div>
+
+        <div className='flex w-full justify-between gap-1'>
+          <Image 
+            src={picture}
+            width={50}
+            height={'auto'}
+            alt='profilepic'
+            className='object-contain'
+          />
         </div>
 
         {/* FOR MOBILE */}

@@ -7,6 +7,7 @@ import logout from './logout.png';
 import announcements from './announcements.png';
 import guests from './guests.png';
 import members from './members.png';
+import picture from './picture.png';
 
 export {
     logoalt,
@@ -18,4 +19,5 @@ export {
     announcements,
     guests,
     members,
+    picture,
 }
