@@ -37,22 +37,21 @@ const handleSideItemClick = (link) => {
 
 
   return (
-    <div className={`${styles.paddingX} md:w-1/4 flex items-center fixed 
-      md:py-0 ss:py-6 py-5 md:px-16 ss:px-16 px-6 top-0 z-20 
-      font-manierRegular`}
+    <div className={`${styles.paddingX} md:w-1/5 flex items-center
+      font-manierRegular md:border-r-[1px] border-primaryalt`}
     >
       <div className="w-full flex justify-between items-center mx-auto">
         <div className="flex flex-col items-center w-full
-        h-screen hidden md:flex border-r-[1px] border-primaryalt">
+        h-screen hidden md:flex">
           <Image
             src={logoalt}
             alt="logo"
             width={180}
             height={'auto'}
-            className="object-contain mt-14"
+            className="object-contain mt-6"
           />
 
-          <ul className="list-none flex flex-col gap-6 hidden md:flex
+          <ul className="list-none flex flex-col gap-8 hidden md:flex
           mt-24 font-manierMedium">
             {sideLinks.map((link) => (
               <li
