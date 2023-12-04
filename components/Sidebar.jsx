@@ -38,7 +38,8 @@ const handleSideItemClick = (link) => {
     <div className={`${styles.paddingX} md:w-1/5 flex items-center
       font-manierRegular md:border-r-[1px] border-primaryalt`}
     >
-      <div className="w-full flex justify-between items-center mx-auto">
+      <div className="w-full flex justify-between items-center mx-auto
+      md:py-10 ss:py-6 py-5">
         <div className="flex flex-col items-center w-full
         h-screen hidden md:flex">
           <Image
@@ -46,7 +47,7 @@ const handleSideItemClick = (link) => {
             alt="logo"
             width={180}
             height={'auto'}
-            className="object-contain mt-6"
+            className="object-contain"
           />
 
           <ul className="list-none flex flex-col gap-8 hidden md:flex

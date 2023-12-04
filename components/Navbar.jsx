@@ -37,17 +37,17 @@ const handleSideItemClick = (link) => {
 
   return (
     <nav className={`${styles.paddingX} w-full flex items-center fixed 
-      md:py-6 ss:py-6 py-5 top-0 z-20 navsmooth font-manierRegular`}
+      md:py-10 ss:py-6 py-5 top-0 z-20 navsmooth font-manierRegular`}
     >
       <div className="w-full flex justify-between items-center 
       mx-auto">
-        <div className="flex items-center justify-center w-full hidden 
-        md:flex gap-5 flex-col">
-          <h1 className='text-secondary font-manierMedium text-[23px]'>
+        <div className="flex w-full hidden 
+        md:flex flex-col gap-1">
+          <h1 className='text-secondary font-manierMedium text-[32px]'>
             Admin Dashboard
           </h1>
 
-          <p className='text-white text-[18px]'>
+          <p className='text-white text-[17px]'>
             Manage new membership requests, view info and communicate with 
             <br></br>members and more.
           </p>
