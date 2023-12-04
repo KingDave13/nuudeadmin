@@ -61,7 +61,7 @@ const handleSideItemClick = (link) => {
                     ? 'bg-secondary p-2 rounded-md'
                     : 'bg-none'
                 } hover:text-secondary grow3 text-[20px] text-decoration-none 
-                cursor-pointer text-textalt`}
+                cursor-pointer text-textalt list-item`}
                 onClick={() => {
                   handleSideItemClick(link);
                 }}
@@ -84,11 +84,11 @@ const handleSideItemClick = (link) => {
               </li>
             ))}
 
-            <li className='hover:text-secondary grow3 text-[20px] 
+            <li className='hover:text-secondary grow3 text-[20px] list-item
             text-decoration-none cursor-pointer text-textalt mt-20'>
               <a 
                 href=''
-                className='flex gap-6 items-center'
+                className='flex gap-6 items-center icon'
               >
                 <Image src={logout} 
                   alt='logout'
