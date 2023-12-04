@@ -57,27 +57,19 @@ const handleSideItemClick = (link) => {
         
         <div className="md:hidden flex justify-between flex-1 items-center
         mt-3">
-          <Image
-            src={logoalt}
-            alt="logoalt"
-            width={130}
-            height="auto"
-            className="object-contain"
-          />
-
           <div className="flex items-center z-20">
             {toggle ? (
               <BsX
                 size={40}
                 className="object-contain cursor-pointer"
-                style={{ color: isScrolled ? '#000' : '#fff' }}
+                style={{ color: '#000' }}
                 onClick={() => setToggle(!toggle)}
               />
             ) : (
               <HiOutlineMenuAlt3
                 size={40}
                 className="object-contain cursor-pointer"
-                style={{ color: isScrolled ? '#000' : '#fff' }}
+                style={{ color: '#fff' }}
                 onClick={() => setToggle(!toggle)}
               />
             )}
@@ -92,7 +84,7 @@ const handleSideItemClick = (link) => {
           >
             <ul className="list-none flex justify-end 
             flex-col">
-              {navLinks.map((link, index) => (
+              {sideLinks.map((link, index) => (
                 <li
                   key={link.id}
                   className={`${
@@ -101,13 +93,13 @@ const handleSideItemClick = (link) => {
                       : 'text-primary'
                   } font-medium cursor-pointer ss:text-[20px] text-[16px] 
                   w-full
-                  ${index !== navLinks.length - 1 ? 'border-b-[1px] pb-1.5 pt-1.5' : 'pt-1.5'}`}
+                  ${index !== sideLinks.length - 1 ? 'border-b-[1px] pb-1.5 pt-1.5' : 'pt-1.5'}`}
                   onClick={() => {
                     setToggle(!toggle);
-                    handleNavItemClick(link);
+                    handleSideItemClick(link);
                   }}
                 >
-                  <a href={`#${link.id}`}>{link.title}</a>
+                  <a href={link.route}>{link.title}</a>
                 </li>
               ))}
             </ul>
