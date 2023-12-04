@@ -6,7 +6,7 @@ import styles from '@styles/styles';
 import { HiOutlineMenuAlt3 } from 'react-icons/hi';
 import Image from 'next/image';
 import { sideLinks } from '@constants';
-import { logoalt } from '@public/assets';
+import { logoalt, logout } from '@public/assets';
 import { useRouter } from 'next/navigation';
 
 const Sidebar = () => {
@@ -60,18 +60,45 @@ const handleSideItemClick = (link) => {
                   active === link.title
                     ? 'bg-secondary p-2 rounded-md'
                     : 'bg-none'
-                } hover:text-secondary grow3 text-[20px] text-decoration-none 
+                } hover:text-secondary grow3 text-[19px] text-decoration-none 
                 cursor-pointer text-textalt`}
                 onClick={() => {
                   handleSideItemClick(link);
                 }}
               >
-                <a href={`${link.id}`} className='gap-3'>
-                  {/* {link.Icon} */}
+                <a 
+                  href={link.route} 
+                  className='flex gap-6 items-center'
+                >
+                  {link.Icon && (
+                    <span className="icon">
+                      <Image src={link.Icon} 
+                        alt={link.title} 
+                        width={17} 
+                        height={17} 
+                      />
+                    </span>
+                  )}
                   {link.title}
                 </a>
               </li>
             ))}
+
+            <li className='hover:text-secondary grow3 text-[20px] 
+            text-decoration-none cursor-pointer text-textalt mt-20'>
+              <a 
+                href=''
+                className='flex gap-6 items-center'
+              >
+                <Image src={logout} 
+                  alt='logout'
+                  width={18} 
+                  height={18}
+                  className='hover:text-secondary' 
+                />
+                Logout
+              </a>
+            </li>
           </ul>
         </div>
 
