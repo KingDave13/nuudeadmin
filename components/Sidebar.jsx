@@ -60,7 +60,7 @@ const handleSideItemClick = (link) => {
                   active === link.title
                     ? 'bg-secondary p-2 rounded-md'
                     : 'bg-none'
-                } hover:text-secondary grow3 text-[19px] text-decoration-none 
+                } hover:text-secondary grow3 text-[20px] text-decoration-none 
                 cursor-pointer text-textalt`}
                 onClick={() => {
                   handleSideItemClick(link);
@@ -74,8 +74,8 @@ const handleSideItemClick = (link) => {
                     <span className="icon">
                       <Image src={link.Icon} 
                         alt={link.title} 
-                        width={17} 
-                        height={17} 
+                        width={18} 
+                        height={18} 
                       />
                     </span>
                   )}
