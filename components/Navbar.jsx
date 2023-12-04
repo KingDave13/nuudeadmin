@@ -78,7 +78,7 @@ const handleSideItemClick = (link) => {
 
         {/* FOR MOBILE */}
         
-        <div className="md:hidden flex justify-between flex-1 items-center
+        {/* <div className="md:hidden flex justify-between flex-1 items-center
         mt-3">
           <div className="flex items-center z-20">
             {toggle ? (
@@ -127,7 +127,7 @@ const handleSideItemClick = (link) => {
               ))}
             </ul>
           </div>
-        </div>
+        </div> */}
       </div>
     </nav>
   );
