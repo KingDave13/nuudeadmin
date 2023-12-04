@@ -1,9 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { BsX } from 'react-icons/bs';
 import styles from '@styles/styles';
-import { HiOutlineMenuAlt3 } from 'react-icons/hi';
 import Image from 'next/image';
 import { sideLinks } from '@constants';
 import { logoalt, logout } from '@public/assets';
@@ -100,68 +98,6 @@ const handleSideItemClick = (link) => {
             </li>
           </ul>
         </div>
-
-
-        {/* FOR MOBILE */}
-        
-        {/* <div className="md:hidden flex justify-between flex-1 items-center
-        mt-3">
-            <Image
-              src={logoalt}
-              alt="logo"
-              width={130}
-              height="auto"
-              className="object-contain"
-            />
-
-          <div className="flex items-center z-20">
-            {toggle ? (
-              <BsX
-                size={40}
-                className="object-contain cursor-pointer"
-                style={ '#fff' }
-                onClick={() => setToggle(!toggle)}
-              />
-            ) : (
-              <HiOutlineMenuAlt3
-                size={40}
-                className="object-contain cursor-pointer"
-                style={'#fff' }
-                onClick={() => setToggle(!toggle)}
-              />
-            )}
-          </div>
-          
-          <div
-            ref={menuRef}
-            className={`p-6 ss:mt-28 mt-24 bg-white absolute top-0 right-0 
-            z-10 flex-col w-full shadow-xl
-            ${toggle ? 'menu-slide-enter menu-slide-enter-active' 
-            : 'menu-slide-exit menu-slide-exit-active'}`}
-          >
-            <ul className="list-none flex justify-end 
-            flex-col">
-              {sideLinks.map((link, index) => (
-                <li
-                  key={link.id}
-                  className={`${
-                    active === link.title
-                      ? 'text-secondary'
-                      : 'text-primary'
-                  } font-medium cursor-pointer ss:text-[20px] text-[16px] 
-                  w-full
-                  ${index !== sideLinks.length - 1 ? 'border-b-[1px] pb-1.5 pt-1.5' : 'pt-1.5'}`}
-                  onClick={() => {
-                    setToggle(!toggle);
-                    handleSideItemClick(link);
-                  }}
-                >
-                  <a href={`#${link.id}`}>{link.title}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div> */}
       </div>
     </div>
   );
