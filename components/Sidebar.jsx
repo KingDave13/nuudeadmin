@@ -39,7 +39,7 @@ const handleSideItemClick = (link) => {
       font-manierRegular md:border-r-[1px] border-primaryalt`}
     >
       <div className="w-full flex justify-between items-center mx-auto
-      md:py-10 ss:py-6 py-5">
+      py-10">
         <div className="flex flex-col items-center w-full
         h-screen hidden md:flex">
           <Image
