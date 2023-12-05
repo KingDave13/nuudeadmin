@@ -32,7 +32,7 @@ const Navbar = () => {
 
 const handleSideItemClick = (link) => {
   setActive(link.title);
-  // router.push(`/${link.id}`)
+  router.push(`/${link.id}`)
 };
 
   return (
