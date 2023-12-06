@@ -15,9 +15,9 @@ export const POST = async (req) => {
 
         const newAdminData = {
             userId: new mongoose.Types.ObjectId(),
-            username: "Nuude@admin",
-            email: "admin@nuude.club",
-            password: "admin@nuudeclub23",
+            username: process.env.ADMIN_USERNAME,
+            email: process.env.ADMIN_EMAIL,
+            password: process.env.ADMIN_PASSWORD,
         };
 
         const newAdmin = new Admin(newAdminData);
