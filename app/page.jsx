@@ -9,23 +9,23 @@ import * as Yup from 'yup';
 import SectionWrapperAlt from '@hoc/SectionWrapperAlt';
 
 const Login = () => {
-    const router = useRouter();
+  const router = useRouter();
 
-    const formik = useFormik({
-        initialValues: {
-            email: '',
-            password: '',
-        },
+  const formik = useFormik({
+      initialValues: {
+          email: '',
+          password: '',
+      },
 
-        validationSchema: Yup.object({
-            email: Yup.string().email('Invalid email address.').required('Email is required.'),
-            password: Yup.string().required('Password is required.'),
-        }),
+      validationSchema: Yup.object({
+          email: Yup.string().email('Invalid email address.').required('Email is required.'),
+          password: Yup.string().required('Password is required.'),
+      }),
+  });
 
-        onSubmit: async (values) => {
-            
-        },
-    });
+  const handleLogin = async () => {
+
+  };
     
 
   return (
@@ -102,13 +102,13 @@ const Login = () => {
           <div className="md:mt-2 ss:mt-2 w-full flex items-center 
           justify-center md:gap-10">
             <button
-            type="submit"
+            onClick={handleLogin}
             className="bg-secondary grow2 shadow-md md:text-[16px] 
             ss:text-[14px] text-[13px] md:py-3 ss:py-3 py-2 md:px-20 
             ss:px-8 text-primary md:rounded-[5px] ss:rounded-[3px] 
             border-none cursor-pointer"
             > 
-                Login
+              Login
             </button>
 
             <a 
