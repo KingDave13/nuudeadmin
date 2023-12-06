@@ -18,7 +18,7 @@ const Login = () => {
         },
 
         validationSchema: Yup.object({
-            email: Yup.string().email('Email is required.'),
+            email: Yup.string().email('Invalid email address.').required('Email is required.'),
             password: Yup.string().required('Password is required.'),
         }),
 
@@ -29,90 +29,98 @@ const Login = () => {
     
 
   return (
-    <section className="mx-auto flex">
-      <div className='w-full mx-auto font-manierRegular'>
-          <motion.div variants={slideIn('down', 'tween', 0.2, 1)}
-            className='w-full'
-          >
-            <p className='text-white md:text-[17px] ss:text-[15px] 
-            text-[14px]'>
-              Please enter your login details
-            </p>
+    <section className="flex w-full items-center justify-center 
+    md:h-[70vh]">
+      <motion.div variants={slideIn('down', 'tween', 0.2, 1)}
+        className='w-1/2 font-manierRegular flex items-center
+        justify-center flex-col bg-primaryalt rounded-xl md:p-10
+        shadow-xl'
+      >
+        <p className='text-white md:text-[20px] ss:text-[18px] 
+        text-[17px] border-b-[1px] border-textalt w-full text-center
+        md:pb-6'>
+          Please enter your login details
+        </p>
 
-            <form onSubmit={formik.handleSubmit} 
-            className='flex md:flex-row flex-col w-full md:mt-12 md:gap-20
-            ss:gap-8 gap-12'>
-              <div className="md:gap-8 ss:gap-4 gap-5">
-                <div className="flex flex-col">
-                    <label className="text-white md:mb-3 ss:mb-2 mb-2 
-                    md:text-[16px] ss:text-[15px] text-[13px]">
-                        Email
-                    </label>
-                    <input
-                    type="email"
-                    name="email"
-                    value={formik.values.email}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    placeholder="Enter your email"
-                    className="md:py-3 ss:py-2 py-2 px-4 border-none 
-                    outline-none text-white md:rounded-[3px] 
-                    ss:rounded-[3px] rounded-[3px]
-                    placeholder:text-textalt focus:outline-none
-                    md:placeholder:text-[14px] 
-                    ss:placeholder:text-[12px] 
-                    placeholder:text-[12px] bg-primaryalt"
-                    />
-                    <p className="text-mainRed md:text-[12px] 
-                    ss:text-[12px] text-[11px] md:mt-2 ss:mt-2 mt-1"
-                    >
-                        {formik.touched.email && formik.errors.email}
-                    </p>
-                </div>
+        <form onSubmit={formik.handleSubmit} 
+        className='flex flex-col w-full md:mt-10 md:gap-4
+        ss:gap-4 gap-3'>
+          <div className="flex flex-col">
+              <label className="text-white md:mb-3 ss:mb-2 mb-2 
+              md:text-[16px] ss:text-[15px] text-[13px]">
+                  Email
+              </label>
+              <input
+              type="email"
+              name="email"
+              value={formik.values.email}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              placeholder="Enter your email"
+              className="md:py-3 ss:py-2 py-2 px-4 border-none 
+              outline-none text-white md:rounded-[5px] 
+              ss:rounded-[3px] rounded-[3px]
+              placeholder:text-textalt focus:outline-none
+              md:placeholder:text-[14px] 
+              ss:placeholder:text-[12px] 
+              placeholder:text-[12px] bg-primary"
+              />
+              <p className="text-mainRed md:text-[12px] 
+              ss:text-[12px] text-[11px] md:mt-2 ss:mt-2 mt-1"
+              >
+                  {formik.touched.email && formik.errors.email}
+              </p>
+          </div>
 
-                <div className="flex flex-col">
-                    <label className="text-white md:mb-3 ss:mb-2 mb-2 
-                    md:text-[16px] ss:text-[15px] text-[13px]">
-                        Password
-                    </label>
-                    <input
-                    type="text"
-                    name="password"
-                    value={formik.values.password}
-                    onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    placeholder="Enter your password"
-                    className="md:py-3 ss:py-2 py-2 px-4 border-none 
-                    outline-none text-white md:rounded-[3px] 
-                    ss:rounded-[3px] rounded-[3px]
-                    placeholder:text-textalt
-                    md:placeholder:text-[14px] 
-                    ss:placeholder:text-[12px] 
-                    placeholder:text-[12px] bg-primaryalt"
-                    />
-                    <p className="text-mainRed md:text-[12px] 
-                    ss:text-[12px] text-[11px] md:mt-2 ss:mt-2 mt-1"
-                    >
-                        {formik.touched.password && formik.errors.password}
-                    </p>
-                </div>
+          <div className="flex flex-col">
+              <label className="text-white md:mb-3 ss:mb-2 mb-2 
+              md:text-[16px] ss:text-[15px] text-[13px]">
+                  Password
+              </label>
+              <input
+              type="text"
+              name="password"
+              value={formik.values.password}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              placeholder="Enter your password"
+              className="md:py-3 ss:py-2 py-2 px-4 border-none 
+              outline-none text-white md:rounded-[5px] 
+              ss:rounded-[3px] rounded-[3px]
+              placeholder:text-textalt
+              md:placeholder:text-[14px] 
+              ss:placeholder:text-[12px] 
+              placeholder:text-[12px] bg-primary"
+              />
+              <p className="text-mainRed md:text-[12px] 
+              ss:text-[12px] text-[11px] md:mt-2 ss:mt-2 mt-1"
+              >
+                  {formik.touched.password && formik.errors.password}
+              </p>
+          </div>
 
-                <div className="md:mt-3 ss:mt-3">
-                  <button
-                  type="submit"
-                  className="bg-secondary grow2 w-fit shadow-md 
-                  md:text-[16px] ss:text-[14px] text-[13px] 
-                  md:py-4 ss:py-3 md:px-20 ss:px-8
-                  text-primary md:rounded-[6px] ss:rounded-[3px] 
-                  border-none cursor-pointer"
-                  > 
-                      Login
-                  </button>
-                </div>
-              </div>
-            </form>
-          </motion.div>
-      </div>
+          <div className="md:mt-2 ss:mt-2 w-full flex items-center 
+          justify-center md:gap-10">
+            <button
+            type="submit"
+            className="bg-secondary grow2 shadow-md md:text-[16px] 
+            ss:text-[14px] text-[13px] md:py-3 ss:py-3 py-2 md:px-20 
+            ss:px-8 text-primary md:rounded-[5px] ss:rounded-[3px] 
+            border-none cursor-pointer"
+            > 
+                Login
+            </button>
+
+            <a 
+              href=""
+              className='text-secondary md:text-[16px] ss:text-[15px]
+              text-[13px] grow2'
+            >
+              Forgot password?
+            </a>
+          </div>
+        </form>
+      </motion.div>
     </section>
   );
 };
