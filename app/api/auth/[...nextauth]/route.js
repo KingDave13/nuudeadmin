@@ -3,9 +3,9 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import { connectToDb } from "@utils/database";
 import Admin from "@models/admin";
 
-const handler = NextAuth({
+export const authOptions = {
     providers: [
-      Providers.Credentials({
+      CredentialsProvider({
         async authorize(credentials) {
           try {
             await connectToDb();
@@ -32,6 +32,10 @@ const handler = NextAuth({
       },
     },
     pages: {
-      signIn: "/login",
+      signIn: "/",
     },
-  });
+  };
+
+  const handler = NextAuth(authOptions);
+
+  export { handler as GET, handler as POST };
