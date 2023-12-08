@@ -1,5 +1,5 @@
 import { connectToDb } from "@utils/database";
-import Admin from "@models/Admin";
+import Admin from "@models/admin";
 
 let adminDataInserted = false;
 
