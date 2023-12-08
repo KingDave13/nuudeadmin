@@ -8,32 +8,31 @@ export const authOptions = {
       CredentialsProvider({
         name: 'credentials',
         credentials: {},
-        
+
         async authorize(credentials) {
           try {
             await connectToDb();
+
             const admin = await Admin.findOne({
               email: credentials.email,
-              password: credentials.password,
             });
   
-            if (admin) {
-              return Promise.resolve({ id: admin.userId, email: admin.email });
-            } else {
-              return Promise.resolve(null);
-            }
+            if (!admin) throw new Error('Wrong Credentials.');
+            const isCorrect = await bcrypt.compare(credentials.password,admin.password);
+            if (!isCorrect) throw new Error('Wrong Credentials.');
+            return admin;
           } catch (error) {
             console.error("Authentication error:", error);
-            return Promise.resolve(null);
+            throw new Error('Something went wrong.');
           }
         },
       }),
     ],
-    callbacks: {
-      session: async (session, user) => {
-        return Promise.resolve({ ...session, user: { id: user.id, email: user.email } });
-      },
-    },
+    // callbacks: {
+    //   session: async (session, user) => {
+    //     return Promise.resolve({ ...session, user: { id: user.id, email: user.email } });
+    //   },
+    // },
     pages: {
       signIn: "/",
     },
@@ -42,3 +41,5 @@ export const authOptions = {
   const handler = NextAuth(authOptions);
 
   export { handler as GET, handler as POST };
+
+  return Promise.resolve({ id: admin.userId, email: admin.email });
