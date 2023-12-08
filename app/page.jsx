@@ -6,10 +6,13 @@ import { motion } from 'framer-motion';
 import { slideIn } from '@utils/motion';
 import { useFormik } from "formik";
 import * as Yup from 'yup';
+import { signIn } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import SectionWrapperAlt from '@hoc/SectionWrapperAlt';
 
 const Login = () => {
   const router = useRouter();
+  const { data: session } = useSession();
 
   const formik = useFormik({
       initialValues: {
@@ -23,27 +26,20 @@ const Login = () => {
       }),
 
       onSubmit: async (values) => {
-        await fetch('/api/database/admin', {
-          method: 'POST',
-          body: JSON.stringify({
-            email: values.email,
-            password: values.password,
-          })
+        await signIn("credentials", {
+          email: values.email,
+          password: values.password,
+          redirect: false,
         });
-      }
+
+        router.push("/requests");
+      },
   });
 
-  // const handleLogin = async () => {
-  //   try {
-  //     const response = await fetch('/api/database/admin', {
-  //       method: 'POST',
-  //     });
-  //     console.log(response.data);
-  //   } catch (error) {
-  //     console.error('Error during API call:', error);
-  //   }
-  // };
-    
+  if (session) {
+    router.push("/requests");
+    return null;
+  }
 
   return (
     <section className="flex w-full items-center justify-center 

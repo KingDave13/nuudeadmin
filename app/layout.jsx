@@ -14,13 +14,15 @@ const RootLayout = ({ children }) => {
   return (
     <html lang='en'>
         <body>
+          <Provider>
             <div className='bg-primary flex md:px-16 px-6'>
-                <Sidebar />
-                <div className='flex flex-col flex-1 overflow-hidden'>
-                  <Navbar />
-                  {children}
-                </div>
+              <Sidebar />
+              <div className='flex flex-col flex-1 overflow-hidden'>
+                <Navbar />
+                {children}
+              </div>
             </div>
+          </Provider>
         </body>
     </html>
   )
