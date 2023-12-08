@@ -26,7 +26,7 @@ const Login = () => {
 
       onSubmit: async (values) => {
         try {
-          await signIn("credentials", {
+          const res = await signIn("credentials", {
             email: values.email,
             password: values.password,
             redirect: false,
