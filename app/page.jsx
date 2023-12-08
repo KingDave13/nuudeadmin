@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from "next/navigation";
 import { motion } from 'framer-motion';
-import { slideIn, textVariant } from '@utils/motion';
+import { slideIn } from '@utils/motion';
 import { useFormik } from "formik";
 import * as Yup from 'yup';
 import SectionWrapperAlt from '@hoc/SectionWrapperAlt';
@@ -24,7 +24,14 @@ const Login = () => {
   });
 
   const handleLogin = async () => {
-
+    try {
+      const response = await fetch('/api/database/admin', {
+        method: 'POST',
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.error('Error during API call:', error);
+    }
   };
     
 
