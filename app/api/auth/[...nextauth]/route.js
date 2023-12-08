@@ -1,5 +1,5 @@
 import NextAuth from "next-auth";
-import Providers from 'next-auth/providers'
+import CredentialsProvider from 'next-auth/providers/credentials';
 import { connectToDb } from "@utils/database";
 import Admin from "@models/admin";
 
@@ -35,5 +35,3 @@ const handler = NextAuth({
       signIn: "/login",
     },
   });
-
-  export { handler as GET, handler as POST};
