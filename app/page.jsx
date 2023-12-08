@@ -6,8 +6,7 @@ import { motion } from 'framer-motion';
 import { slideIn } from '@utils/motion';
 import { useFormik } from "formik";
 import * as Yup from 'yup';
-import { signIn } from "next-auth/react";
-import { useSession } from "next-auth/react";
+import { useSession, signIn } from "next-auth/react";
 import SectionWrapperAlt from '@hoc/SectionWrapperAlt';
 
 const Login = () => {

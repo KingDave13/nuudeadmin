@@ -1,6 +1,7 @@
 import { connectToDb } from "@utils/database";
 import Admin from "@models/admin";
 import mongoose from 'mongoose';
+import bcrypt from 'bcrypt';
 
 export const POST = async (req) => {
     try {
@@ -8,10 +9,13 @@ export const POST = async (req) => {
 
         const { email, password } = await req.json();
 
+        const salt = await bcrypt.genSalt();
+		const passwordHash = await bcrypt.hash(password, salt);
+
         const newAdminData = {
             userId: new mongoose.Types.ObjectId(),
             email: email,
-            password: password,
+            password: passwordHash,
         };
 
         const newAdmin = new Admin(newAdminData);
