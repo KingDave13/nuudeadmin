@@ -16,24 +16,24 @@ const Navbar = () => {
 
   const router = useRouter();
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-        if (menuRef.current && !menuRef.current.contains(event.target)) {
-            setToggle(false);
-        }
-    };
+//   useEffect(() => {
+//     const handleClickOutside = (event) => {
+//         if (menuRef.current && !menuRef.current.contains(event.target)) {
+//             setToggle(false);
+//         }
+//     };
 
-    document.addEventListener('mousedown', handleClickOutside);
+//     document.addEventListener('mousedown', handleClickOutside);
 
-    return () => {
-        document.removeEventListener('mousedown', handleClickOutside);
-    };
-}, []);
+//     return () => {
+//         document.removeEventListener('mousedown', handleClickOutside);
+//     };
+// }, []);
 
-const handleSideItemClick = (link) => {
-  setActive(link.title);
-  router.push(link.route)
-};
+// const handleSideItemClick = (link) => {
+//   setActive(link.title);
+//   router.push(link.route)
+// };
 
   return (
     <nav className={`${styles.paddingX} w-full flex items-center
