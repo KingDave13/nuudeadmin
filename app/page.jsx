@@ -25,20 +25,22 @@ const Login = () => {
       }),
 
       onSubmit: async (values) => {
-        await signIn("credentials", {
-          email: values.email,
-          password: values.password,
-          redirect: false,
-        });
-
-        router.push("/requests");
+        try {
+          await signIn("credentials", {
+            email: values.email,
+            password: values.password,
+            redirect: false,
+          })
+          if(res.error) {
+            console.log(error, 'invalid credentials');
+            return;
+          }
+          router.replace('/requests');
+        } catch (error) {
+          console.log(error, 'Could not log in');
+        }
       },
   });
-
-  if (session) {
-    router.push("/requests");
-    return null;
-  }
 
   return (
     <section className="flex w-full items-center justify-center 
