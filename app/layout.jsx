@@ -1,6 +1,7 @@
 import '@styles/globals.css';
 import Navbar from '@components/Navbar';
 import Sidebar from '@components/Sidebar';
+import Provider from '@components/Provider';
 
 
 export const metadata = {
