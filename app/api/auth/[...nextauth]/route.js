@@ -6,6 +6,9 @@ import Admin from "@models/admin";
 export const authOptions = {
     providers: [
       CredentialsProvider({
+        name: 'credentials',
+        credentials: {},
+        
         async authorize(credentials) {
           try {
             await connectToDb();
