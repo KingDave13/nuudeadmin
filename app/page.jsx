@@ -21,18 +21,28 @@ const Login = () => {
           email: Yup.string().email('Invalid email address.').required('Email is required.'),
           password: Yup.string().required('Password is required.'),
       }),
+
+      onSubmit: async (values) => {
+        await fetch('/api/database/admin', {
+          method: 'POST',
+          body: JSON.stringify({
+            email: values.email,
+            password: values.password,
+          })
+        });
+      }
   });
 
-  const handleLogin = async () => {
-    try {
-      const response = await fetch('/api/database/admin', {
-        method: 'POST',
-      });
-      console.log(response.data);
-    } catch (error) {
-      console.error('Error during API call:', error);
-    }
-  };
+  // const handleLogin = async () => {
+  //   try {
+  //     const response = await fetch('/api/database/admin', {
+  //       method: 'POST',
+  //     });
+  //     console.log(response.data);
+  //   } catch (error) {
+  //     console.error('Error during API call:', error);
+  //   }
+  // };
     
 
   return (
@@ -109,7 +119,7 @@ const Login = () => {
           <div className="md:mt-2 ss:mt-2 w-full flex items-center 
           justify-center md:gap-10">
             <button
-            onClick={handleLogin}
+            type='submit'
             className="bg-secondary grow2 shadow-md md:text-[16px] 
             ss:text-[14px] text-[13px] md:py-3 ss:py-3 py-2 md:px-20 
             ss:px-8 text-primary md:rounded-[5px] ss:rounded-[3px] 
