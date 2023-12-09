@@ -42,6 +42,10 @@ const Login = () => {
       },
   });
 
+  if (!session) {
+    router.push("/");
+  }
+
   return (
     <section className="flex w-full items-center justify-center 
     md:h-[70vh]">
