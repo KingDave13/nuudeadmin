@@ -113,7 +113,7 @@ const Login = () => {
               <p className="text-mainRed md:text-[12px] 
               ss:text-[12px] text-[11px] md:mt-2 ss:mt-2 mt-1"
               >
-                  {formik.touched.password && formik.errors.password}
+                {formik.touched.password && formik.errors.password}
               </p>
           </div>
 
