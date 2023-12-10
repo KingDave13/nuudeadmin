@@ -86,7 +86,7 @@ const Login = () => {
               <p className="text-mainRed md:text-[12px] 
               ss:text-[12px] text-[11px] md:mt-2 ss:mt-2 mt-1"
               >
-                  {formik.touched.email && formik.errors.email}
+                {formik.touched.email && formik.errors.email}
               </p>
           </div>
 
