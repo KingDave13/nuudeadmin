@@ -9,25 +9,25 @@ import {
     {
       id: 'requests',
       title: 'Requests',
-      route: '/admin/requests',
+      route: '/requests',
       Icon: requests,
     },
     {
       id: 'guests',
       title: 'Guest List',
-      route: '/admin/guests',
+      route: '/guests',
       Icon: guests,
     },
     {
       id: 'members',
       title: 'Members',
-      route: '/admin/members',
+      route: '/members',
       Icon: members,
     },
     {
       id: 'announcements',
       title: 'Announcements',
-      route: '/admin/announcements',
+      route: '/announcements',
       Icon: announcements,
     },
   ];
