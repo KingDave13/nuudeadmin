@@ -6,12 +6,11 @@ import { motion } from 'framer-motion';
 import { slideIn } from '@utils/motion';
 import { useFormik } from "formik";
 import * as Yup from 'yup';
-import { useSession, signIn } from "next-auth/react";
+import { signIn } from "next-auth/react";
 import SectionWrapperAlt from '@hoc/SectionWrapperAlt';
 
 const Login = () => {
   const router = useRouter();
-  const { data: session } = useSession();
 
   const formik = useFormik({
       initialValues: {
@@ -41,11 +40,6 @@ const Login = () => {
         }
       },
   });
-
-  // if (!session) {
-  //   router.push("/");
-  //   return null;
-  // }
 
   return (
     <section className="flex w-full items-center justify-center 

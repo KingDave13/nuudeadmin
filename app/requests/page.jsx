@@ -8,10 +8,10 @@ const RequestsPage = () => {
   const { data: session } = useSession();
   const router = useRouter();
 
-  if (!session) {
-    router.replace("/");
-    return null;
-  }
+  // if (!session) {
+  //   router.replace("/");
+  //   return null;
+  // }
 
   return (
     <div>
