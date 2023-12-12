@@ -13,7 +13,6 @@ export const authOptions = {
         async authorize(credentials) {
           try {
             await connectToDb();
-
             const admin = await Admin.findOne({
               email: credentials.email,
             });
@@ -45,5 +44,5 @@ export const authOptions = {
   };
 
   const handler = NextAuth(authOptions);
-  
+
   export { handler as GET, handler as POST };
