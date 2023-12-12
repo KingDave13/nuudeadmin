@@ -32,7 +32,7 @@ const Login = () => {
             redirect: false,
           })
           if(res.error) {
-            console.log(error, 'invalid credentials');
+            console.log(res.error, 'invalid credentials');
             return;
           }
           router.replace('/requests');
@@ -42,9 +42,10 @@ const Login = () => {
       },
   });
 
-  if (!session) {
-    router.push("/");
-  }
+  // if (!session) {
+  //   router.push("/");
+  //   return null;
+  // }
 
   return (
     <section className="flex w-full items-center justify-center 
