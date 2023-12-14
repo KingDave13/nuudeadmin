@@ -1,16 +1,27 @@
 'use client';
 
-import { useSession } from "next-auth/react";
+import { getSession, useSession } from "next-auth/react";
+import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 const RequestsPage = () => {
   const { data: session } = useSession();
+  
   const router = useRouter();
 
-  if (!session) {
-    router.replace("/");
-    return null;
-  }
+  useEffect(() => {
+    const fetchSession = async () => {
+      const session = await getSession();
+      if (session) {
+        setLoading(false);
+      } else {
+        // Redirect to login if there is no active session
+        window.location.href = "/";
+      }
+    };
+
+    fetchSession();
+  }, []);
 
   return (
     <div>
