@@ -6,7 +6,6 @@ import { useRouter } from "next/navigation";
 
 const RequestsPage = () => {
   const { data: session } = useSession();
-  
   const router = useRouter();
 
   useEffect(() => {
