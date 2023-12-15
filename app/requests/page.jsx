@@ -17,7 +17,7 @@ const RequestsPage = () => {
         // Redirect to login if there is no active session
         window.location.href = "/";
       }
-
+/
     };
 
     fetchSession();
