@@ -53,7 +53,6 @@ const Login = () => {
         text-[17px] border-b-[1px] border-textalt w-full text-center
         md:pb-6'>
           Please enter your login details
-          
         </p>
 
         <form onSubmit={formik.handleSubmit} 
