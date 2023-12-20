@@ -54,7 +54,6 @@ const Login = () => {
         md:pb-6'>
           Please enter your login details
         </p>
-        
 
         <form onSubmit={formik.handleSubmit} 
         className='flex flex-col w-full md:mt-10 md:gap-4
