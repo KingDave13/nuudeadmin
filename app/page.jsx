@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useRef } from 'react';
 import { useRouter } from "next/navigation";
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { slideIn } from '@utils/motion';
 import { useFormik } from "formik";
 import * as Yup from 'yup';
@@ -48,7 +48,7 @@ const Modal = ({ onClose }) => {
 
             <button
             onClick={handleClick}
-            className='grow4 bg-secondary border-none w-full
+            className='grow4 bg-secondary border-none
             md:text-[16px] ss:text-[15px] text-[13px] md:py-4
             ss:py-4 py-3 md:px-20 ss:px-7 px-5 text-primary 
             md:rounded-[3px] ss:rounded-[3px] rounded-[3px] 
