@@ -74,7 +74,7 @@ const handleSideItemClick = (link) => {
                       <Image src={link.Icon} 
                         alt={link.title} 
                         width={18} 
-                        height={18} 
+                        height={'auto'} 
                       />
                     </span>
                   )}
@@ -92,7 +92,7 @@ const handleSideItemClick = (link) => {
                 <Image src={logout} 
                   alt='logout'
                   width={18} 
-                  height={18}
+                  height={'auto'}
                 />
                 Logout
               </a>
