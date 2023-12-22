@@ -23,43 +23,32 @@ const Modal = ({ onClose }) => {
   };
 
   return (
-    <AnimatePresence>
-      <motion.div 
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="fixed inset-0 flex items-center justify-center
+      <div className="fixed inset-0 flex items-center justify-center
       bg-black bg-opacity-80 z-50">
-        <motion.div 
-        initial={{ y: 0, opacity: 0.7 }}
-        animate={{ y: 0, opacity: 1 }}
-        exit={{ y: 10, opacity: 0 }}
-        transition={{ duration: 0.1 }}
-        ref={modalRef} 
-        className="bg-primaryalt md:p-10 ss:p-10 p-6 rounded-md shadow-xl 
+        <div ref={modalRef} 
+        className="bg-primaryalt md:p-8 ss:p-8 p-6 rounded-md shadow-xl 
         flex flex-col justify-center w-auto h-auto font-manierRegular
         items-center">
           <div className='flex flex-col w-full justify-center 
           items-center'>
-            <h1 className='text-white md:text-[20px] ss:text-[20px]
-            text-[17px] text-center md:mb-6 ss:mb-6 mb-5'>
+            <h1 className='text-white md:text-[16px] ss:text-[20px]
+            text-[17px] text-center md:mb-4 ss:mb-4 mb-3'>
               Incorrect username or password.
             </h1>
 
             <button
             onClick={handleClick}
             className='grow4 bg-secondary border-none
-            md:text-[16px] ss:text-[15px] text-[13px] md:py-3
-            ss:py-3 py-3 md:px-10 ss:px-7 px-5 text-primary 
+            md:text-[13px] ss:text-[14px] text-[13px] md:py-2
+            ss:py-3 py-3 md:px-7 ss:px-7 px-5 text-primary 
             md:rounded-[3px] ss:rounded-[3px] rounded-[3px] 
             font-manierMedium cursor-pointer'
             >
               OK
             </button>
           </div>
-        </motion.div>
-      </motion.div>
-    </AnimatePresence>
+        </div>
+      </div>
   );
 };
 
