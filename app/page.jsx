@@ -49,8 +49,8 @@ const Modal = ({ onClose }) => {
             <button
             onClick={handleClick}
             className='grow4 bg-secondary border-none
-            md:text-[16px] ss:text-[15px] text-[13px] md:py-4
-            ss:py-4 py-3 md:px-20 ss:px-7 px-5 text-primary 
+            md:text-[16px] ss:text-[15px] text-[13px] md:py-3
+            ss:py-3 py-3 md:px-10 ss:px-7 px-5 text-primary 
             md:rounded-[3px] ss:rounded-[3px] rounded-[3px] 
             font-manierMedium cursor-pointer'
             >
