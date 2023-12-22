@@ -16,6 +16,7 @@ export const authOptions = {
 
             const admin = await Admin.findOne({
               email: credentials.email,
+              
             });
 
             if (!admin) throw new Error('Wrong Credentials.');
@@ -39,7 +40,7 @@ export const authOptions = {
         return session;
       }
     },
-    
+
     pages: {
       signIn: "/",
     },
