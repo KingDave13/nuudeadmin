@@ -31,7 +31,6 @@ export const authOptions = {
       }),
     ],
 
-    
     callbacks: {
         async session({ session, user }) {
         if (user) {
