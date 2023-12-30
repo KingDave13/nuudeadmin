@@ -134,7 +134,7 @@ const handleSideItemClick = (link) => {
 
           <div
             ref={menuRef}
-            className='p-6 bg-white absolute ss:top-20 top-5 right-6 
+            className='ss:p-6 p-4 bg-white absolute ss:top-5 top-5 right-6 
             rounded-lg z-10 flex-col shadow-xl ss:mt-4 mt-3'
             style={{ height: toggle2 ? 'auto' : 0, opacity: toggle2 ? 1 : 0, 
             visibility: toggle2 ? 'visible' : 'hidden', 
@@ -142,17 +142,17 @@ const handleSideItemClick = (link) => {
           >
             <div className="list-none flex justify-end ss:gap-5 gap-4 
             flex-col">
-              <div className='flex w-full items-center ss:gap-3 gap-3'
-              onClick={() => setToggle2(!toggle2)}>
+              <div className='flex w-full items-center ss:gap-3 gap-3'>
                 <Image 
                   src={picture}
                   width={35}
                   height={'auto'}
                   alt='profilepic'
                   className='object-contain'
+                  onClick={() => setToggle2(!toggle2)}
                 />
 
-                <h1 className='text-textalt text-[16px]'>
+                <h1 className='text-primary ss:text-[20px] text-[16px]'>
                   Nuude! Admin
                 </h1>
 
@@ -165,7 +165,7 @@ const handleSideItemClick = (link) => {
               </div>
               
               <div className='hover:text-secondary grow3 ss:text-[21px] 
-              text-[17px] list-item cursor-pointer text-textalt ss:mt-10
+              text-[17px] list-item cursor-pointer text-textalt ss:mt-6
               mt-6'>
                 <a 
                   href='/'
