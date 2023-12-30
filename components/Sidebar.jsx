@@ -12,20 +12,6 @@ const Sidebar = () => {
 
   const router = useRouter();
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-        if (menuRef.current && !menuRef.current.contains(event.target)) {
-            setToggle(false);
-        }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-
-    return () => {
-        document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
-
   const handleSideItemClick = (link) => {
     setActive(link.title);
     router.push(link.route);
