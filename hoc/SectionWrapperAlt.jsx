@@ -9,7 +9,7 @@ const SectionWrapperAlt = ( Component ) => function HOC() {
             initial='hidden'
             whileInView='show'
             viewport={{ once: true, amount: 0.25 }}
-            className={`${styles.padding} max-w-[95rem]`}
+            className={`${styles.paddingB} max-w-[95rem]`}
         >
             <Component />
         </motion.section>

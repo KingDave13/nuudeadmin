@@ -16,27 +16,27 @@ const Navbar = () => {
 
   const router = useRouter();
 
-//   useEffect(() => {
-//     const handleClickOutside = (event) => {
-//         if (menuRef.current && !menuRef.current.contains(event.target)) {
-//             setToggle(false);
-//         }
-//     };
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+        if (menuRef.current && !menuRef.current.contains(event.target)) {
+            setToggle(false);
+        }
+    };
 
-//     document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('mousedown', handleClickOutside);
 
-//     return () => {
-//         document.removeEventListener('mousedown', handleClickOutside);
-//     };
-// }, []);
+    return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+    };
+}, []);
 
-// const handleSideItemClick = (link) => {
-//   setActive(link.title);
-//   router.push(link.route)
-// };
+const handleSideItemClick = (link) => {
+  setActive(link.title);
+  router.push(link.route)
+};
 
   return (
-    <nav className={`${styles.paddingX} w-full flex items-center
+    <nav className={`${styles.paddingA} w-full flex items-center
       md:py-10 ss:py-6 py-5 top-0 z-20 navsmooth font-manierRegular
       md:border-b-[1px] border-primaryalt`}
     >
@@ -77,14 +77,14 @@ const Navbar = () => {
 
         {/* FOR MOBILE */}
         
-        {/* <div className="md:hidden flex justify-between flex-1 items-center
-        mt-3">
+        <div className="md:hidden flex justify-between flex-1 items-center
+          mt-3">
           <div className="flex items-center z-20">
             {toggle ? (
               <BsX
                 size={40}
                 className="object-contain cursor-pointer"
-                style={{ color: '#000' }}
+                style={{ color: '#fff' }}
                 onClick={() => setToggle(!toggle)}
               />
             ) : (
@@ -99,34 +99,46 @@ const Navbar = () => {
           
           <div
             ref={menuRef}
-            className={`p-6 ss:mt-28 mt-24 bg-white absolute top-0 right-0 
-            z-10 flex-col w-full shadow-xl
-            ${toggle ? 'menu-slide-enter menu-slide-enter-active' 
-            : 'menu-slide-exit menu-slide-exit-active'}`}
+            className='p-6 bg-white absolute ss:top-8 top-20 rounded-md 
+            z-10 flex-col shadow-xl'
+            style={{ height: toggle ? 'auto' : 0, opacity: toggle ? 1 : 0, 
+            visibility: toggle ? 'visible' : 'hidden', 
+            transition: 'height 0.3s, opacity 0.3s, visibility 0.3s' }}
           >
-            <ul className="list-none flex justify-end 
-            flex-col">
-              {sideLinks.map((link, index) => (
+            <ul className="list-none flex justify-end flex-col">
+              {sideLinks.map((link) => (
                 <li
                   key={link.id}
                   className={`${
                     active === link.title
-                      ? 'text-secondary'
-                      : 'text-primary'
-                  } font-medium cursor-pointer ss:text-[20px] text-[16px] 
-                  w-full
-                  ${index !== sideLinks.length - 1 ? 'border-b-[1px] pb-1.5 pt-1.5' : 'pt-1.5'}`}
+                      ? 'bg-secondary p-2 rounded-md'
+                      : 'bg-none'
+                  } hover:text-secondary grow3 text-[20px] text-decoration-none 
+                  cursor-pointer text-textalt list-item`}
                   onClick={() => {
-                    setToggle(!toggle);
                     handleSideItemClick(link);
                   }}
                 >
-                  <a href={link.route}>{link.title}</a>
+                  <a 
+                    href={link.route} 
+                    className='flex gap-6 items-center'
+                  >
+                    {link.Icon && (
+                      <span className="icon">
+                        <Image src={link.Icon} 
+                          alt={link.title} 
+                          width={18} 
+                          height={'auto'} 
+                        />
+                      </span>
+                    )}
+                    {link.title}
+                  </a>
                 </li>
               ))}
             </ul>
           </div>
-        </div> */}
+        </div>
       </div>
     </nav>
   );
