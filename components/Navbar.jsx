@@ -101,7 +101,8 @@ const handleSideItemClick = (link) => {
               )}
             </div>
 
-            <div className='flex justify-end items-center gap-4'
+            <div className='flex justify-end items-center gap-4 grow2
+            cursor-pointer'
             onClick={() => setToggle2(!toggle2)}>
               <Image 
                 src={picture}
@@ -142,14 +143,15 @@ const handleSideItemClick = (link) => {
           >
             <div className="list-none flex justify-end ss:gap-5 gap-4 
             flex-col">
-              <div className='flex w-full items-center ss:gap-3 gap-3'>
+              <div className='flex w-full items-center ss:gap-3 gap-3
+              cursor-pointer'>
                 <Image 
                   src={picture}
                   width={35}
                   height={'auto'}
                   alt='profilepic'
                   className='object-contain'
-                  onClick={() => setToggle2(!toggle2)}
+                  
                 />
 
                 <h1 className='text-primary ss:text-[20px] text-[16px]'>
