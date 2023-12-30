@@ -32,7 +32,7 @@ const Modal = ({ onClose }) => {
           <div className='flex flex-col w-full justify-center 
           items-center'>
             <h1 className='text-white md:text-[16px] ss:text-[20px]
-            text-[17px] text-center md:mb-4 ss:mb-4 mb-3'>
+            text-[15px] text-center md:mb-4 ss:mb-4 mb-3'>
               Incorrect username or password.
             </h1>
 
@@ -40,7 +40,7 @@ const Modal = ({ onClose }) => {
             onClick={handleClick}
             className='grow4 bg-secondary border-none
             md:text-[13px] ss:text-[14px] text-[13px] md:py-2
-            ss:py-3 py-3 md:px-7 ss:px-7 px-5 text-primary 
+            ss:py-3 py-2 md:px-7 ss:px-7 px-5 text-primary 
             md:rounded-[3px] ss:rounded-[3px] rounded-[3px] 
             font-manierMedium cursor-pointer'
             >
@@ -96,19 +96,19 @@ const Login = () => {
 
   return (
     <section className="flex w-full items-center justify-center 
-    md:h-[70vh] ss:h-[80vh]">
+    md:h-[70vh] ss:h-[80vh] h-[80vh]">
       {modalOpen && (
         <Modal onClose={() => setModalOpen(false)} />
       )}
 
       <motion.div variants={slideIn('down', 'tween', 0.2, 1)}
-        className='md:w-1/2 ss:w-2/3 font-manierRegular flex items-center
-        justify-center flex-col bg-primaryalt rounded-xl md:p-10
-        ss:p-10 p-8 shadow-xl ss:mb-60'
+        className='md:w-1/2 ss:w-2/3 w-full font-manierRegular flex 
+        items-center justify-center flex-col bg-primaryalt rounded-lg 
+        md:p-10 ss:p-10 p-6 shadow-xl md:mb-0 ss:mb-60 mb-60'
       >
         <p className='text-white md:text-[20px] ss:text-[20px] 
-        text-[17px] border-b-[1px] border-textalt w-full text-center
-        md:pb-6 ss:pb-6'>
+        text-[16px] border-b-[1px] border-textalt w-full text-center
+        md:pb-6 ss:pb-6 pb-4'>
           Please enter your login details
         </p>
 
@@ -117,7 +117,7 @@ const Login = () => {
         ss:gap-4 gap-3'>
           <div className="flex flex-col">
               <label className="text-white md:mb-3 ss:mb-2 mb-2 
-              md:text-[16px] ss:text-[15px] text-[13px]">
+              md:text-[16px] ss:text-[15px] text-[14px]">
                 Email
               </label>
               <input
@@ -144,7 +144,7 @@ const Login = () => {
 
           <div className="flex flex-col">
               <label className="text-white md:mb-3 ss:mb-2 mb-2 
-              md:text-[16px] ss:text-[15px] text-[13px]">
+              md:text-[16px] ss:text-[15px] text-[14px]">
                 Password
               </label>
               <input
@@ -169,14 +169,14 @@ const Login = () => {
               </p>
           </div>
 
-          <div className="md:mt-2 ss:mt-2 w-full flex items-center 
-          justify-center md:gap-10 ss:gap-8">
+          <div className="md:mt-2 ss:mt-2 mt-3 w-full flex items-center 
+          justify-center md:gap-10 ss:gap-8 gap-6">
             <button
             type='submit'
             className="bg-secondary grow2 shadow-md md:text-[16px] 
             ss:text-[14px] text-[13px] md:py-3 ss:py-3 py-2 md:px-20 
-            ss:px-14 text-primary md:rounded-[5px] ss:rounded-[3px] 
-            border-none cursor-pointer"
+            ss:px-14 px-12 text-primary md:rounded-[5px] ss:rounded-[3px] 
+            rounded-[3px] border-none cursor-pointer"
             > 
               Login
             </button>
