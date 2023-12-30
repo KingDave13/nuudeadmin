@@ -1,5 +1,6 @@
 import logoalt from './logoalt.png';
 import arrow from './arrow.png';
+import arrowreverse from './arrowreverse.png';
 import menu from './menu.png';
 import warning from './warning.png';
 import requests from './requests.png';
@@ -12,6 +13,7 @@ import picture from './picture.png';
 export {
     logoalt,
     arrow,
+    arrowreverse,
     menu,
     warning,
     requests,

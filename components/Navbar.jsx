@@ -96,6 +96,24 @@ const handleSideItemClick = (link) => {
               />
             )}
           </div>
+
+          <div className='flex justify-end w-full items-center gap-5'
+          onClick={() => {}}>
+            <Image 
+              src={picture}
+              width={25}
+              height={'auto'}
+              alt='profilepic'
+              className='object-contain'
+            />
+
+            <Image
+              src={arrow}
+              alt='arrow'
+              width={12}
+              height={'auto'}
+            />
+          </div>
           
           <div
             ref={menuRef}
