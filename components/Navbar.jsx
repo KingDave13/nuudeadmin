@@ -99,13 +99,14 @@ const handleSideItemClick = (link) => {
           
           <div
             ref={menuRef}
-            className='p-6 bg-white absolute ss:top-8 top-20 rounded-md 
-            z-10 flex-col shadow-xl'
+            className='p-6 bg-white absolute ss:top-20 top-20 rounded-xl 
+            z-10 flex-col shadow-xl ss:mt-4 mt-3'
             style={{ height: toggle ? 'auto' : 0, opacity: toggle ? 1 : 0, 
             visibility: toggle ? 'visible' : 'hidden', 
             transition: 'height 0.3s, opacity 0.3s, visibility 0.3s' }}
           >
-            <ul className="list-none flex justify-end flex-col">
+            <ul className="list-none flex justify-end ss:gap-5 gap-4 
+            flex-col">
               {sideLinks.map((link) => (
                 <li
                   key={link.id}
@@ -113,15 +114,16 @@ const handleSideItemClick = (link) => {
                     active === link.title
                       ? 'bg-secondary p-2 rounded-md'
                       : 'bg-none'
-                  } hover:text-secondary grow3 text-[20px] text-decoration-none 
-                  cursor-pointer text-textalt list-item`}
+                  } hover:text-secondary grow3 ss:text-[21px] text-[17px] 
+                  text-decoration-none cursor-pointer text-textalt 
+                  list-item`}
                   onClick={() => {
                     handleSideItemClick(link);
                   }}
                 >
                   <a 
                     href={link.route} 
-                    className='flex gap-6 items-center'
+                    className='flex ss:gap-6 gap-5 items-center'
                   >
                     {link.Icon && (
                       <span className="icon">
