@@ -36,12 +36,13 @@ const handleSideItemClick = (link) => {
 
   return (
     <div className={`${styles.paddingX} md:w-1/5 flex items-center
-      font-manierRegular md:border-r-[1px] border-primaryalt`}
+      font-manierRegular md:border-r-[1px] border-primaryalt 
+      hidden md:flex`}
     >
       <div className="w-full flex justify-between items-center mx-auto
       py-10">
         <div className="flex flex-col items-center w-full
-        h-screen hidden md:flex">
+        h-screen">
           <Image
             src={logoalt}
             alt="logo"
