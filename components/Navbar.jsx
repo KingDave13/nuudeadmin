@@ -40,10 +40,9 @@ const Navbar = () => {
       md:py-10 ss:py-6 py-5 top-0 z-20 navsmooth font-manierRegular
       md:border-b-[1px] border-primaryalt`}
     >
-      <div className="w-full flex justify-between items-center 
-      mx-auto">
-        <div className='flex w-full justify-between'>
-          <div className="flex w-full hidden md:flex flex-col gap-1">
+      <div className="w-full flex items-center mx-auto">
+        <div className='flex w-full justify-between hidden md:flex'>
+          <div className="flex w-full flex-col gap-1">
             <h1 className='text-secondary font-manierMedium text-[32px]'>
               Admin Dashboard
             </h1>
