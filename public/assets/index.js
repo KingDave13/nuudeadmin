@@ -1,3 +1,4 @@
+import logo from './logo.png';
 import logoalt from './logoalt.png';
 import arrow from './arrow.png';
 import arrowreverse from './arrowreverse.png';
@@ -11,6 +12,7 @@ import members from './members.png';
 import picture from './picture.png';
 
 export {
+    logo,
     logoalt,
     arrow,
     arrowreverse,

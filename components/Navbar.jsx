@@ -6,7 +6,7 @@ import styles from '@styles/styles';
 import { HiOutlineMenuAlt3 } from 'react-icons/hi';
 import Image from 'next/image';
 import { sideLinks } from '@constants';
-import { logoalt, picture, arrow } from '@public/assets';
+import { logo, picture, arrow } from '@public/assets';
 import { useRouter } from 'next/navigation';
 
 const Navbar = () => {
@@ -120,11 +120,11 @@ const handleSideItemClick = (link) => {
 
           <div className="flex w-full flex-col ss:mt-5 mt-5 border-b-[1px]
           border-primaryalt pb-4">
-            <h1 className='text-secondary font-manierMedium ss:text-[25px]
+            <h1 className='text-secondary font-manierMedium ss:text-[30px]
             text-[25px]'>
               Admin Dashboard
             </h1>
-            <p className='text-white text-[13px]'>
+            <p className='text-white ss:text-[15px] text-[13px]'>
               Manage new membership requests, view info and communicate 
               with members and more.
             </p>
@@ -132,7 +132,7 @@ const handleSideItemClick = (link) => {
           
           <div
             ref={menuRef}
-            className='p-6 bg-white absolute ss:top-20 top-20 rounded-xl 
+            className='p-6 bg-white absolute ss:top-20 top-20 rounded-lg 
             z-10 flex-col shadow-xl ss:mt-4 mt-3'
             style={{ height: toggle ? 'auto' : 0, opacity: toggle ? 1 : 0, 
             visibility: toggle ? 'visible' : 'hidden', 
@@ -171,6 +171,13 @@ const handleSideItemClick = (link) => {
                   </a>
                 </li>
               ))}
+              <Image
+                src={logo}
+                alt='logo'
+                width={100}
+                height={'auto'}
+                className='mt-10 mx-auto'
+              />
             </ul>
           </div>
         </div>
