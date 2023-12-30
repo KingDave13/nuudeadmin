@@ -9,8 +9,6 @@ import { useRouter } from 'next/navigation';
 
 const Sidebar = () => {
   const [active, setActive] = useState('requests');
-  const [toggle, setToggle] = useState(false);
-  const menuRef = useRef(null);
 
   const router = useRouter();
 
@@ -26,13 +24,12 @@ const Sidebar = () => {
     return () => {
         document.removeEventListener('mousedown', handleClickOutside);
     };
-}, []);
+  }, []);
 
-const handleSideItemClick = (link) => {
-  setActive(link.title);
-  router.push(link.route);
-};
-
+  const handleSideItemClick = (link) => {
+    setActive(link.title);
+    router.push(link.route);
+  };
 
   return (
     <div className={`${styles.paddingX} md:w-1/5 flex items-center
@@ -87,7 +84,7 @@ const handleSideItemClick = (link) => {
             <li className='hover:text-secondary grow3 text-[20px] list-item
             text-decoration-none cursor-pointer text-textalt mt-20'>
               <a 
-                href=''
+                href='/'
                 className='flex gap-6 items-center icon'
               >
                 <Image src={logout} 
