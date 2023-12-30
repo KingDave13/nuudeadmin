@@ -77,42 +77,57 @@ const handleSideItemClick = (link) => {
 
         {/* FOR MOBILE */}
         
-        <div className="md:hidden flex justify-between flex-1 items-center
+        <div className="md:hidden flex-1 items-center
           mt-3">
-          <div className="flex items-center z-20">
-            {toggle ? (
-              <BsX
-                size={40}
-                className="object-contain cursor-pointer"
-                style={{ color: '#fff' }}
-                onClick={() => setToggle(!toggle)}
+          <div className='flex justify-between w-full border-b-[1px]
+          border-primaryalt pb-4'>
+            <div className="flex items-center z-20">
+              {toggle ? (
+                <BsX
+                  size={40}
+                  className="object-contain cursor-pointer"
+                  style={{ color: '#fff' }}
+                  onClick={() => setToggle(!toggle)}
+                />
+              ) : (
+                <HiOutlineMenuAlt3
+                  size={40}
+                  className="object-contain cursor-pointer"
+                  style={{ color: '#fff' }}
+                  onClick={() => setToggle(!toggle)}
+                />
+              )}
+            </div>
+
+            <div className='flex justify-end w-full items-center gap-4'
+            onClick={() => {}}>
+              <Image 
+                src={picture}
+                width={35}
+                height={'auto'}
+                alt='profilepic'
+                className='object-contain'
               />
-            ) : (
-              <HiOutlineMenuAlt3
-                size={40}
-                className="object-contain cursor-pointer"
-                style={{ color: '#fff' }}
-                onClick={() => setToggle(!toggle)}
+
+              <Image
+                src={arrow}
+                alt='arrow'
+                width={13}
+                height={'auto'}
               />
-            )}
+            </div>
           </div>
 
-          <div className='flex justify-end w-full items-center gap-5'
-          onClick={() => {}}>
-            <Image 
-              src={picture}
-              width={25}
-              height={'auto'}
-              alt='profilepic'
-              className='object-contain'
-            />
-
-            <Image
-              src={arrow}
-              alt='arrow'
-              width={12}
-              height={'auto'}
-            />
+          <div className="flex w-full flex-col ss:mt-5 mt-5 border-b-[1px]
+          border-primaryalt pb-4">
+            <h1 className='text-secondary font-manierMedium ss:text-[25px]
+            text-[25px]'>
+              Admin Dashboard
+            </h1>
+            <p className='text-white text-[13px]'>
+              Manage new membership requests, view info and communicate 
+              with members and more.
+            </p>
           </div>
           
           <div
