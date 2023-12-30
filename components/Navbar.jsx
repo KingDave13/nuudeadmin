@@ -6,12 +6,13 @@ import styles from '@styles/styles';
 import { HiOutlineMenuAlt3 } from 'react-icons/hi';
 import Image from 'next/image';
 import { sideLinks } from '@constants';
-import { logo, picture, arrow } from '@public/assets';
+import { logo, picture, arrow, arrowreverse, logout } from '@public/assets';
 import { useRouter } from 'next/navigation';
 
 const Navbar = () => {
   const [active, setActive] = useState('');
   const [toggle, setToggle] = useState(false);
+  const [toggle2, setToggle2] = useState(false);
   const menuRef = useRef(null);
 
   const router = useRouter();
@@ -19,7 +20,8 @@ const Navbar = () => {
   useEffect(() => {
     const handleClickOutside = (event) => {
         if (menuRef.current && !menuRef.current.contains(event.target)) {
-            setToggle(false);
+          setToggle(false);
+          setToggle2(false);
         }
     };
 
@@ -99,8 +101,8 @@ const handleSideItemClick = (link) => {
               )}
             </div>
 
-            <div className='flex justify-end w-full items-center gap-4'
-            onClick={() => {}}>
+            <div className='flex justify-end items-center gap-4'
+            onClick={() => setToggle2(!toggle2)}>
               <Image 
                 src={picture}
                 width={35}
@@ -128,6 +130,56 @@ const handleSideItemClick = (link) => {
               Manage new membership requests, view info and communicate 
               with members and more.
             </p>
+          </div>
+
+          <div
+            ref={menuRef}
+            className='p-6 bg-white absolute ss:top-20 top-5 right-6 
+            rounded-lg z-10 flex-col shadow-xl ss:mt-4 mt-3'
+            style={{ height: toggle2 ? 'auto' : 0, opacity: toggle2 ? 1 : 0, 
+            visibility: toggle2 ? 'visible' : 'hidden', 
+            transition: 'height 0.3s, opacity 0.3s, visibility 0.3s' }}
+          >
+            <div className="list-none flex justify-end ss:gap-5 gap-4 
+            flex-col">
+              <div className='flex w-full items-center ss:gap-3 gap-3'
+              onClick={() => setToggle2(!toggle2)}>
+                <Image 
+                  src={picture}
+                  width={35}
+                  height={'auto'}
+                  alt='profilepic'
+                  className='object-contain'
+                />
+
+                <h1 className='text-textalt text-[16px]'>
+                  Nuude! Admin
+                </h1>
+
+                <Image
+                  src={arrowreverse}
+                  alt='arrow'
+                  width={12}
+                  height={'auto'}
+                />
+              </div>
+              
+              <div className='hover:text-secondary grow3 ss:text-[21px] 
+              text-[17px] list-item cursor-pointer text-textalt ss:mt-10
+              mt-6'>
+                <a 
+                  href='/'
+                  className='flex ss:gap-6 gap-5 items-center'
+                >
+                  <Image src={logout} 
+                    alt='logout'
+                    width={18} 
+                    height={'auto'}
+                  />
+                  Logout
+                </a>
+              </div>
+            </div>
           </div>
           
           <div
