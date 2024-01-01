@@ -20,7 +20,7 @@ const Sidebar = () => {
   return (
     <div className={`${styles.paddingX} md:w-1/5 flex items-center
       font-manierRegular md:border-r-[1px] border-primaryalt 
-      hidden md:flex z-20 fixed`}
+      hidden md:flex z-20`}
     >
       <div className="w-full flex justify-between items-center mx-auto
       py-10">
