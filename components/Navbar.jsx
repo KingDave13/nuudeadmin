@@ -8,12 +8,15 @@ import Image from 'next/image';
 import { sideLinks } from '@constants';
 import { logo, picture, arrow, arrowreverse, logout } from '@public/assets';
 import { useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 
 const Navbar = () => {
   const [active, setActive] = useState('');
   const [toggle, setToggle] = useState(false);
   const [toggle2, setToggle2] = useState(false);
   const menuRef = useRef(null);
+
+  const { data: session } = useSession();
 
   const router = useRouter();
 
@@ -55,26 +58,31 @@ const handleSideItemClick = (link) => {
             </p>
           </div>
 
-          <div className='flex justify-end w-full items-center gap-5'>
-            <Image 
-              src={picture}
-              width={45}
-              height={'auto'}
-              alt='profilepic'
-              className='object-contain'
-            />
+          {session?.user ? (
+            <div className='flex justify-end w-full items-center gap-5'>
+              <Image 
+                src={picture}
+                width={45}
+                height={'auto'}
+                alt='profilepic'
+                className='object-contain'
+              />
 
-            <h1 className='text-white text-[18px]'>
-              Nuude! Admin
-            </h1>
+              <h1 className='text-white text-[18px]'>
+                Nuude! Admin
+              </h1>
 
-            <Image
-              src={arrow}
-              alt='arrow'
-              width={12}
-              height={'auto'}
-            />
-          </div>
+              <Image
+                src={arrow}
+                alt='arrow'
+                width={12}
+                height={'auto'}
+              />
+            </div>
+          ) : (
+            ''
+          )}
+          
         </div>
 
         {/* FOR MOBILE */}
