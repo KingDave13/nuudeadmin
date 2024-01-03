@@ -37,7 +37,9 @@ const Navbar = () => {
 
 const handleSideItemClick = (link) => {
   setActive(link.title);
-  router.push(link.route)
+  router.replace(link.route)
+  console.log(session);
+  console.log('session');
 };
 
   return (
