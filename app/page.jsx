@@ -87,7 +87,7 @@ const Login = () => {
             disableScroll();
             return;
           }
-          router.replace('/requests');
+          router.push('/requests');
         } catch (error) {
           console.log(error, 'Could not log in');
         }
@@ -125,7 +125,7 @@ const Login = () => {
               name="email"
               value={formik.values.email}
               onChange={formik.handleChange}
-              
+
               onBlur={formik.handleBlur}
               placeholder="Enter your email"
               className="md:py-3 ss:py-2 py-2 px-4 border-none 
