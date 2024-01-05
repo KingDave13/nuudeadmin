@@ -14,7 +14,7 @@ const RootLayout = ({ children }) => {
   return (
     <html lang='en'>
         <body>
-          <Provider>
+          
             <div className='bg-primary flex md:px-16 px-6'>
               <Sidebar />
               <div className='flex flex-col flex-1 overflow-hidden'>
@@ -22,7 +22,7 @@ const RootLayout = ({ children }) => {
                 {children}
               </div>
             </div>
-          </Provider>
+          
         </body>
     </html>
   )
