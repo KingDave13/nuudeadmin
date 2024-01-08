@@ -34,8 +34,8 @@ export const authOptions = {
     callbacks: {
         async session({ session, user }) {
         if (user) {
-            session.user.email = user.email;
-            session.user.id = user.id;
+          session.user.email = user.email;
+          session.user.id = user.id;
         }
         return session;
       }
