@@ -28,7 +28,7 @@ export const authOptions = {
             throw new Error('Something went wrong.');
           }
         },
-      })
+      }),
     ],
 
     callbacks: {
