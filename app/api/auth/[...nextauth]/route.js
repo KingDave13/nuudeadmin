@@ -27,6 +27,7 @@ export const authOptions = {
             console.error("Authentication error:", error);
             throw new Error('Something went wrong.');
           }
+          
         },
       }),
     ],
