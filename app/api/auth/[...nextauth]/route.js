@@ -5,6 +5,7 @@ import Admin from "@models/admin";
 import bcrypt from 'bcrypt';
 
 export const authOptions = {
+    secret: process.env.SECRET,
     providers: [
       CredentialsProvider({
         name: 'credentials',
