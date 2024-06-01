@@ -3,7 +3,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { useRouter } from "next/navigation";
 import { motion } from 'framer-motion';
-import { slideIn } from '@utils/motion';
+import { fadeIn } from '@utils/motion';
 import { useFormik } from "formik";
 import * as Yup from 'yup';
 import { signIn } from "next-auth/react";
@@ -101,7 +101,7 @@ const Login = () => {
         <Modal onClose={() => setModalOpen(false)} />
       )}
 
-      <motion.div variants={slideIn('down', 'tween', 0.2, 1)}
+      <motion.div variants={fadeIn('up', 'tween', 0.2, 1)}
         className='md:w-1/2 ss:w-2/3 w-full font-manierRegular flex 
         items-center justify-center flex-col bg-primaryalt rounded-lg 
         md:p-10 ss:p-10 p-6 shadow-xl md:mb-0 ss:mb-60 mb-60'
