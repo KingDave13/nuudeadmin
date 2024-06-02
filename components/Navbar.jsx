@@ -202,21 +202,17 @@ const handleSideItemClick = (link) => {
                   key={link.id}
                   className={`${
                     active === link.title
-                      ? 'bg-secondary p-2 rounded-md'
-                      : 'bg-none'
-                  } hover:text-secondary grow3 ss:text-[21px] text-[17px] 
-                  text-decoration-none cursor-pointer text-textalt 
-                  list-item`}
+                      ? 'text-secondary p-2'
+                      : ''
+                  } ss:text-[21px] text-[16px] 
+                  text-decoration-none text-textalt list-item`}
                   onClick={() => {
                     handleSideItemClick(link);
                   }}
                 >
-                  <a 
-                    href={link.route} 
-                    className='flex ss:gap-6 gap-5 items-center'
-                  >
+                  <div className='flex ss:gap-6 gap-5 items-center'>
                     {link.Icon && (
-                      <span className="icon">
+                      <span className="">
                         <Image src={link.Icon} 
                           alt={link.title} 
                           width={18} 
@@ -225,7 +221,7 @@ const handleSideItemClick = (link) => {
                       </span>
                     )}
                     {link.title}
-                  </a>
+                  </div>
                 </li>
               ))}
               <Image
