@@ -6,9 +6,11 @@ import Image from 'next/image';
 import { sideLinks } from '@constants';
 import { logoalt, logout } from '@public/assets';
 import { useRouter } from 'next/navigation';
+import { useSession, signOut } from 'next-auth/react';
 
 const Sidebar = () => {
   const [active, setActive] = useState('requests');
+  const { data: session } = useSession();
 
   const router = useRouter();
 
@@ -69,17 +71,15 @@ const Sidebar = () => {
 
             <li className='hover:text-secondary grow3 text-[20px] list-item
             text-decoration-none cursor-pointer text-textalt mt-20'>
-              <a 
-                href='/'
-                className='flex gap-6 items-center icon'
-              >
+              <div className='flex gap-6 items-center'>
                 <Image src={logout} 
                   alt='logout'
                   width={18} 
                   height={'auto'}
+                  onClick={signOut}
                 />
-                Logout
-              </a>
+                  Logout
+                </div>
             </li>
           </ul>
         </div>

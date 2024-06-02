@@ -8,7 +8,7 @@ import Image from 'next/image';
 import { sideLinks } from '@constants';
 import { logo, picture, arrow, arrowreverse, logout } from '@public/assets';
 import { useRouter } from 'next/navigation';
-import { useSession } from 'next-auth/react';
+import { useSession, signOut } from 'next-auth/react';
 
 const Navbar = () => {
   const [active, setActive] = useState('');
@@ -110,25 +110,29 @@ const handleSideItemClick = (link) => {
                 />
               )}
             </div>
+            
+            {session?.user ? (
+              <div className='flex justify-end items-center gap-4 grow2
+              cursor-pointer'
+              onClick={() => setToggle2(!toggle2)}>
+                <Image 
+                  src={picture}
+                  width={35}
+                  height={'auto'}
+                  alt='profilepic'
+                  className='object-contain'
+                />
 
-            <div className='flex justify-end items-center gap-4 grow2
-            cursor-pointer'
-            onClick={() => setToggle2(!toggle2)}>
-              <Image 
-                src={picture}
-                width={35}
-                height={'auto'}
-                alt='profilepic'
-                className='object-contain'
-              />
-
-              <Image
-                src={arrow}
-                alt='arrow'
-                width={13}
-                height={'auto'}
-              />
-            </div>
+                <Image
+                  src={arrow}
+                  alt='arrow'
+                  width={13}
+                  height={'auto'}
+                />
+              </div>
+            ) : (
+              ''
+            )}
           </div>
 
           <div className="flex w-full flex-col ss:mt-5 mt-5 border-b-[1px]
@@ -179,17 +183,15 @@ const handleSideItemClick = (link) => {
               <div className='hover:text-secondary grow3 ss:text-[21px] 
               text-[17px] list-item cursor-pointer text-textalt ss:mt-6
               mt-6'>
-                <a 
-                  href='/'
-                  className='flex ss:gap-6 gap-5 items-center'
-                >
+                <div className='flex ss:gap-6 gap-5 items-center'>
                   <Image src={logout} 
                     alt='logout'
                     width={18} 
                     height={'auto'}
+                    onClick={signOut}
                   />
                   Logout
-                </a>
+                </div>
               </div>
             </div>
           </div>
