@@ -7,18 +7,26 @@ import { HiOutlineMenuAlt3 } from 'react-icons/hi';
 import Image from 'next/image';
 import { sideLinks } from '@constants';
 import { logo, picture, arrow, arrowreverse, logout } from '@public/assets';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { useSession, signOut } from 'next-auth/react';
 
 const Navbar = () => {
-  const [active, setActive] = useState('');
+  const [active, setActive] = useState('requests');
   const [toggle, setToggle] = useState(false);
   const [toggle2, setToggle2] = useState(false);
   const menuRef = useRef(null);
 
+  const pathname = usePathname();
   const { data: session } = useSession();
-
   const router = useRouter();
+
+  useEffect(() => {
+    const currentPath = pathname.split('/')[1];
+    const activeLink = sideLinks.find(link => link.route.includes(currentPath));
+    if (activeLink) {
+      setActive(activeLink.title);
+    }
+  }, [pathname]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -33,11 +41,15 @@ const Navbar = () => {
     return () => {
         document.removeEventListener('mousedown', handleClickOutside);
     };
-}, []);
+  }, []);
 
 const handleSideItemClick = (link) => {
   setActive(link.title);
-  router.replace(link.route)
+  router.push(link.route)
+};
+
+const handleLogout = () => {
+  signOut({ callbackUrl: 'http://localhost:3001' });
 };
 
   return (
@@ -174,14 +186,14 @@ const handleSideItemClick = (link) => {
               <div className='hover:text-secondary grow3 ss:text-[21px] 
               text-[17px] list-item cursor-pointer text-textalt ss:mt-6
               mt-6'>
-                <div className='flex ss:gap-6 gap-5 items-center'>
+                <div className='flex ss:gap-6 gap-5 items-center'
+                onClick={handleLogout}>
                   <Image src={logout} 
                     alt='logout'
                     width={18} 
                     height={'auto'}
-                    onClick={signOut}
                   />
-                  Logout
+                    Logout
                 </div>
               </div>
             </div>
@@ -202,7 +214,7 @@ const handleSideItemClick = (link) => {
                   key={link.id}
                   className={`${
                     active === link.title
-                      ? 'text-secondary p-2'
+                      ? 'text-secondary'
                       : ''
                   } ss:text-[21px] text-[16px] 
                   text-decoration-none text-textalt list-item`}
