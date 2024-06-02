@@ -49,23 +49,22 @@ const Sidebar = () => {
             className="object-contain"
           />
 
-          <ul className="list-none flex flex-col gap-8 hidden md:flex
+          <ul className="list-none flex flex-col gap-3 hidden md:flex
           mt-24 font-manierMedium">
             {sideLinks.map((link) => (
               <li
                 key={link.id}
                 className={`${
                   active === link.title
-                    ? 'bg-secondary p-2 rounded-md'
+                    ? 'bg-secondary rounded-md'
                     : 'bg-none'
-                } hover:text-secondary grow3 text-[20px] text-decoration-none 
+                } hover:text-secondary grow3 text-[19px] text-decoration-none 
                 cursor-pointer text-textalt list-item`}
                 onClick={() => {
                   handleSideItemClick(link);
                 }}
               >
-                <div className='flex gap-6 items-center'
-                >
+                <div className={`p-3 flex gap-6 items-center`}>
                   {link.Icon && (
                     <span className="">
                       <Image src={link.Icon} 
