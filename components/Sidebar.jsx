@@ -10,6 +10,7 @@ import { useSession, signOut } from 'next-auth/react';
 
 const Sidebar = () => {
   const [active, setActive] = useState('requests');
+  const { data: session } = useSession();
 
   const router = useRouter();
 
