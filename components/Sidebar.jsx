@@ -79,9 +79,9 @@ const Sidebar = () => {
               </li>
             ))}
 
-            <li className='hover:text-secondary grow3 text-[20px] list-item
+            <li className='hover:text-secondary grow3 text-[19px] list-item
             text-decoration-none cursor-pointer text-textalt mt-20'>
-              <div className='flex gap-6 items-center'
+              <div className='flex gap-6 px-5 items-center'
               onClick={handleLogout}>
                 <Image src={logout} 
                   alt='logout'
