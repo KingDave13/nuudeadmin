@@ -19,6 +19,10 @@ const Sidebar = () => {
     router.push(link.route);
   };
 
+  const handleLogout = () => {
+    signOut({ callbackUrl: 'http://localhost:3001' });
+  };
+
   return (
     <div className={`${styles.paddingX} md:w-1/5 flex items-center
       font-manierRegular md:border-r-[1px] border-primaryalt 
@@ -72,7 +76,7 @@ const Sidebar = () => {
             <li className='hover:text-secondary grow3 text-[20px] list-item
             text-decoration-none cursor-pointer text-textalt mt-20'>
               <div className='flex gap-6 items-center'
-              onClick={signOut}>
+              onClick={handleLogout}>
                 <Image src={logout} 
                   alt='logout'
                   width={18} 
