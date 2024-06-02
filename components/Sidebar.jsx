@@ -20,7 +20,7 @@ const Sidebar = () => {
   };
 
   const handleLogout = () => {
-    signOut({ callbackUrl: 'http://localhost:3001' });
+    signOut({ callbackUrl: 'http://localhost:3001/' });
   };
 
   return (
