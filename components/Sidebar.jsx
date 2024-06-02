@@ -1,18 +1,27 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import styles from '@styles/styles';
 import Image from 'next/image';
 import { sideLinks } from '@constants';
 import { logoalt, logout } from '@public/assets';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { useSession, signOut } from 'next-auth/react';
 
 const Sidebar = () => {
-  const [active, setActive] = useState('requests');
   const { data: session } = useSession();
-
   const router = useRouter();
+  const pathname = usePathname();
+
+  const [active, setActive] = useState('requests');
+
+  useEffect(() => {
+    const currentPath = pathname.split('/')[1];
+    const activeLink = sideLinks.find(link => link.route.includes(currentPath));
+    if (activeLink) {
+      setActive(activeLink.title);
+    }
+  }, [pathname]);
 
   const handleSideItemClick = (link) => {
     setActive(link.title);
@@ -55,12 +64,10 @@ const Sidebar = () => {
                   handleSideItemClick(link);
                 }}
               >
-                <a 
-                  href={link.route} 
-                  className='flex gap-6 items-center'
+                <div className='flex gap-6 items-center'
                 >
                   {link.Icon && (
-                    <span className="icon">
+                    <span className="">
                       <Image src={link.Icon} 
                         alt={link.title} 
                         width={18} 
@@ -69,7 +76,7 @@ const Sidebar = () => {
                     </span>
                   )}
                   {link.title}
-                </a>
+                </div>
               </li>
             ))}
 
