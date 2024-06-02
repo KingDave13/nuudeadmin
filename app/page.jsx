@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState, useRef } from 'react';
+import { useSession } from 'next-auth/react';
 import { useRouter } from "next/navigation";
 import { motion } from 'framer-motion';
 import { fadeIn } from '@utils/motion';
@@ -53,9 +54,16 @@ const Modal = ({ onClose }) => {
 };
 
 const Login = () => {
+  const { data: session, status } = useSession();
   const router = useRouter();
   const [modalOpen, setModalOpen] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
+
+  useEffect(() => {
+    if (status === 'authenticated') {
+      router.push('/requests');
+    }
+  }, [status, router]);
 
   const disableScroll = () => {
     setScrollPosition(window.pageYOffset);
@@ -93,6 +101,14 @@ const Login = () => {
         }
       },
   });
+
+  if (status === 'loading') {
+    return <div>Loading...</div>;
+  }
+
+  if (status === 'authenticated') {
+    return null;
+  }
 
   return (
     <section className="flex w-full items-center justify-center 
