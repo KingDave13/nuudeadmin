@@ -38,8 +38,6 @@ const Navbar = () => {
 const handleSideItemClick = (link) => {
   setActive(link.title);
   router.replace(link.route)
-  console.log(session);
-  console.log('session');
 };
 
   return (
@@ -73,13 +71,6 @@ const handleSideItemClick = (link) => {
               <h1 className='text-white text-[18px]'>
                 Nuude! Admin
               </h1>
-
-              <Image
-                src={arrow}
-                alt='arrow'
-                width={12}
-                height={'auto'}
-              />
             </div>
           ) : (
             ''
