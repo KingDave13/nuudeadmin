@@ -71,12 +71,12 @@ const Sidebar = () => {
 
             <li className='hover:text-secondary grow3 text-[20px] list-item
             text-decoration-none cursor-pointer text-textalt mt-20'>
-              <div className='flex gap-6 items-center'>
+              <div className='flex gap-6 items-center'
+              onClick={signOut}>
                 <Image src={logout} 
                   alt='logout'
                   width={18} 
                   height={'auto'}
-                  onClick={signOut}
                 />
                   Logout
                 </div>
