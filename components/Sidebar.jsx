@@ -56,7 +56,7 @@ const Sidebar = () => {
                 key={link.id}
                 className={`${
                   active === link.title
-                    ? 'bg-secondary rounded-md'
+                    ? 'bg-secondary rounded-md text-primaryalt hover:text-primaryalt'
                     : 'bg-none'
                 } hover:text-secondary grow3 text-[19px] text-decoration-none 
                 cursor-pointer text-textalt list-item`}
@@ -64,7 +64,7 @@ const Sidebar = () => {
                   handleSideItemClick(link);
                 }}
               >
-                <div className={`p-3 flex gap-6 items-center`}>
+                <div className={`py-2 px-5 flex gap-6 items-center`}>
                   {link.Icon && (
                     <span className="">
                       <Image src={link.Icon} 
