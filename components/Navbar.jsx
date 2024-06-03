@@ -59,7 +59,7 @@ const handleToggleClick = () => {
 };
 
   return (
-    <nav className={`${styles.paddingA} w-full flex items-center
+    <nav className={`${styles.paddingA} flex items-center w-full
       md:py-10 ss:py-6 py-5 top-0 z-20 navsmooth font-manierRegular
       md:border-b-[1px] border-primaryalt`}
     >
