@@ -63,7 +63,7 @@ const handleToggleClick = () => {
       md:py-10 ss:py-6 py-5 top-0 z-20 navsmooth font-manierRegular
       md:border-b-[1px] border-primaryalt`}
     >
-      <div className="w-full flex items-center mx-auto">
+      <div className="w-full flex items-center mx-auto md:px-0 px-6">
         <div className='flex w-full justify-between hidden md:flex'>
           <div className="flex w-full flex-col gap-1">
             <h1 className='text-secondary font-manierMedium text-[32px]'>
