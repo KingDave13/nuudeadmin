@@ -4,8 +4,9 @@ import { useState, useEffect } from 'react';
 import styles from '@styles/styles';
 import Image from 'next/image';
 import { sideLinks } from '@constants';
-import { logoalt, logout } from '@public/assets';
+import { logoalt } from '@public/assets';
 import { useRouter, usePathname } from 'next/navigation';
+import { HiLogout } from "react-icons/hi";
 import { useSession, signOut } from 'next-auth/react';
 
 const Sidebar = () => {
@@ -91,10 +92,7 @@ const Sidebar = () => {
             text-textalt mt-20`}>
               <div className='flex gap-6 px-5 items-center'
               onClick={handleLogout}>
-                <Image src={logout} 
-                  alt='logout'
-                  width={18} 
-                  height={'auto'}
+                <HiLogout className=''
                 />
                   Logout
                 </div>
