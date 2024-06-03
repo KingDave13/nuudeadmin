@@ -13,23 +13,29 @@ const Sidebar = () => {
   const router = useRouter();
   const pathname = usePathname();
 
-  const [active, setActive] = useState('requests');
+  const [active, setActive] = useState('');
 
   useEffect(() => {
-    const currentPath = pathname.split('/')[1];
-    const activeLink = sideLinks.find(link => link.route.includes(currentPath));
-    if (activeLink) {
-      setActive(activeLink.title);
+    if (session) {
+      const currentPath = pathname.split('/')[1];
+      const activeLink = sideLinks.find(link => link.route.includes(currentPath));
+      if (activeLink) {
+        setActive(activeLink.title);
+      }
     }
-  }, [pathname]);
+  }, [pathname, session]);
 
   const handleSideItemClick = (link) => {
-    setActive(link.title);
-    router.push(link.route);
+    if (session) {
+      setActive(link.title);
+      router.push(link.route);
+    }
   };
 
   const handleLogout = () => {
-    signOut({ callbackUrl: 'http://localhost:3001' });
+    if (session) {
+      signOut({ callbackUrl: 'http://localhost:3001' });
+    }
   };
 
   return (
@@ -58,8 +64,9 @@ const Sidebar = () => {
                   active === link.title
                     ? 'bg-secondary rounded-md text-primaryalt hover:text-primaryalt'
                     : 'bg-none'
-                } hover:text-secondary grow3 text-[19px] text-decoration-none 
-                cursor-pointer text-textalt list-item`}
+                } ${!session ? 'opacity-50' : 'cursor-pointer hover:text-secondary grow3'}  
+                text-[19px] text-decoration-none 
+                text-textalt list-item`}
                 onClick={() => {
                   handleSideItemClick(link);
                 }}
@@ -79,8 +86,9 @@ const Sidebar = () => {
               </li>
             ))}
 
-            <li className='hover:text-secondary grow3 text-[19px] list-item
-            text-decoration-none cursor-pointer text-textalt mt-20'>
+            <li className={`text-[19px] list-item text-decoration-none 
+            ${!session ? 'opacity-50' : 'hover:text-secondary cursor-pointer grow3'} 
+            text-textalt mt-20`}>
               <div className='flex gap-6 px-5 items-center'
               onClick={handleLogout}>
                 <Image src={logout} 
