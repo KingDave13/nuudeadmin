@@ -1,33 +1,31 @@
-import { 
-  requests,
-  guests,
-  members,
-  announcements,
-} from "@public/assets";
+import { TbArrowsLeftRight } from "react-icons/tb";
+import { GoPeople } from "react-icons/go";
+import { PiCrownSimple } from "react-icons/pi";
+import { HiOutlineSpeakerphone } from "react-icons/hi";
   
-  export const sideLinks = [
-    {
-      id: 'requests',
-      title: 'Requests',
-      route: '/requests',
-      Icon: requests,
-    },
-    {
-      id: 'guests',
-      title: 'Guest List',
-      route: '/guests',
-      Icon: guests,
-    },
-    {
-      id: 'members',
-      title: 'Members',
-      route: '/members',
-      Icon: members,
-    },
-    {
-      id: 'announcements',
-      title: 'Announcements',
-      route: '/announcements',
-      Icon: announcements,
-    },
-  ];
+export const sideLinks = [
+  {
+    id: 'requests',
+    title: 'Requests',
+    route: '/requests',
+    Icon: TbArrowsLeftRight,
+  },
+  {
+    id: 'guests',
+    title: 'Guest List',
+    route: '/guests',
+    Icon: GoPeople,
+  },
+  {
+    id: 'members',
+    title: 'Members',
+    route: '/members',
+    Icon: PiCrownSimple,
+  },
+  {
+    id: 'announcements',
+    title: 'Announcements',
+    route: '/announcements',
+    Icon: HiOutlineSpeakerphone,
+  },
+];

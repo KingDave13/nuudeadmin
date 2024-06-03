@@ -226,15 +226,7 @@ const handleToggleClick = () => {
                   }}
                 >
                   <div className='flex ss:gap-6 gap-5 items-center'>
-                    {link.Icon && (
-                      <span className="">
-                        <Image src={link.Icon} 
-                          alt={link.title} 
-                          width={18} 
-                          height={'auto'} 
-                        />
-                      </span>
-                    )}
+                    {link.Icon && <link.Icon />}
                     {link.title}
                   </div>
                 </li>

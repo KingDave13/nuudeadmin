@@ -73,15 +73,7 @@ const Sidebar = () => {
                 }}
               >
                 <div className={`py-2 px-5 flex gap-6 items-center`}>
-                  {link.Icon && (
-                    <span className="">
-                      <Image src={link.Icon} 
-                        alt={link.title} 
-                        width={18} 
-                        height={'auto'} 
-                      />
-                    </span>
-                  )}
+                  {link.Icon && <link.Icon />}
                   {link.title}
                 </div>
               </li>
