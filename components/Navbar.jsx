@@ -52,6 +52,12 @@ const handleLogout = () => {
   signOut({ callbackUrl: 'http://localhost:3001' });
 };
 
+const handleToggleClick = () => {
+  if (session) {
+    setToggle(!toggle);
+  }
+};
+
   return (
     <nav className={`${styles.paddingA} w-full flex items-center
       md:py-10 ss:py-6 py-5 top-0 z-20 navsmooth font-manierRegular
@@ -102,14 +108,14 @@ const handleLogout = () => {
                   size={40}
                   className="object-contain cursor-pointer"
                   style={{ color: '#fff' }}
-                  onClick={() => setToggle(!toggle)}
+                  onClick={handleToggleClick}
                 />
               ) : (
                 <HiOutlineMenuAlt3
                   size={40}
                   className="object-contain cursor-pointer"
                   style={{ color: '#fff' }}
-                  onClick={() => setToggle(!toggle)}
+                  onClick={handleToggleClick}
                 />
               )}
             </div>
