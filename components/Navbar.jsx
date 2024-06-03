@@ -3,10 +3,10 @@
 import { useState, useEffect, useRef } from 'react';
 import { BsX } from 'react-icons/bs';
 import styles from '@styles/styles';
-import { HiOutlineMenuAlt3 } from 'react-icons/hi';
+import { HiOutlineMenuAlt3, HiLogout } from 'react-icons/hi';
 import Image from 'next/image';
 import { sideLinks } from '@constants';
-import { logo, picture, arrow, arrowreverse, logout } from '@public/assets';
+import { logo, picture, arrow, arrowreverse } from '@public/assets';
 import { useRouter, usePathname } from 'next/navigation';
 import { useSession, signOut } from 'next-auth/react';
 
@@ -135,7 +135,7 @@ const handleToggleClick = () => {
                 <Image
                   src={arrow}
                   alt='arrow'
-                  width={13}
+                  width={12}
                   height={'auto'}
                 />
               </div>
@@ -194,10 +194,7 @@ const handleToggleClick = () => {
               mt-6'>
                 <div className='flex ss:gap-6 gap-5 items-center'
                 onClick={handleLogout}>
-                  <Image src={logout} 
-                    alt='logout'
-                    width={18} 
-                    height={'auto'}
+                  <HiLogout className='transform scale-x-[-1]'
                   />
                     Logout
                 </div>

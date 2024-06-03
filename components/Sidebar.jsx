@@ -92,10 +92,10 @@ const Sidebar = () => {
             text-textalt mt-20`}>
               <div className='flex gap-6 px-5 items-center'
               onClick={handleLogout}>
-                <HiLogout className=''
+                <HiLogout className='transform scale-x-[-1]'
                 />
                   Logout
-                </div>
+              </div>
             </li>
           </ul>
         </div>
