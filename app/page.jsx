@@ -110,7 +110,7 @@ const Login = () => {
 
   return (
     <section className="flex w-full items-center justify-center 
-    md:h-[70vh] ss:h-[80vh] h-[80vh]">
+    md:h-[70vh] ss:h-[80vh] h-[80vh] md:px-16 px-6">
       {modalOpen && (
         <Modal onClose={() => setModalOpen(false)} />
       )}
