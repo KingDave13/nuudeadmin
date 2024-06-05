@@ -1,13 +1,19 @@
 import { connectToDb } from "@utils/database";
-import formData from "@models/formData";
+import FormData from "@models/formData";
 
-export default async function handler(req, res) {
-    await connectToDb();
-  
+export const GET = async (req) => {
     try {
-      const FormData = await formData.find({});
-      res.status(200).json({ success: true, data: FormData });
+        await connectToDb();
+
+        const formDataList = await FormData.find({});
+        
+        return new Response(JSON.stringify({ success: true, data: formDataList }), {
+            status: 200,
+        });
     } catch (error) {
-      res.status(400).json({ success: false });
+        console.error('Error fetching data:', error); // Log the error for debugging
+        return new Response(JSON.stringify({ success: false, message: 'Internal Server Error', error: error.message }), {
+            status: 500,
+        });
     }
-  }
+};
