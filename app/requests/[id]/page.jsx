@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { HiArrowNarrowLeft } from "react-icons/hi";
+import { HiOutlineArrowTopRightOnSquare } from "react-icons/hi2";
 
 const UserDetails = ({ params }) => {
   const router = useRouter();
@@ -36,7 +37,7 @@ const UserDetails = ({ params }) => {
 
   return (
     <section className="md:min-h-[800px] ss:min-h-[620px] min-h-[650px] 
-    flex items-center md:px-16 px-6 mt-40">
+    flex items-center md:px-16 px-6 mt-52">
       <div className="items-center w-full flex flex-col md:gap-8 
       font-manierRegular">
         <div className='w-full flex justify-between items-center'>
@@ -162,15 +163,25 @@ const UserDetails = ({ params }) => {
             </p>
           </div>
 
-          <div className='flex flex-col gap-1'>
-            <p className='text-textalt md:text-[16px] ss:text-16px]
-            text-[13px]'>
-              X (Twitter) handle
-            </p>
-            <p className='text-white md:text-[17px] ss:text-17px]
-            text-[14px]'>
-              X.com/{userData.twitter}
-            </p>
+          <div className='flex justify-between items-center'>
+            <div className='flex flex-col gap-1'>
+              <p className='text-textalt md:text-[16px] ss:text-16px]
+              text-[13px]'>
+                X (Twitter) handle
+              </p>
+              <p className='text-white md:text-[17px] ss:text-17px]
+              text-[14px]'>
+                x.com/{userData.twitter}
+              </p>
+            </div>
+
+            <a href={`x.com/${userData.twitter}`}
+            target='blank'
+            className='mr-16'>
+              <HiOutlineArrowTopRightOnSquare 
+              className='text-secondary font-bold md:text-[20px]
+              ss:text-[20px] text-[18px]'/>
+            </a>
           </div>
 
           <div className='flex flex-col gap-1'>
@@ -231,16 +242,16 @@ const UserDetails = ({ params }) => {
         </div>
 
         <div className='w-full flex gap-6 md:mt-5 ss:mt-5 mt-3'>
-          <button className='bg-secondary px-10 py-4 rounded-md grow4
+          <button className='bg-secondary px-10 py-3.5 rounded-md grow4
           cursor-pointer text-primary md:text-[15px] ss:text-[15px]
           text-[12px]'
           onClick={() => router.back()}
           >
-            Approve Membership
+            Approve {userData.paymentType}
           </button>
 
           <button className='bg-none border-secondary border-[1px] px-16
-          py-4 rounded-md grow4 cursor-pointer text-secondary 
+          py-3.5 rounded-md grow4 cursor-pointer text-secondary 
           md:text-[15px] ss:text-[15px] text-[12px]'
           onClick={() => router.back()}
           >
