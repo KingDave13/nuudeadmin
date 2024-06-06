@@ -42,16 +42,15 @@ const RequestsPage = () => {
             Membership/Guest Requests
           </h1>
         </div>
-        
+
         <div className="w-full">
           <table className="w-full text-white">
-            <thead>
-              <tr>
-                <th className="px-4 py-2 border-b border-gray-700">Full Name</th>
-                <th className="px-4 py-2 border-b border-gray-700">Payment Status</th>
-                <th className="px-4 py-2 border-b border-gray-700">Payment Type</th>
-                <th className="px-4 py-2 border-b border-gray-700">Email</th>
-                <th className="px-4 py-2 border-b border-gray-700">Actions</th>
+            <thead className='text-textalt w-full'>
+              <tr className='w-full flex justify-between'>
+                <th className="py-2 border-b border-gray-700">Full Name</th>
+                <th className="py-2 border-b border-gray-700">Payment Status</th>
+                <th className="py-2 border-b border-gray-700">Payment Type</th>
+                <th className="py-2 border-b border-gray-700">Email</th>
               </tr>
             </thead>
             <tbody>
