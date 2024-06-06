@@ -95,17 +95,22 @@ const RequestsPage = () => {
                     <td className="px-4 py-3.5">{data.paymentType}</td>
                     <td className="px-4 py-3.5">{data.email}</td>
                     
-                    <td className="px-4 py-2 flex justify-around">
-                      <button className="text-blue-500">
-                        <AiOutlineInfoCircle />
+                    <td className="ml-32 mt-4 flex gap-4 text-[21px]
+                    font-manierBold">
+                      <button>
+                        <HiOutlineInformationCircle />
+                      </button>
+                      
+                      <button>
+                        <BsPersonCheck />
                       </button>
 
-                      <button className="text-blue-500">
-                        <AiOutlineMail />
+                      <button>
+                        <CiMail />
                       </button>
 
-                      <button className="text-red-500">
-                        <AiOutlineDelete />
+                      <button>
+                        <HiOutlineTrash />
                       </button>
                     </td>
                   </tr>
