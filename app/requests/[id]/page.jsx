@@ -228,8 +228,26 @@ const UserDetails = ({ params }) => {
               {userData.mode}
             </p>
           </div>
+        </div>
+
+        <div className='w-full flex gap-6 md:mt-5 ss:mt-5 mt-3'>
+          <button className='bg-secondary px-10 py-4 rounded-md grow4
+          cursor-pointer text-primary md:text-[15px] ss:text-[15px]
+          text-[12px]'
+          onClick={() => router.back()}
+          >
+            Approve Membership
+          </button>
+
+          <button className='bg-none border-secondary border-[1px] px-16
+          py-4 rounded-md grow4 cursor-pointer text-secondary 
+          md:text-[15px] ss:text-[15px] text-[12px]'
+          onClick={() => router.back()}
+          >
+            Reject Request
+          </button>
+        </div>
       </div>
-    </div>
     </section>
   );
 };
