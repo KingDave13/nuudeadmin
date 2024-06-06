@@ -108,18 +108,25 @@ const RequestsPage = () => {
             </table>
           </div>
 
-          <div className="flex justify-end items-center mt-4">
+          <div className="flex justify-end items-center mt-6 text-textalt
+          md:text-[15px] ss:text-[14px] text-[12px]">
             <div className="flex items-center">
-              <span className="mr-2 text-white">Rows per page:</span>
-              <select value={rowsPerPage} onChange={handleChangeRowsPerPage} className="bg-gray-800 text-white border border-gray-700 rounded-md px-2 py-1">
+              <span className="mr-2">Rows per page:</span>
+              <select value={rowsPerPage} onChange={handleChangeRowsPerPage} 
+              className="bg-transparent border border-none 
+              rounded-md px-2 py-1">
                 {[10, 11, 12, 13, 14].map(num => (
                   <option key={num} value={num}>{num}</option>
                 ))}
               </select>
             </div>
-            <div className="flex items-center ml-6 text-white">
-              <span>{`${(currentPage - 1) * rowsPerPage + 1}-${Math.min(currentPage * rowsPerPage, totalRows)} of ${totalRows}`}</span>
-              <button onClick={handleFirstPage} className="ml-4 text-white"><AiOutlineDoubleLeft /></button>
+            <div className="flex items-center ml-6">
+              <span>{`${(currentPage - 1) * rowsPerPage + 1}-${Math.min(currentPage * rowsPerPage, totalRows)} 
+                of ${totalRows}`}
+              </span>
+
+              <button 
+              onClick={handleFirstPage} className="ml-4 text-white"><AiOutlineDoubleLeft /></button>
               <button onClick={handlePreviousPage} className="ml-2 text-white"><AiOutlineLeft /></button>
               <button onClick={handleNextPage} className="ml-2 text-white"><AiOutlineRight /></button>
               <button onClick={handleLastPage} className="ml-2 text-white"><AiOutlineDoubleRight /></button>
