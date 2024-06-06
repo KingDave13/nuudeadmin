@@ -71,7 +71,7 @@ const RequestsPage = () => {
 
         <div className="w-full">
           <div className="overflow-x-auto">
-          <table className="w-full text-white">
+            <table className="w-full text-white">
               <thead className='text-textalt'>
                 <tr>
                   <th className="py-4 px-4 text-left w-1/5">Full Name</th>
