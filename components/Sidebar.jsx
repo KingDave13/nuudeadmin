@@ -63,7 +63,7 @@ const Sidebar = () => {
                 key={link.id}
                 className={`${
                   active === link.title
-                    ? 'bg-secondary rounded-md text-primaryalt hover:text-primaryalt'
+                    ? 'bg-secondary rounded-md text-primary hover:text-primary'
                     : 'bg-none'
                 } ${!session ? 'opacity-50' : 'cursor-pointer hover:text-secondary grow3'}  
                 text-[19px] text-textalt list-item`}
