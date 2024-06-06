@@ -61,6 +61,13 @@ const RequestsPage = () => {
     setCurrentPage(totalPages);
   };
 
+  const handleUserDetail = (data) => {
+    router.push({
+      pathname: `/user/${data._id}`,
+      query: { ...data }
+    });
+  };
+
   return (
     <section className="md:min-h-[800px] ss:min-h-[620px] min-h-[650px] 
     flex items-center md:px-16 px-6">
@@ -97,7 +104,7 @@ const RequestsPage = () => {
                     
                     <td className="ml-32 mt-4 flex gap-4 text-[21px]
                     font-manierBold">
-                      <button>
+                      <button onClick={() => handleUserDetail(data)}>
                         <HiOutlineInformationCircle />
                       </button>
                       
