@@ -38,7 +38,7 @@ const RequestsPage = () => {
 
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(Number(event.target.value));
-    setCurrentPage(1); // Reset to the first page
+    setCurrentPage(1);
   };
 
   const handlePreviousPage = () => {
@@ -58,37 +58,49 @@ const RequestsPage = () => {
   };
 
   return (
-    <section className="md:min-h-[800px] ss:min-h-[620px] min-h-[650px] flex items-center md:px-16 px-6">
-      <div className="items-center w-full flex flex-col md:gap-12 font-manierRegular">
+    <section className="md:min-h-[800px] ss:min-h-[620px] min-h-[650px] 
+    flex items-center md:px-16 px-6">
+      <div className="items-center w-full flex flex-col md:gap-10 
+      font-manierRegular">
         <div className='w-full'>
-          <h1 className='text-secondary font-manierMedium md:text-[25px] ss:text-[25px] text-[19px]'>
+          <h1 className='text-secondary font-manierMedium md:text-[25px] 
+          ss:text-[25px] text-[19px]'>
             Membership/Guest Requests
           </h1>
         </div>
 
         <div className="w-full">
           <div className="overflow-x-auto">
-            <table className="w-full text-white">
+          <table className="w-full text-white">
               <thead className='text-textalt'>
-                <tr className='text-left'>
-                  <th className="py-2 px-4">Full Name</th>
-                  <th className="py-2 px-4">Payment Status</th>
-                  <th className="py-2 px-4">Payment Type</th>
-                  <th className="py-2 px-4">Email</th>
-                  <th className="py-2 px-4">Actions</th>
+                <tr>
+                  <th className="py-4 px-4 text-left w-1/5">Full Name</th>
+                  <th className="py-4 px-4 text-left w-1/5">Payment Status</th>
+                  <th className="py-4 px-4 text-left w-1/5">Payment Type</th>
+                  <th className="py-4 px-4 text-left w-1/5">Email</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className=''>
                 {displayedRows.map((data, index) => (
-                  <tr key={data._id} className={`hover:bg-gray-800 flex justify-between text-left ${index === 0 ? '' : 'border-t border-gray-700'}`}>
-                    <td className="px-4 py-2">{`${data.firstName} ${data.lastName}`}</td>
-                    <td className="px-4 py-2">{data.paymentStatus}</td>
-                    <td className="px-4 py-2">{data.paymentType}</td>
-                    <td className="px-4 py-2">{data.email}</td>
+                  <tr key={data._id} 
+                  className='hover:bg-gray-800 border-b border-textalt'>
+                    <td className="px-4 py-3.5">{`${data.firstName} ${data.lastName}`}</td>
+                    <td className="px-4 py-3.5">{data.paymentStatus}</td>
+                    <td className="px-4 py-3.5">{data.paymentType}</td>
+                    <td className="px-4 py-3.5">{data.email}</td>
+                    
                     <td className="px-4 py-2 flex justify-around">
-                      <button className="text-blue-500"><AiOutlineInfoCircle /></button>
-                      <button className="text-blue-500"><AiOutlineMail /></button>
-                      <button className="text-red-500"><AiOutlineDelete /></button>
+                      <button className="text-blue-500">
+                        <AiOutlineInfoCircle />
+                      </button>
+
+                      <button className="text-blue-500">
+                        <AiOutlineMail />
+                      </button>
+
+                      <button className="text-red-500">
+                        <AiOutlineDelete />
+                      </button>
                     </td>
                   </tr>
                 ))}
