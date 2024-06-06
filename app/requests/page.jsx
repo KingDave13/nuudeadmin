@@ -3,7 +3,10 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from "next/navigation";
 import { TiArrowSortedDown } from "react-icons/ti";
-import { AiOutlineInfoCircle, AiOutlineMail, AiOutlineDelete, AiOutlineDoubleLeft, AiOutlineLeft, AiOutlineRight, AiOutlineDoubleRight } from 'react-icons/ai';
+import { HiOutlineInformationCircle, HiOutlineTrash } from "react-icons/hi2";
+import { BsPersonCheck } from "react-icons/bs";
+import { CiMail } from "react-icons/ci";
+import { AiOutlineDoubleLeft, AiOutlineLeft, AiOutlineRight, AiOutlineDoubleRight } from 'react-icons/ai';
 
 const RequestsPage = () => {
   const [formData, setFormData] = useState([]);
