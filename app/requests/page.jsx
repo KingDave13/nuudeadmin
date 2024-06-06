@@ -109,7 +109,7 @@ const RequestsPage = () => {
                         <CiMail />
                       </button>
 
-                      <button>
+                      <button className='hover:text-brightRed navsmooth'>
                         <HiOutlineTrash />
                       </button>
                     </td>
