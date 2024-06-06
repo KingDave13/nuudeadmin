@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from "next/navigation";
+import { TiArrowSortedDown } from "react-icons/ti";
 import { AiOutlineInfoCircle, AiOutlineMail, AiOutlineDelete, AiOutlineDoubleLeft, AiOutlineLeft, AiOutlineRight, AiOutlineDoubleRight } from 'react-icons/ai';
 
 const RequestsPage = () => {
@@ -112,36 +113,47 @@ const RequestsPage = () => {
           md:text-[15px] ss:text-[14px] text-[12px]">
             <div className="flex items-center">
               <span className="mr-2">Rows per page:</span>
-              <select value={rowsPerPage} onChange={handleChangeRowsPerPage} 
-              className="bg-transparent border border-none 
-              rounded-md px-2 py-1">
-                {[10, 11, 12, 13, 14].map(num => (
-                  <option key={num} value={num}>{num}</option>
-                ))}
-              </select>
+
+              <div className='relative flex items-center'>
+                <select 
+                  value={rowsPerPage} 
+                  onChange={handleChangeRowsPerPage} 
+                  className="bg-transparent mr-3 py-1 custom-select
+                  cursor-pointer px-2">
+                  {[10, 11, 12, 13, 14].map(num => (
+                    <option key={num} value={num}>{num}</option>
+                  ))}
+                </select>
+                <div className='absolute right-0'>
+                  <TiArrowSortedDown 
+                    className='text-main text-[15px]'
+                  />
+                </div>
+              </div>
             </div>
-            <div className="flex items-center ml-6">
+
+            <div className="flex items-center ml-10 mr-5">
               <span>{`${(currentPage - 1) * rowsPerPage + 1}-${Math.min(currentPage * rowsPerPage, totalRows)} 
                 of ${totalRows}`}
               </span>
 
               <button onClick={handleFirstPage} 
-              className="ml-4 text-white">
+              className="ml-10">
                 <AiOutlineDoubleLeft />
               </button>
 
               <button onClick={handlePreviousPage} 
-              className="ml-2 text-white">
+              className="ml-3">
                 <AiOutlineLeft />
               </button>
 
               <button onClick={handleNextPage} 
-              className="ml-2 text-white">
+              className="ml-3">
                 <AiOutlineRight />
               </button>
 
               <button onClick={handleLastPage} 
-              className="ml-2 text-white">
+              className="ml-3">
                 <AiOutlineDoubleRight />
               </button>
             </div>

@@ -61,46 +61,22 @@ ol {
   background-color: #EDD574;
 }
 
-select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-
-  background-image: url('../public/assets/arrow.png');
-  background-size: 14px 10px;
-  background-position: right 20px center;
-  position: relative;
-  background-repeat: no-repeat;
-}
-
-select option {
-  background-color: #898989;
-  color: white;
-  font-size: 14px;
-}
-
-@media (max-width: 1060px) {
-  .select option {
-    font-size: 12px;
-  }  
-}
-
-@media (max-width: 480px) {
-  .select option {
-    font-size: 12px;
-  }  
-}
-
-select option:checked {
-  color: #fff;
-}
-
 input:focus {
   border: 1px solid white;
 }
 
 textarea:focus {
   border: 1px solid white;
+}
+
+.custom-select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.custom-select option {
+  padding: 0.5rem;
 }
 
 @media screen and (max-width: 480px) {
