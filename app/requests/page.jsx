@@ -6,24 +6,72 @@ import { TiArrowSortedDown } from "react-icons/ti";
 import { HiOutlineInformationCircle, HiOutlineTrash } from "react-icons/hi2";
 import { BsPersonCheck } from "react-icons/bs";
 import { CiMail } from "react-icons/ci";
+import { motion, AnimatePresence } from 'framer-motion';
 import { AiOutlineDoubleLeft, AiOutlineLeft, AiOutlineRight, AiOutlineDoubleRight } from 'react-icons/ai';
 
 const DeleteModal = ({ isOpen, onClose, onDelete }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-      <div className="bg-white p-6 rounded-md shadow-md">
-        <h2 className="text-lg mb-4">Confirm Deletion</h2>
-        <p className="mb-6">Are you sure you want to delete this request?</p>
-        <div className="flex justify-end">
-          <button onClick={onClose} className="mr-4 px-4 py-2 bg-gray-300 rounded">Cancel</button>
-          <button onClick={onDelete} className="px-4 py-2 bg-red-500 text-white rounded">Proceed to Delete</button>
-        </div>
-      </div>
-    </div>
+    <AnimatePresence>
+      <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 flex items-center justify-center
+      bg-black bg-opacity-80 z-50">
+        <motion.div 
+        initial={{ y: 0, opacity: 0.7 }}
+        animate={{ y: 0, opacity: 1 }}
+        exit={{ y: 10, opacity: 0 }}
+        transition={{ duration: 0.1 }}
+        className="bg-primaryalt md:p-12 ss:p-10 p-4 rounded-md shadow-xl 
+        flex flex-col justify-center w-auto h-auto items-center gap-5">
+          <HiOutlineInformationCircle
+            className='text-[60px] text-secondary'
+          />
+
+          <div className='flex flex-col w-full justify-center 
+          items-center gap-5'>
+            <h1 className='text-white md:text-[30px] ss:text-[30px]
+            text-[20px] text-center font-manierMedium'>
+              Are you sure?
+            </h1>
+
+            <p className='text-white md:text-[16px] ss:text-[17px]
+            text-[14px] text-center'>
+              Are you sure you want to delete this request?
+            </p>
+
+            <div className='flex gap-4'>
+              <button
+              onClick={onDelete}
+              className='grow4 bg-secondary border-none w-full
+              md:text-[16px] ss:text-[15px] text-[13px] md:py-4
+              ss:py-4 py-3 md:px-8 ss:px-7 px-5 text-primary 
+              rounded-md cursor-pointer'
+              >
+                Delete
+              </button>
+
+              <button
+              onClick={onClose}
+              className='grow4 border-[1px] border-secondary w-full
+              md:text-[16px] ss:text-[15px] text-[13px] md:py-4
+              ss:py-4 py-3 md:px-8 ss:px-7 px-5 text-secondary 
+              rounded-md cursor-pointer'
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
   );
 };
+
+
 
 const RequestsPage = () => {
   const [formData, setFormData] = useState([]);
@@ -223,13 +271,13 @@ const RequestsPage = () => {
             </div>
           </div>
         </div>
-      </div>
 
-      <DeleteModal 
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
-        onDelete={handleDeleteRequest}
-      />
+        <DeleteModal 
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          onDelete={handleDeleteRequest}
+        />
+      </div>
     </section>
   );
 };
