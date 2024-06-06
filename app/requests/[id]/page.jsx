@@ -3,13 +3,77 @@
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { HiArrowNarrowLeft } from "react-icons/hi";
-import { HiOutlineArrowTopRightOnSquare } from "react-icons/hi2";
+import { HiOutlineArrowTopRightOnSquare, HiOutlineInformationCircle } from "react-icons/hi2";
+import { motion, AnimatePresence } from 'framer-motion';
+
+const DeleteModal = ({ isOpen, onClose, onDelete }) => {
+  if (!isOpen) return null;
+
+  return (
+    <AnimatePresence>
+      <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 flex items-center justify-center
+      bg-black bg-opacity-80 z-50">
+        <motion.div 
+        initial={{ y: 0, opacity: 0.7 }}
+        animate={{ y: 0, opacity: 1 }}
+        exit={{ y: 10, opacity: 0 }}
+        transition={{ duration: 0.1 }}
+        className="bg-primaryalt md:p-12 ss:p-10 p-4 rounded-md shadow-xl 
+        flex flex-col justify-center w-auto h-auto items-center gap-5">
+          <HiOutlineInformationCircle
+            className='text-[70px] text-secondary'
+          />
+
+          <div className='flex flex-col w-full justify-center 
+          items-center gap-5'>
+            <h1 className='text-white md:text-[30px] ss:text-[30px]
+            text-[20px] text-center font-manierMedium'>
+              Are you sure?
+            </h1>
+
+            <p className='text-white md:text-[16px] ss:text-[16px]
+            text-[14px] text-center'>
+              Are you sure you want to delete this request?
+            </p>
+
+            <div className='flex gap-5'>
+              <button
+              onClick={onDelete}
+              className='grow4 bg-secondary border-none w-full
+              md:text-[15px] ss:text-[15px] text-[13px] md:py-2.5
+              ss:py-2.5 py-2 md:px-12 ss:px-10 px-6 text-primary 
+              rounded-md cursor-pointer'
+              >
+                Delete
+              </button>
+
+              <button
+              onClick={onClose}
+              className='grow4 border-[1px] border-secondary w-full
+              md:text-[15px] ss:text-[15px] text-[13px] md:py-2.5
+              ss:py-2.5 py-2 md:px-12 ss:px-10 px-6 text-secondary 
+              rounded-md cursor-pointer'
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  );
+};
 
 const UserDetails = ({ params }) => {
   const router = useRouter();
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { id } = params;
 
@@ -31,6 +95,33 @@ const UserDetails = ({ params }) => {
         });
     }
   }, [id]);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleDeleteRequest = async () => {
+    try {
+      const response = await fetch(`/api/requests/${id}`, {
+        method: 'DELETE',
+      });
+
+      if (!response.ok) {
+        console.error('Failed to delete:', response.status, response.statusText);
+        return;
+      }
+
+      router.back();
+    } catch (error) {
+      console.error('Failed to delete request:', error);
+    } finally {
+      handleCloseModal();
+    }
+  };
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
@@ -265,7 +356,6 @@ const UserDetails = ({ params }) => {
           <button className='bg-secondary px-10 py-3.5 rounded-md grow4
           cursor-pointer text-primary md:text-[15px] ss:text-[15px]
           text-[12px]'
-          onClick={() => router.back()}
           >
             Approve {userData.paymentType}
           </button>
@@ -273,11 +363,17 @@ const UserDetails = ({ params }) => {
           <button className='bg-none border-secondary border-[1px] px-16
           py-3.5 rounded-md grow4 cursor-pointer text-secondary 
           md:text-[15px] ss:text-[15px] text-[12px]'
-          onClick={() => router.back()}
+          onClick={handleOpenModal}
           >
             Reject Request
           </button>
         </div>
+
+        <DeleteModal
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          onDelete={handleDeleteRequest}
+        />
       </div>
     </section>
   );
