@@ -152,22 +152,32 @@ const UserDetails = ({ params }) => {
             </p>
           </div>
 
-          <div className='flex flex-col gap-1'>
-            <p className='text-textalt md:text-[16px] ss:text-16px]
-            text-[13px]'>
-              Instagram Handle
-            </p>
-            <p className='text-white md:text-[17px] ss:text-17px]
-            text-[14px]'>
-              instagram.com/{userData.instagram}
-            </p>
+          <div className='flex justify-between items-center'>
+            <div className='flex flex-col gap-1'>
+              <p className='text-textalt md:text-[16px] ss:text-16px]
+              text-[13px]'>
+                Instagram Handle
+              </p>
+              <p className='text-white md:text-[17px] ss:text-17px]
+              text-[14px]'>
+                instagram.com/{userData.instagram}
+              </p>
+            </div>
+
+            <a href={`instagram.com/${userData.instagram}`}
+            target='blank'
+            className='mr-16'>
+              <HiOutlineArrowTopRightOnSquare 
+              className='text-secondary font-bold md:text-[20px]
+              ss:text-[20px] text-[18px]'/>
+            </a>
           </div>
 
           <div className='flex justify-between items-center'>
             <div className='flex flex-col gap-1'>
               <p className='text-textalt md:text-[16px] ss:text-16px]
               text-[13px]'>
-                X (Twitter) handle
+                X (Twitter) Handle
               </p>
               <p className='text-white md:text-[17px] ss:text-17px]
               text-[14px]'>
@@ -184,15 +194,25 @@ const UserDetails = ({ params }) => {
             </a>
           </div>
 
-          <div className='flex flex-col gap-1'>
-            <p className='text-textalt md:text-[16px] ss:text-16px]
-            text-[13px]'>
-              Facebook Handle
-            </p>
-            <p className='text-white md:text-[17px] ss:text-17px]
-            text-[14px]'>
-              facebook.com/{userData.facebook}
-            </p>
+          <div className='flex justify-between items-center'>
+            <div className='flex flex-col gap-1'>
+              <p className='text-textalt md:text-[16px] ss:text-16px]
+              text-[13px]'>
+                Facebook Handle
+              </p>
+              <p className='text-white md:text-[17px] ss:text-17px]
+              text-[14px]'>
+                facebook.com/{userData.facebook}
+              </p>
+            </div>
+
+            <a href={`facebook.com/${userData.facebook}`}
+            target='blank'
+            className='mr-16'>
+              <HiOutlineArrowTopRightOnSquare 
+              className='text-secondary font-bold md:text-[20px]
+              ss:text-[20px] text-[18px]'/>
+            </a>
           </div>
 
           <div className='flex flex-col gap-1'>
