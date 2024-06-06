@@ -46,7 +46,7 @@ const UserDetails = ({ params }) => {
               {userData.firstName} {userData.lastName}
             </h1>
 
-            <h1 className='text-white md:text-[16px] ss:text-[16px] 
+            <h1 className='text-white md:text-[17px] ss:text-[17px] 
             text-[14px]'>
               {userData.paymentType} Request
             </h1>
@@ -65,7 +65,7 @@ const UserDetails = ({ params }) => {
         </div>
 
         <div className='w-full'>
-          <h1 className='text-white md:text-[16px] ss:text-[16px] 
+          <h1 className='text-white md:text-[17px] ss:text-[17px] 
             text-[14px]'>
             Payment Status: <span className='text-secondary'>
               Successful
@@ -73,8 +73,6 @@ const UserDetails = ({ params }) => {
           </h1>
         </div>
         
-        
-        <p className="text-lg">Payment Status: {userData.paymentStatus}</p>
         <div className="mt-4">
           <div><strong>Email Address:</strong> {userData.email}</div>
           <div><strong>Phone Number:</strong> {userData.phoneNumber}</div>
