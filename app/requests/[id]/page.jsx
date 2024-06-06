@@ -164,7 +164,7 @@ const UserDetails = ({ params }) => {
               </p>
             </div>
 
-            <a href={`instagram.com/${userData.instagram}`}
+            <a href={`https://instagram.com/${userData.instagram}`}
             target='blank'
             className='mr-16'>
               <HiOutlineArrowTopRightOnSquare 
@@ -185,7 +185,7 @@ const UserDetails = ({ params }) => {
               </p>
             </div>
 
-            <a href={`x.com/${userData.twitter}`}
+            <a href={`https://x.com/${userData.twitter}`}
             target='blank'
             className='mr-16'>
               <HiOutlineArrowTopRightOnSquare 
@@ -206,7 +206,7 @@ const UserDetails = ({ params }) => {
               </p>
             </div>
 
-            <a href={`facebook.com/${userData.facebook}`}
+            <a href={`https://facebook.com/${userData.facebook}`}
             target='blank'
             className='mr-16'>
               <HiOutlineArrowTopRightOnSquare 
@@ -261,7 +261,7 @@ const UserDetails = ({ params }) => {
           </div>
         </div>
 
-        <div className='w-full flex gap-6 md:mt-5 ss:mt-5 mt-3'>
+        <div className='w-full flex gap-5 md:mt-5 ss:mt-5 mt-3'>
           <button className='bg-secondary px-10 py-3.5 rounded-md grow4
           cursor-pointer text-primary md:text-[15px] ss:text-[15px]
           text-[12px]'
