@@ -125,11 +125,25 @@ const RequestsPage = () => {
                 of ${totalRows}`}
               </span>
 
-              <button 
-              onClick={handleFirstPage} className="ml-4 text-white"><AiOutlineDoubleLeft /></button>
-              <button onClick={handlePreviousPage} className="ml-2 text-white"><AiOutlineLeft /></button>
-              <button onClick={handleNextPage} className="ml-2 text-white"><AiOutlineRight /></button>
-              <button onClick={handleLastPage} className="ml-2 text-white"><AiOutlineDoubleRight /></button>
+              <button onClick={handleFirstPage} 
+              className="ml-4 text-white">
+                <AiOutlineDoubleLeft />
+              </button>
+
+              <button onClick={handlePreviousPage} 
+              className="ml-2 text-white">
+                <AiOutlineLeft />
+              </button>
+
+              <button onClick={handleNextPage} 
+              className="ml-2 text-white">
+                <AiOutlineRight />
+              </button>
+
+              <button onClick={handleLastPage} 
+              className="ml-2 text-white">
+                <AiOutlineDoubleRight />
+              </button>
             </div>
           </div>
         </div>
