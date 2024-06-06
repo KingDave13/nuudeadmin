@@ -3,11 +3,32 @@ import { useEffect, useState } from 'react';
 
 const UserDetails = () => {
   const router = useRouter();
-  const userData = router.query;
+  const { id } = router.query;
+  const [userData, setUserData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  if (!userData) {
-    return <div>Loading...</div>;
-  }
+  useEffect(() => {
+    if (id) {
+      fetch(`/api/requests/${id}`)
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            setUserData(data.data);
+          } else {
+            setError(data.message);
+          }
+          setLoading(false);
+        })
+        .catch(err => {
+          setError(err.message);
+          setLoading(false);
+        });
+    }
+  }, [id]);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
 
   return (
     <div className="container mx-auto p-4 text-white">
@@ -28,10 +49,6 @@ const UserDetails = () => {
         <div><strong>If you could amplify an erotic trait within yourself, what would it be?</strong> {userData.eroticTrait}</div>
         <div><strong>What would you contribute to the Nuude! community?</strong> {userData.contribution}</div>
         <div><strong>And finally, how did you find us?</strong> {userData.referral}</div>
-      </div>
-      <div className="mt-4 flex gap-2">
-        <button className="bg-green-500 p-2 rounded">Approve Membership</button>
-        <button className="bg-red-500 p-2 rounded">Reject Request</button>
       </div>
     </div>
   );

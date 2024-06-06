@@ -62,10 +62,7 @@ const RequestsPage = () => {
   };
 
   const handleUserDetail = (data) => {
-    router.push({
-      pathname: `/user/${data._id}`,
-      query: { ...data }
-    });
+    router.push(`/requests/${data._id}`);
   };
 
   return (
