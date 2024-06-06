@@ -4,30 +4,30 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
 const UserDetails = () => {
-  const router = useRouter();
-  const { id } = router.query;
+  // const router = useRouter();
+  // const { id } = router.query;
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    if (id) {
-      fetch(`/api/requests/${id}`)
-        .then(response => response.json())
-        .then(data => {
-          if (data.success) {
-            setUserData(data.data);
-          } else {
-            setError(data.message);
-          }
-          setLoading(false);
-        })
-        .catch(err => {
-          setError(err.message);
-          setLoading(false);
-        });
-    }
-  }, [id]);
+  // useEffect(() => {
+  //   if (id) {
+  //     fetch(`/api/requests/${id}`)
+  //       .then(response => response.json())
+  //       .then(data => {
+  //         if (data.success) {
+  //           setUserData(data.data);
+  //         } else {
+  //           setError(data.message);
+  //         }
+  //         setLoading(false);
+  //       })
+  //       .catch(err => {
+  //         setError(err.message);
+  //         setLoading(false);
+  //       });
+  //   }
+  // }, [id]);
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
