@@ -66,8 +66,7 @@ const Sidebar = () => {
                     ? 'bg-secondary rounded-md text-primaryalt hover:text-primaryalt'
                     : 'bg-none'
                 } ${!session ? 'opacity-50' : 'cursor-pointer hover:text-secondary grow3'}  
-                text-[19px] text-decoration-none 
-                text-textalt list-item`}
+                text-[19px] text-textalt list-item`}
                 onClick={() => {
                   handleSideItemClick(link);
                 }}
@@ -79,7 +78,7 @@ const Sidebar = () => {
               </li>
             ))}
 
-            <li className={`text-[19px] list-item text-decoration-none 
+            <li className={`text-[19px] list-item
             ${!session ? 'opacity-50' : 'hover:text-secondary cursor-pointer grow3'} 
             text-textalt mt-20`}>
               <div className='flex gap-6 px-5 items-center'
