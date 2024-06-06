@@ -28,7 +28,7 @@ const DeleteModal = ({ isOpen, onClose, onDelete }) => {
         className="bg-primaryalt md:p-12 ss:p-10 p-4 rounded-md shadow-xl 
         flex flex-col justify-center w-auto h-auto items-center gap-5">
           <HiOutlineInformationCircle
-            className='text-[60px] text-secondary'
+            className='text-[70px] text-secondary'
           />
 
           <div className='flex flex-col w-full justify-center 
@@ -38,17 +38,17 @@ const DeleteModal = ({ isOpen, onClose, onDelete }) => {
               Are you sure?
             </h1>
 
-            <p className='text-white md:text-[16px] ss:text-[17px]
+            <p className='text-white md:text-[16px] ss:text-[16px]
             text-[14px] text-center'>
               Are you sure you want to delete this request?
             </p>
 
-            <div className='flex gap-4'>
+            <div className='flex gap-5'>
               <button
               onClick={onDelete}
               className='grow4 bg-secondary border-none w-full
-              md:text-[16px] ss:text-[15px] text-[13px] md:py-4
-              ss:py-4 py-3 md:px-8 ss:px-7 px-5 text-primary 
+              md:text-[15px] ss:text-[15px] text-[13px] md:py-2.5
+              ss:py-2.5 py-2 md:px-12 ss:px-10 px-6 text-primary 
               rounded-md cursor-pointer'
               >
                 Delete
@@ -57,8 +57,8 @@ const DeleteModal = ({ isOpen, onClose, onDelete }) => {
               <button
               onClick={onClose}
               className='grow4 border-[1px] border-secondary w-full
-              md:text-[16px] ss:text-[15px] text-[13px] md:py-4
-              ss:py-4 py-3 md:px-8 ss:px-7 px-5 text-secondary 
+              md:text-[15px] ss:text-[15px] text-[13px] md:py-2.5
+              ss:py-2.5 py-2 md:px-12 ss:px-10 px-6 text-secondary 
               rounded-md cursor-pointer'
               >
                 Cancel
