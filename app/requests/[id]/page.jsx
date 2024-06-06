@@ -187,44 +187,45 @@ const UserDetails = ({ params }) => {
           <div className='flex flex-col gap-1'>
             <p className='text-textalt md:text-[16px] ss:text-16px]
             text-[13px]'>
-              Full Name
+              What turns you on the most?
             </p>
             <p className='text-white md:text-[17px] ss:text-17px]
             text-[14px]'>
-              {userData.firstName} {userData.lastName}
+              {userData.turnons}
             </p>
           </div>
 
           <div className='flex flex-col gap-1'>
             <p className='text-textalt md:text-[16px] ss:text-16px]
             text-[13px]'>
-              Full Name
+              If you could amplify an erotic trait within yourself? 
+              What would it be?
             </p>
             <p className='text-white md:text-[17px] ss:text-17px]
             text-[14px]'>
-              {userData.firstName} {userData.lastName}
+              {userData.trait}
             </p>
           </div>
 
           <div className='flex flex-col gap-1'>
             <p className='text-textalt md:text-[16px] ss:text-16px]
             text-[13px]'>
-              Full Name
+              What would you contribute to the Nuude! community?
             </p>
             <p className='text-white md:text-[17px] ss:text-17px]
             text-[14px]'>
-              {userData.firstName} {userData.lastName}
+              {userData.contribution}
             </p>
           </div>
 
           <div className='flex flex-col gap-1'>
             <p className='text-textalt md:text-[16px] ss:text-16px]
             text-[13px]'>
-              Full Name
+              And finally, how did you find us?
             </p>
             <p className='text-white md:text-[17px] ss:text-17px]
             text-[14px]'>
-              {userData.firstName} {userData.lastName}
+              {userData.mode}
             </p>
           </div>
       </div>
