@@ -8,10 +8,29 @@ import { BsPersonCheck } from "react-icons/bs";
 import { CiMail } from "react-icons/ci";
 import { AiOutlineDoubleLeft, AiOutlineLeft, AiOutlineRight, AiOutlineDoubleRight } from 'react-icons/ai';
 
+const DeleteModal = ({ isOpen, onClose, onDelete }) => {
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+      <div className="bg-white p-6 rounded-md shadow-md">
+        <h2 className="text-lg mb-4">Confirm Deletion</h2>
+        <p className="mb-6">Are you sure you want to delete this request?</p>
+        <div className="flex justify-end">
+          <button onClick={onClose} className="mr-4 px-4 py-2 bg-gray-300 rounded">Cancel</button>
+          <button onClick={onDelete} className="px-4 py-2 bg-red-500 text-white rounded">Proceed to Delete</button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const RequestsPage = () => {
   const [formData, setFormData] = useState([]);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedRequest, setSelectedRequest] = useState(null);
   const router = useRouter();
 
   useEffect(() => {
@@ -65,6 +84,36 @@ const RequestsPage = () => {
     router.push(`/requests/${data._id}`);
   };
 
+  const handleOpenModal = (request) => {
+    setSelectedRequest(request);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedRequest(null);
+    setIsModalOpen(false);
+  };
+
+  const handleDeleteRequest = async () => {
+    if (!selectedRequest) return;
+
+    try {
+      const response = await fetch(`/api/requests/${selectedRequest._id}`, {
+        method: 'DELETE',
+      });
+
+      if (!response.ok) {
+        console.error('Failed to delete:', response.status, response.statusText);
+        return;
+      }
+
+      setFormData((prevData) => prevData.filter(request => request._id !== selectedRequest._id));
+      handleCloseModal();
+    } catch (error) {
+      console.error('Failed to delete request:', error);
+    }
+  };
+
   return (
     <section className="md:min-h-[800px] ss:min-h-[620px] min-h-[650px] 
     flex items-center md:px-16 px-6">
@@ -113,7 +162,8 @@ const RequestsPage = () => {
                         <CiMail />
                       </button>
 
-                      <button className='hover:text-brightRed navsmooth'>
+                      <button className='hover:text-brightRed navsmooth'
+                      onClick={() => handleOpenModal(data)}>
                         <HiOutlineTrash />
                       </button>
                     </td>
@@ -174,6 +224,12 @@ const RequestsPage = () => {
           </div>
         </div>
       </div>
+
+      <DeleteModal 
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        onDelete={handleDeleteRequest}
+      />
     </section>
   );
 };

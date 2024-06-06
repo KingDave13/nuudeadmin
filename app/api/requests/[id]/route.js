@@ -24,3 +24,27 @@ export const GET = async (req, { params }) => {
     });
   }
 };
+
+export const DELETE = async (req, { params }) => {
+  const { id } = params;
+
+  try {
+    await connectToDb();
+
+    const formData = await FormData.findByIdAndDelete(id);
+    if (!formData) {
+      return new Response(JSON.stringify({ success: false, message: 'Form data not found' }), {
+        status: 404,
+      });
+    }
+
+    return new Response(JSON.stringify({ success: true, message: 'Form data deleted successfully' }), {
+      status: 200,
+    });
+  } catch (error) {
+    console.error('Error deleting form data:', error);
+    return new Response(JSON.stringify({ success: false, message: 'Internal Server Error', error: error.message }), {
+      status: 500,
+    });
+  }
+};
