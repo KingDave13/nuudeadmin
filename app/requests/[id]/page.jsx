@@ -36,8 +36,8 @@ const UserDetails = ({ params }) => {
 
   return (
     <section className="md:min-h-[800px] ss:min-h-[620px] min-h-[650px] 
-    flex items-center md:px-16 px-6 mt-48">
-      <div className="items-center w-full flex flex-col md:gap-10 
+    flex items-center md:px-16 px-6 mt-40">
+      <div className="items-center w-full flex flex-col md:gap-8 
       font-manierRegular">
         <div className='w-full flex justify-between items-center'>
           <div className='flex flex-col gap-2'>
@@ -73,7 +73,7 @@ const UserDetails = ({ params }) => {
           </h1>
         </div>
         
-        <div className="w-full grid grid-cols-2 md:gap-6 ss:gap-6 gap-4">
+        <div className="w-full grid grid-cols-2 md:gap-5 ss:gap-5 gap-3">
           <div className='flex flex-col gap-1'>
             <p className='text-textalt md:text-[16px] ss:text-16px]
             text-[13px]'>
@@ -88,99 +88,99 @@ const UserDetails = ({ params }) => {
           <div className='flex flex-col gap-1'>
             <p className='text-textalt md:text-[16px] ss:text-16px]
             text-[13px]'>
-              Full Name
+              Email Address
             </p>
             <p className='text-white md:text-[17px] ss:text-17px]
             text-[14px]'>
-              {userData.firstName} {userData.lastName}
+              {userData.email}
             </p>
           </div>
 
           <div className='flex flex-col gap-1'>
             <p className='text-textalt md:text-[16px] ss:text-16px]
             text-[13px]'>
-              Full Name
+              Phone Number
             </p>
             <p className='text-white md:text-[17px] ss:text-17px]
             text-[14px]'>
-              {userData.firstName} {userData.lastName}
+              +{userData.phone}
             </p>
           </div>
 
           <div className='flex flex-col gap-1'>
             <p className='text-textalt md:text-[16px] ss:text-16px]
             text-[13px]'>
-              Full Name
+              Date of Birth
             </p>
             <p className='text-white md:text-[17px] ss:text-17px]
             text-[14px]'>
-              {userData.firstName} {userData.lastName}
+              {userData.birthdate}
             </p>
           </div>
 
           <div className='flex flex-col gap-1'>
             <p className='text-textalt md:text-[16px] ss:text-16px]
             text-[13px]'>
-              Full Name
+              Gender
             </p>
             <p className='text-white md:text-[17px] ss:text-17px]
             text-[14px]'>
-              {userData.firstName} {userData.lastName}
+              {userData.gender}
             </p>
           </div>
 
           <div className='flex flex-col gap-1'>
             <p className='text-textalt md:text-[16px] ss:text-16px]
             text-[13px]'>
-              Full Name
+              Employer
             </p>
             <p className='text-white md:text-[17px] ss:text-17px]
             text-[14px]'>
-              {userData.firstName} {userData.lastName}
+              {userData.employer}
             </p>
           </div>
 
           <div className='flex flex-col gap-1'>
             <p className='text-textalt md:text-[16px] ss:text-16px]
             text-[13px]'>
-              Full Name
+              Occupation
             </p>
             <p className='text-white md:text-[17px] ss:text-17px]
             text-[14px]'>
-              {userData.firstName} {userData.lastName}
+              {userData.occupation}
             </p>
           </div>
 
           <div className='flex flex-col gap-1'>
             <p className='text-textalt md:text-[16px] ss:text-16px]
             text-[13px]'>
-              Full Name
+              Instagram Handle
             </p>
             <p className='text-white md:text-[17px] ss:text-17px]
             text-[14px]'>
-              {userData.firstName} {userData.lastName}
+              instagram.com/{userData.instagram}
             </p>
           </div>
 
           <div className='flex flex-col gap-1'>
             <p className='text-textalt md:text-[16px] ss:text-16px]
             text-[13px]'>
-              Full Name
+              X (Twitter) handle
             </p>
             <p className='text-white md:text-[17px] ss:text-17px]
             text-[14px]'>
-              {userData.firstName} {userData.lastName}
+              X.com/{userData.twitter}
             </p>
           </div>
 
           <div className='flex flex-col gap-1'>
             <p className='text-textalt md:text-[16px] ss:text-16px]
             text-[13px]'>
-              Full Name
+              Facebook Handle
             </p>
             <p className='text-white md:text-[17px] ss:text-17px]
             text-[14px]'>
-              {userData.firstName} {userData.lastName}
+              facebook.com/{userData.facebook}
             </p>
           </div>
 
