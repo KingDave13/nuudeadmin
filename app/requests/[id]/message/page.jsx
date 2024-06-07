@@ -153,8 +153,8 @@ const MessagePage = ({ params }) => {
 
             <div className='w-full'>
                 <form onSubmit={formik.handleSubmit}
-                className="grid grid-cols-2 md:gap-8 ss:gap-6 gap-4">
-                    <div className="col-span-2 flex flex-col">
+                className="flex flex-col md:w-1/2 md:gap-8 ss:gap-6 gap-4">
+                    <div className="flex flex-col">
                         <label className="text-white md:mb-3 ss:mb-2 mb-2 
                         md:text-[16px] ss:text-[15px] text-[14px]">
                             Subject
@@ -182,14 +182,14 @@ const MessagePage = ({ params }) => {
                         </p>
                     </div>
 
-                    <div className="col-span-2 flex flex-col">
+                    <div className="flex flex-col">
                         <label className="text-white md:mb-3 ss:mb-2 mb-2 
                         md:text-[16px] ss:text-[15px] text-[14px]">
                             Message
                         </label>
 
                         <textarea
-                        rows="6"
+                        rows="5"
                         name="message"
                         value={formik.values.message}
                         onChange={formik.handleChange}
@@ -213,9 +213,9 @@ const MessagePage = ({ params }) => {
                     <div className="col-span-2 md:mt-0 ss:mt-0 mt-5">
                         <button
                         type="submit"
-                        className="bg-secondary grow4 cursor-pointer
+                        className="bg-secondary grow4 cursor-pointer rounded-md
                         md:text-[16px] ss:text-[14px] text-[14px] md:py-3.5 
-                        ss:py-3 py-3 md:px-20 ss:px-16 px-14
+                        ss:py-3 py-3 md:px-16 ss:px-16 px-14
                         "
                         >
                             {Loading2 ? 'Sending...' : 'Send Message'}
