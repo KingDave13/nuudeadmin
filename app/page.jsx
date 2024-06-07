@@ -181,7 +181,7 @@ const Login = () => {
                 outline-none text-white md:rounded-[5px] 
                 ss:rounded-[3px] rounded-[3px]
                 placeholder:text-textalt
-                md:placeholder:text-[14px] 
+                md:placeholder:text-[14px] w-full
                 ss:placeholder:text-[12px] 
                 placeholder:text-[12px] bg-primary"
                 />
