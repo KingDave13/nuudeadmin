@@ -132,9 +132,9 @@ const MessagePage = () => {
       'service_skvhseu',
       'template_bu4q17u',
       {
-        from_name: formik.values.firstname,
+        from_name: 'Nuude!',
         to_name: 'Anayo Okpala Global Concept',
-        from_email: formik.values.email,
+        from_email: 'contact@nuude.club',
         to_email: 'contact@anayookpalaglobalconcept.com',
         subject: formik.values.subject,
         message: `${formik.values.message} [Send to: ${recipientType}]`,

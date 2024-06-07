@@ -58,17 +58,17 @@ const MessagePage = ({ params }) => {
             setLoading2(true);
 
             emailjs.send(
-                'service_skvhseu',
-                'template_bu4q17u',
+                process.env.NEXT_PUBLIC_EMAIL_SERVICE,
+                process.env.NEXT_PUBLIC_EMAIL_TEMPLATE,
                 {
-                    from_name: values.firstname,
-                    to_name: 'Anayo Okpala Global Concept',
-                    from_email: values.email,
-                    to_email: 'contact@anayookpalaglobalconcept.com',
+                    from_name: 'Nuude!',
+                    to_name: userData.firstName,
+                    from_email: 'contact@nuude.club',
+                    to_email: userData.email,
                     subject: values.subject,
                     message: values.message,
                 },
-                'u4mJjP_i8Ayoq1SU-'
+                process.env.NEXT_PUBLIC_EMAIL_KEY,
                 )
                 .then(
                 () => {
