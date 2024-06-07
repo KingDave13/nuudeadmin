@@ -72,7 +72,6 @@ const DeleteModal = ({ isOpen, onClose, onDelete }) => {
 };
 
 
-
 const RequestsPage = () => {
   const [formData, setFormData] = useState([]);
   const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -130,6 +129,10 @@ const RequestsPage = () => {
 
   const handleUserDetail = (data) => {
     router.push(`/requests/${data._id}`);
+  };
+
+  const handleUserMail = (data) => {
+    router.push(`/requests/${data._id}/message`);
   };
 
   const handleOpenModal = (request) => {
@@ -206,7 +209,7 @@ const RequestsPage = () => {
                         <BsPersonCheck />
                       </button>
 
-                      <button>
+                      <button onClick={() => handleUserMail(data)}>
                         <CiMail />
                       </button>
 
