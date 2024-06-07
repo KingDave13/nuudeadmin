@@ -43,9 +43,10 @@ const Modal = ({ onClose, onSendToMembers, onSendToGuests, onSendToBoth }) => {
           </button>
           <button
             onClick={onClose}
-            className="bg-secondary grow4 cursor-pointer rounded-md
-            md:text-[16px] ss:text-[14px] text-[14px] md:py-3.5 
-            ss:py-3 py-3 md:px-16 ss:px-16 px-14 mt-2"
+            className="border-[1px] border-secondary cursor-pointer 
+            rounded-md md:text-[16px] ss:text-[14px] text-[14px] 
+            md:py-3.5 ss:py-3 py-3 md:px-16 ss:px-16 px-14 mt-2 grow4
+            text-secondary"
           >
             Cancel
           </button>
