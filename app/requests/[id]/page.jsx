@@ -37,7 +37,8 @@ const DeleteModal = ({ isOpen, onClose, onDelete }) => {
 
             <p className='text-white md:text-[16px] ss:text-[16px]
             text-[14px] text-center'>
-              Are you sure you want to delete this request?
+              Rejection deletes the request.<br></br>
+              Are you sure you want to reject this request?
             </p>
 
             <div className='flex gap-5'>
@@ -48,7 +49,7 @@ const DeleteModal = ({ isOpen, onClose, onDelete }) => {
               ss:py-2.5 py-2 md:px-12 ss:px-10 px-6 text-primary 
               rounded-md cursor-pointer'
               >
-                Delete
+                Reject
               </button>
 
               <button
