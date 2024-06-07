@@ -4,9 +4,33 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { HiArrowNarrowLeft } from "react-icons/hi";
 
-const MessagePage = ({ params, data }) => {
+const MessagePage = ({ params }) => {
   const router = useRouter();
   const { id } = params;
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    if (id) {
+      fetch(`/api/requests/${id}`)
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            setUserData(data.data);
+          } else {
+            setError(data.message);
+          }
+          setLoading(false);
+        })
+        .catch(err => {
+          setError(err.message);
+          setLoading(false);
+        });
+    }
+  }, [id]);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
 
   return (
     <section className="md:min-h-[800px] ss:min-h-[620px] min-h-[650px] 
@@ -17,12 +41,12 @@ const MessagePage = ({ params, data }) => {
           <div className='flex flex-col gap-2'>
             <h1 className='text-secondary md:text-[23px] ss:text-[20px] 
             text-[18px]'>
-              {data.firstName} {data.lastName}
+              {userData.firstName} {userData.lastName}
             </h1>
 
             <h1 className='text-white md:text-[17px] ss:text-[17px] 
             text-[14px]'>
-              {data.paymentType} Request
+              {userData.paymentType} Request
             </h1>
           </div>
 
