@@ -7,6 +7,7 @@ import { HiArrowNarrowLeft } from "react-icons/hi";
 const MessagePage = ({ params }) => {
   const router = useRouter();
   const { id } = params;
+  const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -60,6 +61,13 @@ const MessagePage = ({ params }) => {
               Go Back
             </p>
           </div>
+        </div>
+
+        <div className='w-full'>
+            <h1 className='text-white md:text-[17px] ss:text-[17px] 
+            text-[14px]'>
+              Send Message
+            </h1>
         </div>
       </div>
     </section>
