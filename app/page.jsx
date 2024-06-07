@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from "next/navigation";
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useFormik } from "formik";
 import * as Yup from 'yup';
 import { signIn } from "next-auth/react";
@@ -62,6 +63,12 @@ const Login = () => {
       router.push('/requests');
     }
   }, [status, router]);
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
   const disableScroll = () => {
     setScrollPosition(window.pageYOffset);
@@ -162,21 +169,38 @@ const Login = () => {
               md:text-[16px] ss:text-[15px] text-[14px]">
                 Password
               </label>
-              <input
-              type="text"
-              name="password"
-              value={formik.values.password}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              placeholder="Enter your password"
-              className="md:py-3 ss:py-2 py-2 px-4 border-none 
-              outline-none text-white md:rounded-[5px] 
-              ss:rounded-[3px] rounded-[3px]
-              placeholder:text-textalt
-              md:placeholder:text-[14px] 
-              ss:placeholder:text-[12px] 
-              placeholder:text-[12px] bg-primary"
-              />
+              <div className="relative">
+                <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                value={formik.values.password}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                placeholder="Enter your password"
+                className="md:py-3 ss:py-2 py-2 px-4 border-none 
+                outline-none text-white md:rounded-[5px] 
+                ss:rounded-[3px] rounded-[3px]
+                placeholder:text-textalt
+                md:placeholder:text-[14px] 
+                ss:placeholder:text-[12px] 
+                placeholder:text-[12px] bg-primary"
+                />
+                <div className="absolute right-0 inset-y-0 flex pr-4
+                items-center">
+                  {showPassword ? (
+                      <FaEyeSlash
+                        className="text-gray-400 cursor-pointer"
+                        onClick={togglePasswordVisibility}
+                      />
+                  ) : (
+                      <FaEye
+                        className="text-gray-400 cursor-pointer"
+                        onClick={togglePasswordVisibility}
+                      />
+                  )}
+                </div>
+              </div>
+              
               <p className="text-mainRed md:text-[12px] 
               ss:text-[12px] text-[11px] md:mt-2 ss:mt-2 mt-1"
               >
