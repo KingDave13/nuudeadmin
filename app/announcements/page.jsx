@@ -2,7 +2,6 @@
 
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { HiArrowNarrowLeft } from "react-icons/hi";
 import emailjs from '@emailjs/browser';
 import { useFormik } from "formik";
 import * as Yup from 'yup';
@@ -22,15 +21,34 @@ const Modal = () => {
     );
 };
 
-const MessagePage = ({ params }) => {
+const MessagePage = ( ) => {
     const router = useRouter();
-    const { id } = params;
-    const [userData, setUserData] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-    const [loading2, setLoading2] = useState(false);
+    const [formData, setFormData] = useState([]);
+    const [loading, setLoading] = useState(false);
     const [modalOpen, setModalOpen] = useState(false);
     const [scrollPosition, setScrollPosition] = useState(0);
+
+    useEffect(() => {
+        const fetchFormData = async () => {
+          try {
+            const response = await fetch('/api/requests');
+            if (!response.ok) {
+              console.error('Failed to fetch:', response.status, response.statusText);
+              return;
+            }
+            const result = await response.json();
+            if (result.success) {
+              setFormData(result.data);
+            } else {
+              console.error('API returned an error:', result.message);
+            }
+          } catch (error) {
+            console.error('Failed to fetch form data:', error);
+          }
+        };
+    
+        fetchFormData();
+      }, []);
 
     const disableScroll = () => {
         setScrollPosition(window.pageYOffset);
@@ -55,7 +73,7 @@ const MessagePage = ({ params }) => {
         }),
 
         onSubmit: (values) => {
-            setLoading2(true);
+            setLoading(true);
 
             emailjs.send(
                 'service_skvhseu',
@@ -72,7 +90,7 @@ const MessagePage = ({ params }) => {
                 )
                 .then(
                 () => {
-                    setLoading2(false);
+                    setLoading(false);
                     setModalOpen(true);
                     disableScroll();
             
@@ -85,70 +103,25 @@ const MessagePage = ({ params }) => {
                 },
                 
                 (error) => {
-                    setLoading2(false);
+                    setLoading(false);
                     console.log(error);
                 }
             );
         },
     });
 
-  useEffect(() => {
-    if (id) {
-      fetch(`/api/requests/${id}`)
-        .then(response => response.json())
-        .then(data => {
-          if (data.success) {
-            setUserData(data.data);
-          } else {
-            setError(data.message);
-          }
-          setLoading(false);
-        })
-        .catch(err => {
-          setError(err.message);
-          setLoading(false);
-        });
-    }
-  }, [id]);
-
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
-
   return (
-    <section className="md:min-h-[600px] ss:min-h-[600px] min-h-[500px] 
-    flex items-center md:px-16 px-6 mt-52">
+    <section className="md:min-h-[500px] ss:min-h-[600px] min-h-[500px] 
+    flex items-center md:px-16 px-6 mt-56">
         <div className="items-center w-full flex flex-col md:gap-10 
         font-manierRegular">
             <div className='w-full flex justify-between items-center'>
-                <div className='flex flex-col gap-2'>
+                <div className='flex'>
                     <h1 className='text-secondary md:text-[23px] ss:text-[20px] 
                     text-[18px]'>
-                    {userData.firstName} {userData.lastName}
-                    </h1>
-
-                    <h1 className='text-white md:text-[17px] ss:text-[17px] 
-                    text-[14px]'>
-                    {userData.paymentType} Request
+                        Send Messages to members, guests or both! 
                     </h1>
                 </div>
-
-                <div className='bg-secondary px-6 py-2 rounded-md flex gap-3
-                items-center cursor-pointer grow4'
-                onClick={() => router.back()}>
-                    <HiArrowNarrowLeft />
-
-                    <p className='text-primary md:text-[16px] ss:text-[16px]
-                    text-[14px]'>
-                    Go Back
-                    </p>
-                </div>
-            </div>
-
-            <div className='w-full'>
-                <h1 className='text-white md:text-[17px] ss:text-[17px] 
-                text-[14px]'>
-                Send Message
-                </h1>
             </div>
 
             <div className='w-full'>
@@ -218,7 +191,7 @@ const MessagePage = ({ params }) => {
                         ss:py-3 py-3 md:px-16 ss:px-16 px-14
                         "
                         >
-                            {loading2 ? 'Sending...' : 'Send Message'}
+                            {loading ? 'Sending...' : 'Send Message'}
                         </button>
                     </div>
                 </form>
