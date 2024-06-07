@@ -119,7 +119,7 @@ const MessagePage = ( ) => {
                 <div className='flex'>
                     <h1 className='text-secondary md:text-[23px] ss:text-[20px] 
                     text-[18px]'>
-                        Send Messages to members, guests or both! 
+                        Send messages to members, guests or both! 
                     </h1>
                 </div>
             </div>
