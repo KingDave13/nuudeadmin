@@ -57,10 +57,6 @@ ol {
   list-style: decimal;
 }
 
-.list-item:hover .icon img {
-  background-color: #EDD574;
-}
-
 input:focus {
   border: 1px solid white;
 }
