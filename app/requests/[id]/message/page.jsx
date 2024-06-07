@@ -117,7 +117,7 @@ const MessagePage = ({ params }) => {
   return (
     <section className="md:min-h-[800px] ss:min-h-[620px] min-h-[650px] 
     flex items-center md:px-16 px-6 mt-52">
-        <div className="items-center w-full flex flex-col md:gap-8 
+        <div className="items-center w-full flex flex-col md:gap-10 
         font-manierRegular">
             <div className='w-full flex justify-between items-center'>
                 <div className='flex flex-col gap-2'>
@@ -150,78 +150,81 @@ const MessagePage = ({ params }) => {
                 Send Message
                 </h1>
             </div>
+
+            <div className='w-full'>
+                <form onSubmit={formik.handleSubmit}
+                className="grid grid-cols-2 md:gap-8 ss:gap-6 gap-4">
+                    <div className="col-span-2 flex flex-col">
+                        <label className="text-white md:mb-3 ss:mb-2 mb-2 
+                        md:text-[16px] ss:text-[15px] text-[14px]">
+                            Subject
+                        </label>
+
+                        <input
+                        type="text"
+                        name="subject"
+                        value={formik.values.subject}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        placeholder="Subject of the message"
+                        className="md:py-3 ss:py-3 py-2 px-4 border-none 
+                        outline-none text-white md:rounded-[3px]
+                        ss:rounded-[3px] rounded-[3px]
+                        md:placeholder:text-[14px] placeholder:text-textalt
+                        ss:placeholder:text-[13px] 
+                        placeholder:text-[12px] bg-primaryalt"
+                        />
+
+                        <p className="text-mainRed md:text-[12px] 
+                        ss:text-[12px] text-[11px] md:mt-2 ss:mt-2 mt-1"
+                        >
+                            {formik.touched.subject && formik.errors.subject}
+                        </p>
+                    </div>
+
+                    <div className="col-span-2 flex flex-col">
+                        <label className="text-white md:mb-3 ss:mb-2 mb-2 
+                        md:text-[16px] ss:text-[15px] text-[14px]">
+                            Message
+                        </label>
+
+                        <textarea
+                        rows="6"
+                        name="message"
+                        value={formik.values.message}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        placeholder="Your Message"
+                        className="md:py-3 ss:py-3 py-2 px-4 border-none 
+                        outline-none text-white md:rounded-[3px]
+                        ss:rounded-[3px] rounded-[3px]
+                        md:placeholder:text-[14px] placeholder:text-textalt
+                        ss:placeholder:text-[13px] 
+                        placeholder:text-[12px] bg-primaryalt"
+                        />
+
+                        <p className="text-mainRed md:text-[12px] 
+                        ss:text-[12px] text-[11px] md:mt-2 ss:mt-2 mt-1"
+                        >
+                            {formik.touched.message ? formik.errors.message : ''}
+                        </p>
+                    </div>
+
+                    <div className="col-span-2 md:mt-0 ss:mt-0 mt-5">
+                        <button
+                        type="submit"
+                        className="bg-secondary grow4 cursor-pointer
+                        md:text-[16px] ss:text-[14px] text-[14px] md:py-3.5 
+                        ss:py-3 py-3 md:px-20 ss:px-16 px-14
+                        "
+                        >
+                            {Loading2 ? 'Sending...' : 'Send Message'}
+                        </button>
+                    </div>
+                </form>
+            </div>
+            
         </div>
-
-        <form onSubmit={formik.handleSubmit}
-        className="grid grid-cols-2 md:gap-8 ss:gap-6 gap-4">
-            <div className="col-span-2 flex flex-col">
-                <label className="text-white md:mb-3 ss:mb-2 mb-2 
-                md:text-[16px] ss:text-[15px] text-[14px]">
-                    Subject
-                </label>
-
-                <input
-                type="text"
-                name="subject"
-                value={formik.values.subject}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                placeholder="Enter a subject"
-                className="md:py-3 ss:py-3 py-2 px-4 border-none 
-                outline-none text-white md:rounded-[3px]
-                ss:rounded-[3px] rounded-[3px]
-                md:placeholder:text-[14px] 
-                ss:placeholder:text-[13px] 
-                placeholder:text-[12px] bg-primaryalt"
-                />
-
-                <p className="text-mainRed md:text-[12px] 
-                ss:text-[12px] text-[11px] md:mt-2 ss:mt-2 mt-1"
-                >
-                    {formik.touched.subject && formik.errors.subject}
-                </p>
-            </div>
-
-            <div className="col-span-2 flex flex-col">
-                <label className="text-white md:mb-3 ss:mb-2 mb-2 
-                md:text-[16px] ss:text-[15px] text-[14px]">
-                    Message
-                </label>
-
-                <textarea
-                rows="6"
-                name="message"
-                value={formik.values.message}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                placeholder="You can be brief or very expressive. No pressure!"
-                className="md:py-3 ss:py-3 py-2 px-4 border-none 
-                outline-none text-white md:rounded-[3px]
-                ss:rounded-[3px] rounded-[3px]
-                md:placeholder:text-[14px] 
-                ss:placeholder:text-[13px] 
-                placeholder:text-[12px] bg-primaryalt"
-                />
-
-                <p className="text-mainRed md:text-[12px] 
-                ss:text-[12px] text-[11px] md:mt-2 ss:mt-2 mt-1"
-                >
-                    {formik.touched.message ? formik.errors.message : ''}
-                </p>
-            </div>
-
-            <div className="col-span-2 md:mt-0 ss:mt-0 mt-5">
-                <button
-                type="submit"
-                className="bg-secondary grow4 cursor-pointer
-                md:text-[16px] ss:text-[14px] text-[14px] md:py-3.5 
-                ss:py-3 py-3 md:px-20 ss:px-16 px-14
-                "
-                >
-                    {Loading2 ? 'Sending...' : 'Send Message'}
-                </button>
-            </div>
-        </form>
 
 
         {modalOpen && (
