@@ -7,6 +7,7 @@ import { HiOutlineInformationCircle, HiOutlineTrash } from "react-icons/hi2";
 import { BsPersonCheck } from "react-icons/bs";
 import { CiMail } from "react-icons/ci";
 import { motion, AnimatePresence } from 'framer-motion';
+import { useSession } from 'next-auth/react';
 import { AiOutlineDoubleLeft, AiOutlineLeft, AiOutlineRight, AiOutlineDoubleRight } from 'react-icons/ai';
 
 const DeleteModal = ({ isOpen, onClose, onDelete }) => {
@@ -78,6 +79,7 @@ const RequestsPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedRequest, setSelectedRequest] = useState(null);
+  const { data: session, status } = useSession();
   const router = useRouter();
 
   useEffect(() => {
@@ -136,8 +138,12 @@ const RequestsPage = () => {
   };
 
   const handleOpenModal = (request) => {
-    setSelectedRequest(request);
-    setIsModalOpen(true);
+    if (status === 'authenticated') {
+      setSelectedRequest(request);
+      setIsModalOpen(true);
+    } else {
+      alert('You need to be authenticated to perform this action.');
+    }
   };
 
   const handleCloseModal = () => {
