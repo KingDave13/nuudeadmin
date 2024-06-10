@@ -8,7 +8,7 @@ export const GET = async (req, { params }) => {
     await connectToDb();
 
     const member = await Member.findById(id);
-    if (!formData) {
+    if (!member) {
       return new Response(JSON.stringify({ success: false, message: 'Member not found' }), {
         status: 404,
       });
