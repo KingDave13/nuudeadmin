@@ -1,5 +1,7 @@
 import { connectToDb } from '@utils/database';
 import FormData from '@models/formData';
+import Guest from '@models/guests';
+import Member from '@models/members';
 
 export const GET = async (req, { params }) => {
   const { id } = params;
