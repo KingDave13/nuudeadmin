@@ -177,7 +177,7 @@ const MembersPage = () => {
       <div className="items-center w-full flex flex-col md:gap-8 
       font-manierRegular">
         <div className='w-full'>
-          <h1 className='text-secondary md:text-[22px] 
+          <h1 className='text-secondary md:text-[25px] 
           ss:text-[20px] text-[18px]'>
             Members
           </h1>
@@ -200,7 +200,7 @@ const MembersPage = () => {
                   <tr key={data._id} 
                   className='hover:bg-gray-800 border-b border-textalt'>
                     <td className="px-4 py-3.5">{`${data.firstName} ${data.lastName}`}</td>
-                    <td className="px-4 py-3.5">{data.membershipStatus}</td>
+                    <td className="px-4 py-3.5 text-secondary">Active</td>
                     <td className="px-4 py-3.5">{data.email}</td>
                     
                     <td className="ml-32 mt-4 flex gap-4 text-[21px]
