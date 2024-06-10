@@ -8,6 +8,7 @@ import { BsPersonCheck } from "react-icons/bs";
 import { CiMail } from "react-icons/ci";
 import { motion, AnimatePresence } from 'framer-motion';
 import { useSession } from 'next-auth/react';
+import { GoCheckCircle } from "react-icons/go";
 import { AiOutlineDoubleLeft, AiOutlineLeft, AiOutlineRight, AiOutlineDoubleRight } from 'react-icons/ai';
 
 
@@ -73,6 +74,52 @@ const ApproveModal = ({ isOpen, onClose, onApprove}) => {
   );
 };
 
+const NotificationModal = ({ isOpen, onClose }) => {
+  useEffect(() => {
+    if (isOpen) {
+      const timer = setTimeout(onClose, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen, onClose]);
+
+  if (!isOpen) return null;
+
+  return (
+    <AnimatePresence>
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 flex items-center justify-center
+        bg-black bg-opacity-50 z-50">
+        <motion.div 
+          initial={{ y: 0, opacity: 0.7 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: 10, opacity: 0 }}
+          transition={{ duration: 0.1 }}
+          className="bg-primaryalt md:p-12 ss:p-10 p-4 rounded-md shadow-xl 
+          flex flex-col justify-center w-auto h-auto items-center gap-5">
+          <div className='flex flex-col w-full justify-center 
+          items-center gap-5'>
+            <GoCheckCircle
+              className='text-[70px] text-secondary'
+            />
+
+            <h1 className='text-white md:text-[30px] ss:text-[30px]
+            text-[20px] text-center font-manierMedium'>
+              Request Approved
+            </h1>
+
+            <p className='text-white md:text-[16px] ss:text-[16px]
+            text-[14px] text-center'>
+              This user's request has been approved!
+            </p>
+          </div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  );
+};
 
 const DeleteModal = ({ isOpen, onClose, onDelete }) => {
   if (!isOpen) return null;
@@ -144,6 +191,7 @@ const RequestsPage = () => {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isApproveModalOpen, setIsApproveModalOpen] = useState(false);
   const [selectedRequest, setSelectedRequest] = useState(null);
+  const [isNotificationOpen, setIsNotificationOpen] = useState(false);
   const { data: session, status } = useSession();
   const router = useRouter();
 
@@ -272,9 +320,14 @@ const RequestsPage = () => {
 
       setFormData((prevData) => prevData.filter(request => request._id !== selectedRequest._id));
       handleCloseApproveModal();
+      setIsNotificationOpen(true);
     } catch (error) {
       console.error('Failed to approve request:', error);
     }
+  };
+
+  const handleCloseNotification = () => {
+    setIsNotificationOpen(false);
   };
 
 
@@ -398,6 +451,11 @@ const RequestsPage = () => {
           isOpen={isApproveModalOpen}
           onClose={handleCloseApproveModal}
           onApprove={handleApproveRequest}
+        />
+
+        <NotificationModal
+          isOpen={isNotificationOpen}
+          onClose={handleCloseNotification}
         />
       </div>
     </section>
