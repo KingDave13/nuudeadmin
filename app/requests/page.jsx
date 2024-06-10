@@ -251,13 +251,12 @@ const RequestsPage = () => {
     if (!selectedRequest) return;
 
     try {
-      const response = await fetch(`/api/requests/approve`, {
+      const response = await fetch(`/api/requests/${selectedRequest._id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          id: selectedRequest._id,
           paymentType: selectedRequest.paymentType,
         }),
       });
@@ -273,6 +272,7 @@ const RequestsPage = () => {
       console.error('Failed to approve request:', error);
     }
   };
+
 
   return (
     <section className="md:min-h-[800px] ss:min-h-[620px] min-h-[650px] 

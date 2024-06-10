@@ -48,3 +48,33 @@ export const DELETE = async (req, { params }) => {
     });
   }
 };
+
+export const PATCH = async (req, { params }) => {
+  const { id } = params;
+
+  try {
+      await connectToDb();
+      const { paymentType } = await req.json();
+      const formData = await FormData.findById(id);
+
+      if (!formData) {
+          return new Response(JSON.stringify({ success: false, message: 'Request not found' }), {
+              status: 404,
+          });
+      }
+
+      const NewModel = paymentType === 'Guest Ticket' ? Guest : Member;
+      const newRecord = new NewModel(formData.toObject());
+      await newRecord.save();
+      await FormData.findByIdAndDelete(id);
+
+      return new Response(JSON.stringify({ success: true, message: 'Request approved' }), {
+          status: 200,
+      });
+  } catch (error) {
+      console.error('Error approving request:', error);
+      return new Response(JSON.stringify({ success: false, message: 'Internal Server Error', error: error.message }), {
+          status: 500,
+      });
+  }
+};
