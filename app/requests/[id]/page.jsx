@@ -5,6 +5,118 @@ import { useEffect, useState } from 'react';
 import { HiArrowNarrowLeft } from "react-icons/hi";
 import { HiOutlineArrowTopRightOnSquare, HiOutlineInformationCircle } from "react-icons/hi2";
 import { motion, AnimatePresence } from 'framer-motion';
+import { useSession } from 'next-auth/react';
+import { GoCheckCircle } from "react-icons/go";
+
+
+const ApproveModal = ({ isOpen, onClose, onApprove}) => {
+  if (!isOpen) return null;
+
+  return (
+    <AnimatePresence>
+      <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 flex items-center justify-center
+      bg-black bg-opacity-80 z-50">
+        <motion.div 
+        initial={{ y: 0, opacity: 0.7 }}
+        animate={{ y: 0, opacity: 1 }}
+        exit={{ y: 10, opacity: 0 }}
+        transition={{ duration: 0.1 }}
+        className="bg-primaryalt md:p-12 ss:p-10 p-4 rounded-md shadow-xl 
+        flex flex-col justify-center w-auto h-auto items-center gap-5">
+          <HiOutlineInformationCircle
+            className='text-[70px] text-secondary'
+          />
+
+          <div className='flex flex-col w-full justify-center 
+          items-center gap-5'>
+            <h1 className='text-white md:text-[30px] ss:text-[30px]
+            text-[20px] text-center font-manierMedium'>
+              Are you sure?
+            </h1>
+
+            <p className='text-white md:text-[16px] ss:text-[16px]
+            text-[14px] text-center'>
+              Are you sure you want to approve this request?
+            </p>
+
+            <div className='flex gap-5'>
+              <button
+              onClick={onApprove}
+              className='grow4 bg-secondary border-none w-full
+              md:text-[15px] ss:text-[15px] text-[13px] md:py-2.5
+              ss:py-2.5 py-2 md:px-12 ss:px-10 px-6 text-primary 
+              rounded-md cursor-pointer'
+              >
+                Approve
+              </button>
+
+              <button
+              onClick={onClose}
+              className='grow4 border-[1px] border-secondary w-full
+              md:text-[15px] ss:text-[15px] text-[13px] md:py-2.5
+              ss:py-2.5 py-2 md:px-12 ss:px-10 px-6 text-secondary 
+              rounded-md cursor-pointer'
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  );
+};
+
+const NotificationModal = ({ isOpen, onClose }) => {
+  useEffect(() => {
+    if (isOpen) {
+      const timer = setTimeout(onClose, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen, onClose]);
+
+  if (!isOpen) return null;
+
+  return (
+    <AnimatePresence>
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className="fixed inset-0 flex items-center justify-center
+        bg-black bg-opacity-50 z-50">
+        <motion.div 
+          initial={{ y: 0, opacity: 0.7 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: 10, opacity: 0 }}
+          transition={{ duration: 0.1 }}
+          className="bg-primaryalt md:p-12 ss:p-10 p-4 rounded-md shadow-xl 
+          flex flex-col justify-center w-auto h-auto items-center gap-5">
+          <div className='flex flex-col w-full justify-center 
+          items-center gap-5'>
+            <GoCheckCircle
+              className='text-[70px] text-secondary'
+            />
+
+            <h1 className='text-white md:text-[30px] ss:text-[30px]
+            text-[20px] text-center font-manierMedium'>
+              Request Approved
+            </h1>
+
+            <p className='text-white md:text-[16px] ss:text-[16px]
+            text-[14px] text-center'>
+              This user's request has been approved!
+            </p>
+          </div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
+  );
+};
 
 const DeleteModal = ({ isOpen, onClose, onDelete }) => {
   if (!isOpen) return null;
@@ -75,6 +187,9 @@ const UserDetails = ({ params }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isApproveModalOpen, setIsApproveModalOpen] = useState(false);
+  const [isNotificationOpen, setIsNotificationOpen] = useState(false);
+  const { data: session, status } = useSession();
 
   const { id } = params;
 
@@ -105,6 +220,20 @@ const UserDetails = ({ params }) => {
     setIsModalOpen(false);
   };
 
+  const handleOpenApproveModal = (request) => {
+    if (status === 'authenticated') {
+      setSelectedRequest(request);
+      setIsApproveModalOpen(true);
+    } else {
+      alert('You need to be authenticated to perform this action.');
+    }
+  };
+
+  const handleCloseApproveModal = () => {
+    setSelectedRequest(null);
+    setIsApproveModalOpen(false);
+  };
+
   const handleDeleteRequest = async () => {
     try {
       const response = await fetch(`/api/requests/${id}`, {
@@ -122,6 +251,37 @@ const UserDetails = ({ params }) => {
     } finally {
       handleCloseModal();
     }
+  };
+
+  const handleApproveRequest = async () => {
+    if (!selectedRequest) return;
+
+    try {
+      const response = await fetch(`/api/requests/${selectedRequest._id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          paymentType: selectedRequest.paymentType,
+        }),
+      });
+
+      if (!response.ok) {
+        console.error('Failed to approve:', response.status, response.statusText);
+        return;
+      }
+
+      setFormData((prevData) => prevData.filter(request => request._id !== selectedRequest._id));
+      handleCloseApproveModal();
+      setIsNotificationOpen(true);
+    } catch (error) {
+      console.error('Failed to approve request:', error);
+    }
+  };
+
+  const handleCloseNotification = () => {
+    setIsNotificationOpen(false);
   };
 
   if (loading) return <div>Loading...</div>;
@@ -357,6 +517,7 @@ const UserDetails = ({ params }) => {
           <button className='bg-secondary px-10 py-3.5 rounded-md grow4
           cursor-pointer text-primary md:text-[15px] ss:text-[15px]
           text-[12px]'
+          onClick={() => handleOpenApproveModal(userData)}
           >
             Approve {userData.paymentType}
           </button>
@@ -374,6 +535,17 @@ const UserDetails = ({ params }) => {
           isOpen={isModalOpen}
           onClose={handleCloseModal}
           onDelete={handleDeleteRequest}
+        />
+
+        <ApproveModal 
+          isOpen={isApproveModalOpen}
+          onClose={handleCloseApproveModal}
+          onApprove={handleApproveRequest}
+        />
+
+        <NotificationModal
+          isOpen={isNotificationOpen}
+          onClose={handleCloseNotification}
         />
       </div>
     </section>
