@@ -111,6 +111,11 @@ const NotificationModal = ({ isOpen, onClose }) => {
             text-[14px] text-center'>
               This user's request has been approved!
             </p>
+
+            <p className='text-textalt md:text-[14px] ss:text-[14px]
+            text-[11px] text-center'>
+              Redirecting back to <span className='text-secondary'>Requests...</span>
+            </p>
           </div>
         </motion.div>
       </motion.div>
@@ -187,6 +192,7 @@ const UserDetails = ({ params }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedRequest, setSelectedRequest] = useState(null);
   const [isApproveModalOpen, setIsApproveModalOpen] = useState(false);
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
   const { data: session, status } = useSession();
@@ -272,9 +278,10 @@ const UserDetails = ({ params }) => {
         return;
       }
 
-      setFormData((prevData) => prevData.filter(request => request._id !== selectedRequest._id));
+      setUserData((prevData) => prevData.filter(request => request._id !== selectedRequest._id));
       handleCloseApproveModal();
       setIsNotificationOpen(true);
+      router.push('/requests');
     } catch (error) {
       console.error('Failed to approve request:', error);
     }
