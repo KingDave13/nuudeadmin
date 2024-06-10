@@ -5,7 +5,7 @@ export const GET = async (req) => {
     try {
         await connectToDb();
 
-        const formDataList = await FormData.find({});
+        const formDataList = await FormData.find({}).sort({ _id: -1 });
         
         return new Response(JSON.stringify({ success: true, data: formDataList }), {
             status: 200,
