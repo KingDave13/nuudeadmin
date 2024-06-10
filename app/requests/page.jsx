@@ -11,7 +11,7 @@ import { useSession } from 'next-auth/react';
 import { AiOutlineDoubleLeft, AiOutlineLeft, AiOutlineRight, AiOutlineDoubleRight } from 'react-icons/ai';
 
 
-const ApproveModal = ({ isOpen, onClose, onApprove }) => {
+const ApproveModal = ({ isOpen, onClose, onApprove}) => {
   if (!isOpen) return null;
 
   return (
@@ -29,11 +29,15 @@ const ApproveModal = ({ isOpen, onClose, onApprove }) => {
         transition={{ duration: 0.1 }}
         className="bg-primaryalt md:p-12 ss:p-10 p-4 rounded-md shadow-xl 
         flex flex-col justify-center w-auto h-auto items-center gap-5">
+          <HiOutlineInformationCircle
+            className='text-[70px] text-secondary'
+          />
+
           <div className='flex flex-col w-full justify-center 
           items-center gap-5'>
             <h1 className='text-white md:text-[30px] ss:text-[30px]
             text-[20px] text-center font-manierMedium'>
-              Confirm Approval
+              Are you sure?
             </h1>
 
             <p className='text-white md:text-[16px] ss:text-[16px]
