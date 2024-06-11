@@ -172,8 +172,7 @@ const MembersPage = () => {
   };
 
   return (
-    <section className="md:min-h-[800px] ss:min-h-[620px] min-h-[650px] 
-    flex items-center md:px-16 px-6">
+    <section className="flex items-center md:px-16 px-6 md:mt-60">
       <div className="items-center w-full flex flex-col md:gap-8 
       font-manierRegular">
         <div className='w-full'>

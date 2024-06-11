@@ -77,7 +77,7 @@ const ApproveModal = ({ isOpen, onClose, onApprove}) => {
 const NotificationModal = ({ isOpen, onClose }) => {
   useEffect(() => {
     if (isOpen) {
-      const timer = setTimeout(onClose, 4000);
+      const timer = setTimeout(onClose, 3000);
       return () => clearTimeout(timer);
     }
   }, [isOpen, onClose]);
@@ -332,8 +332,7 @@ const RequestsPage = () => {
 
 
   return (
-    <section className="md:min-h-[800px] ss:min-h-[620px] min-h-[650px] 
-    flex items-center md:px-16 px-6">
+    <section className="flex items-center md:px-16 px-6 md:mt-60">
       <div className="items-center w-full flex flex-col md:gap-8 
       font-manierRegular">
         <div className='w-full'>
