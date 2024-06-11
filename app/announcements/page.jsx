@@ -6,7 +6,7 @@ import emailjs from '@emailjs/browser';
 import { useFormik } from "formik";
 import * as Yup from 'yup';
 
-const Modal = ({ onClose, onSendToMembers, onSendToGuests, onSendToBoth }) => {
+const Modal = ({ onClose, onSendToMembers, onSendToBoth }) => {
   return (
     <div className="fixed inset-0 flex items-center justify-center
       bg-black bg-opacity-50 z-50 font-manierRegular">
@@ -25,21 +25,14 @@ const Modal = ({ onClose, onSendToMembers, onSendToGuests, onSendToBoth }) => {
           >
             Send to Members
           </button>
-          <button
-            onClick={onSendToGuests}
-            className="bg-secondary grow4 cursor-pointer rounded-md
-            md:text-[16px] ss:text-[14px] text-[14px] md:py-3.5 
-            ss:py-3 py-3 md:px-16 ss:px-16 px-14"
-          >
-            Send to Guests
-          </button>
+    
           <button
             onClick={onSendToBoth}
             className="bg-secondary grow4 cursor-pointer rounded-md
             md:text-[16px] ss:text-[14px] text-[14px] md:py-3.5 
             ss:py-3 py-3 md:px-16 ss:px-16 px-14"
           >
-            Send to Both
+            Send to Members/Guests
           </button>
           <button
             onClick={onClose}
@@ -116,10 +109,6 @@ const MessagePage = () => {
 
   const handleSendToMembers = () => {
     handleEmailSend('members');
-  };
-
-  const handleSendToGuests = () => {
-    handleEmailSend('guests');
   };
 
   const handleSendToBoth = () => {
@@ -249,7 +238,6 @@ const MessagePage = () => {
             enableScroll();
           }}
           onSendToMembers={handleSendToMembers}
-          onSendToGuests={handleSendToGuests}
           onSendToBoth={handleSendToBoth}
         />
       )}
