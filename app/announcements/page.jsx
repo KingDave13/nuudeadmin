@@ -1,7 +1,6 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { useFormik } from "formik";
 import * as Yup from 'yup';
@@ -50,33 +49,9 @@ const Modal = ({ onClose, onSendToMembers, onSendToBoth }) => {
 };
 
 const MessagePage = () => {
-  const router = useRouter();
-  const [formData, setFormData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
-
-  useEffect(() => {
-    const fetchFormData = async () => {
-      try {
-        const response = await fetch('/api/requests');
-        if (!response.ok) {
-          console.error('Failed to fetch:', response.status, response.statusText);
-          return;
-        }
-        const result = await response.json();
-        if (result.success) {
-          setFormData(result.data);
-        } else {
-          console.error('API returned an error:', result.message);
-        }
-      } catch (error) {
-        console.error('Failed to fetch form data:', error);
-      }
-    };
-
-    fetchFormData();
-  }, []);
 
   const disableScroll = () => {
     setScrollPosition(window.pageYOffset);
@@ -107,15 +82,42 @@ const MessagePage = () => {
     },
   });
 
-  const handleSendToMembers = () => {
-    handleEmailSend('members');
+  const handleSendToMembers = async () => {
+    
+    const response = await fetch('/api/members');
+    if (!response.ok) {
+      console.error('Failed to fetch members:', response.status, response.statusText);
+      return;
+    }
+    const result = await response.json();
+    if (!result.success) {
+      console.error('API returned an error:', result.message);
+      return;
+    }
+    const membersEmails = result.data.map(member => member.email);
+  
+    
+    handleEmailSend('members', membersEmails);
   };
+  
+  const handleSendToBoth = async () => {
 
-  const handleSendToBoth = () => {
-    handleEmailSend('both');
+    const response = await fetch('/api/guests');
+    if (!response.ok) {
+      console.error('Failed to fetch guests:', response.status, response.statusText);
+      return;
+    }
+    const result = await response.json();
+    if (!result.success) {
+      console.error('API returned an error:', result.message);
+      return;
+    }
+    const guestsEmails = result.data.map(guest => guest.email);
+  
+    handleEmailSend('both', [...membersEmails, ...guestsEmails]);
   };
-
-  const handleEmailSend = (recipientType) => {
+  
+  const handleEmailSend = (recipientType, emailList) => {
     setLoading(true);
     emailjs.send(
       'service_skvhseu',
@@ -124,7 +126,7 @@ const MessagePage = () => {
         from_name: 'Nuude!',
         to_name: 'Anayo Okpala Global Concept',
         from_email: 'contact@nuude.club',
-        to_email: 'contact@anayookpalaglobalconcept.com',
+        to_email: emailList.join(','),
         subject: formik.values.subject,
         message: `${formik.values.message} [Send to: ${recipientType}]`,
       },
