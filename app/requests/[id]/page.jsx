@@ -192,7 +192,6 @@ const UserDetails = ({ params }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedRequest, setSelectedRequest] = useState(null);
   const [isApproveModalOpen, setIsApproveModalOpen] = useState(false);
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
   const { data: session, status } = useSession();
@@ -226,9 +225,8 @@ const UserDetails = ({ params }) => {
     setIsModalOpen(false);
   };
 
-  const handleOpenApproveModal = (request) => {
+  const handleOpenApproveModal = () => {
     if (status === 'authenticated') {
-      setSelectedRequest(request);
       setIsApproveModalOpen(true);
     } else {
       alert('You need to be authenticated to perform this action.');
@@ -236,7 +234,6 @@ const UserDetails = ({ params }) => {
   };
 
   const handleCloseApproveModal = () => {
-    setSelectedRequest(null);
     setIsApproveModalOpen(false);
   };
 
@@ -260,16 +257,15 @@ const UserDetails = ({ params }) => {
   };
 
   const handleApproveRequest = async () => {
-    if (!selectedRequest) return;
 
     try {
-      const response = await fetch(`/api/requests/${selectedRequest._id}`, {
+      const response = await fetch(`/api/requests/${id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          paymentType: selectedRequest.paymentType,
+          paymentType: userData.paymentType,
         }),
       });
 
@@ -278,10 +274,11 @@ const UserDetails = ({ params }) => {
         return;
       }
 
-      setUserData((prevData) => prevData.filter(request => request._id !== selectedRequest._id));
       handleCloseApproveModal();
       setIsNotificationOpen(true);
-      router.push('/requests');
+      setTimeout(() => {
+        router.push('/requests');
+      }, 5000);
     } catch (error) {
       console.error('Failed to approve request:', error);
     }
