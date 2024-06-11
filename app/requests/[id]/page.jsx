@@ -74,7 +74,7 @@ const ApproveModal = ({ isOpen, onClose, onApprove}) => {
 const NotificationModal = ({ isOpen, onClose }) => {
   useEffect(() => {
     if (isOpen) {
-      const timer = setTimeout(onClose, 5000);
+      const timer = setTimeout(onClose, 4000);
       return () => clearTimeout(timer);
     }
   }, [isOpen, onClose]);
@@ -278,7 +278,7 @@ const UserDetails = ({ params }) => {
       setIsNotificationOpen(true);
       setTimeout(() => {
         router.push('/requests');
-      }, 5000);
+      }, 4000);
     } catch (error) {
       console.error('Failed to approve request:', error);
     }
