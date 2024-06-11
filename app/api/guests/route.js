@@ -1,13 +1,17 @@
 import { connectToDb } from "@utils/database";
 import Guest from "@models/guests";
+import Member from "@models/members";
 
 export const GET = async (req) => {
     try {
         await connectToDb();
 
         const guestsList = await Guest.find({}).sort({ _id: -1 });
-        
-        return new Response(JSON.stringify({ success: true, data: guestsList }), {
+        const membersList = await Member.find({}).sort({ _id: -1 });
+
+        const combinedList = [...membersList, ...guestsList];
+
+        return new Response(JSON.stringify({ success: true, data: combinedList }), {
             status: 200,
         });
     } catch (error) {

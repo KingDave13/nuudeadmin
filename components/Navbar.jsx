@@ -61,7 +61,7 @@ const handleToggleClick = () => {
   return (
     <nav className={`${styles.paddingA} flex items-center w-full
       md:py-10 ss:py-6 py-5 top-0 z-20 navsmooth font-manierRegular
-      md:border-b-[1px] border-primaryalt`}
+      md:border-b-[1px] border-primaryalt bg-primary`}
     >
       <div className="w-full flex items-center mx-auto md:px-0 px-6">
         <div className='flex w-full justify-between hidden md:flex'>

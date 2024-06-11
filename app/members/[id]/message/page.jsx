@@ -115,7 +115,7 @@ const MessagePage = ({ params }) => {
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <section className="flex items-center md:px-16 px-6 md:mt-60">
+    <section className="flex items-center md:px-16 px-6 md:mt-60 pb-20">
         <div className="items-center w-full flex flex-col md:gap-10 
         font-manierRegular">
             <div className='w-full flex justify-between items-center'>
