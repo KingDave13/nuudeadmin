@@ -10,7 +10,6 @@ const UserDetails = ({ params }) => {
   const [userData, setUserData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { id } = params;
 
@@ -33,32 +32,6 @@ const UserDetails = ({ params }) => {
     }
   }, [id]);
 
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleDeleteRequest = async () => {
-    try {
-      const response = await fetch(`/api/members/${id}`, {
-        method: 'DELETE',
-      });
-
-      if (!response.ok) {
-        console.error('Failed to delete:', response.status, response.statusText);
-        return;
-      }
-
-      router.back();
-    } catch (error) {
-      console.error('Failed to delete request:', error);
-    } finally {
-      handleCloseModal();
-    }
-  };
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
