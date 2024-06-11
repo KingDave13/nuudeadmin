@@ -130,11 +130,13 @@ const GuestsPage = () => {
   };
 
   const handleUserDetail = (data) => {
-    router.push(`/guests/${data._id}`);
+    const route = data.type === 'member' ? `/members/${data._id}` : `/guests/${data._id}`;
+    router.push(route);
   };
 
   const handleUserMail = (data) => {
-    router.push(`/guests/${data._id}/message`);
+    const route = data.type === 'member' ? `/members/${data._id}/message` : `/guests/${data._id}/message`;
+    router.push(route);
   };
 
   const handleOpenDeleteModal = (guest) => {

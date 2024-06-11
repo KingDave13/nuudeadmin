@@ -9,7 +9,12 @@ export const GET = async (req) => {
         const guestsList = await Guest.find({}).sort({ _id: -1 });
         const membersList = await Member.find({}).sort({ _id: -1 });
 
-        const combinedList = [...membersList, ...guestsList];
+
+        const guestsWithType = guestsList.map(guest => ({ ...guest.toObject(), type: 'guest' }));
+        const membersWithType = membersList.map(member => ({ ...member.toObject(), type: 'member' }));
+
+    
+        const combinedList = [...membersWithType, ...guestsWithType];
 
         return new Response(JSON.stringify({ success: true, data: combinedList }), {
             status: 200,
