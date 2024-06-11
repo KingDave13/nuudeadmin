@@ -141,12 +141,18 @@ const GuestsPage = () => {
 
   const handleOpenDeleteModal = (guest) => {
     if (status === 'authenticated') {
-      setSelectedGuest(guest);
-      setIsDeleteModalOpen(true);
+     
+      if (guest.type !== 'member') {
+        setSelectedGuest(guest);
+        setIsDeleteModalOpen(true);
+      } else {
+        alert('Members cannot be deleted.');
+      }
     } else {
       alert('You need to be authenticated to perform this action.');
     }
   };
+  
 
   const handleCloseDeleteModal = () => {
     setSelectedGuest(null);
