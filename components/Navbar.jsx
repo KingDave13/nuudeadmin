@@ -21,12 +21,14 @@ const Navbar = () => {
   const router = useRouter();
 
   useEffect(() => {
-    const currentPath = pathname.split('/')[1];
-    const activeLink = sideLinks.find(link => link.route.includes(currentPath));
-    if (activeLink) {
-      setActive(activeLink.title);
+    if (session) {
+      const currentPath = pathname.split('/')[1];
+      const activeLink = sideLinks.find(link => link.route.includes(currentPath));
+      if (activeLink) {
+        setActive(activeLink.title);
+      }
     }
-  }, [pathname]);
+  }, [pathname, session]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -43,20 +45,24 @@ const Navbar = () => {
     };
   }, []);
 
-const handleSideItemClick = (link) => {
-  setActive(link.title);
-  router.push(link.route)
-};
+  const handleSideItemClick = (link) => {
+    if (session) {
+      setActive(link.title);
+      router.push(link.route);
+    }
+  };
 
-const handleLogout = () => {
-  signOut({ callbackUrl: 'http://localhost:3001' });
-};
+  const handleLogout = () => {
+    if (session) {
+      signOut({ callbackUrl: 'http://localhost:3001' });
+    }
+  };
 
-const handleToggleClick = () => {
-  if (session) {
-    setToggle(!toggle);
-  }
-};
+  const handleToggleClick = () => {
+    if (session) {
+      setToggle(!toggle);
+    }
+  };
 
   return (
     <nav className={`${styles.paddingA} flex items-center w-full
