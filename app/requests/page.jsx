@@ -428,7 +428,7 @@ const RequestsPage = () => {
           <div className="flex md:justify-end justify-between items-center 
           mt-6 text-textalt md:text-[15px] ss:text-[15px] text-[14px]">
             <div className="flex items-center">
-              <span className="mr-2">Rows per page:</span>
+              <span className="ss:mr-2 mr-1">Rows per page:</span>
 
               <div className='relative flex items-center'>
                 <select 
@@ -448,13 +448,13 @@ const RequestsPage = () => {
               </div>
             </div>
 
-            <div className="flex items-center ml-10 md:mr-5">
+            <div className="flex items-center ss:ml-8 ml-6 md:mr-5">
               <span>{`${(currentPage - 1) * rowsPerPage + 1}-${Math.min(currentPage * rowsPerPage, totalRows)} 
                 of ${totalRows}`}
               </span>
 
               <button onClick={handleFirstPage} 
-              className="ml-10">
+              className="ss:ml-10 ml-8">
                 <AiOutlineDoubleLeft />
               </button>
 
