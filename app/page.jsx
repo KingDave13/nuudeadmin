@@ -18,26 +18,34 @@ const Modal = ({ onClose, setModalContent, showOkButton }) => {
     document.body.style.top = '0';
   };
 
-  const handleClick = () => {
+  const handleClickOutside = (event) => {
+    if (modalRef.current && !modalRef.current.contains(event.target)) {
       onClose();
       enableScroll();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [onClose]);
+
+  const handleClick = () => {
+    onClose();
+    enableScroll();
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center 
-    bg-black bg-opacity-80 z-50">
-      <div ref={modalRef} className="bg-primaryalt md:p-8 ss:p-8 p-6 
-      rounded-md shadow-xl flex flex-col justify-center w-auto h-auto 
-      font-manierRegular items-center">
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-80 z-50">
+      <div ref={modalRef} className="bg-primaryalt md:p-8 ss:p-8 p-6 rounded-md shadow-xl flex flex-col justify-center w-auto h-auto font-manierRegular items-center">
         <div className='flex flex-col w-full justify-center items-center'>
           {setModalContent && setModalContent()}
           {showOkButton && (
             <button
               onClick={handleClick}
-              className='grow4 bg-secondary border-none md:text-[13px] 
-              ss:text-[14px] text-[13px] md:py-2 ss:py-3 py-2 md:px-7 
-              ss:px-7 px-5 text-primary md:rounded-[3px] ss:rounded-[3px]
-              rounded-[3px] font-manierMedium cursor-pointer'
+              className='grow4 bg-secondary border-none md:text-[13px] ss:text-[14px] text-[13px] md:py-2 ss:py-3 py-2 md:px-7 ss:px-7 px-5 text-primary md:rounded-[3px] ss:rounded-[3px] rounded-[3px] font-manierMedium cursor-pointer'
             >
               OK
             </button>
@@ -47,6 +55,7 @@ const Modal = ({ onClose, setModalContent, showOkButton }) => {
     </div>
   );
 };
+
 
 const ForgotPasswordModalContent = ({ onSubmit }) => (
   <>
