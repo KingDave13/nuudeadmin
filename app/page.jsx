@@ -60,8 +60,8 @@ const Modal = ({ onClose, setModalContent, showOkButton }) => {
 const ForgotPasswordModalContent = ({ onSubmit }) => (
   <>
     <h1 className='text-white md:text-[16px] ss:text-[20px] text-[15px] 
-    text-center md:mb-4 ss:mb-4 mb-3'>
-      Enter your email to reset password.
+    text-center md:mb-5 ss:mb-4 mb-3'>
+      Enter your email to reset password
     </h1>
     <form onSubmit={onSubmit} className='flex flex-col w-full'>
       <input 
@@ -73,7 +73,7 @@ const ForgotPasswordModalContent = ({ onSubmit }) => (
       text-white md:rounded-[5px] ss:rounded-[3px] rounded-[3px]
       placeholder:text-textalt focus:outline-none 
       md:placeholder:text-[14px] ss:placeholder:text-[12px] 
-      placeholder:text-[12px] bg-primary mb-4" 
+      placeholder:text-[12px] bg-primary mb-5" 
       />
       <button type="submit" 
       className="grow4 bg-secondary border-none md:text-[13px] 
@@ -215,11 +215,11 @@ const Login = () => {
     <section className="flex w-full items-center justify-center 
     md:h-[70vh] ss:h-[80vh] h-[80vh] md:px-16 px-6 md:mt-40 ss:mt-52 mt-52">
       {modalOpen && (
-        <Modal 
-          onClose={() => setModalOpen(false)} 
-          setModalContent={modalContent}
-          showOkButton={isIncorrectPasswordModal}
-        />
+        <Modal
+        onClose={() => setModalOpen(false)}
+        setModalContent={modalContent}
+        showOkButton={!isIncorrectPasswordModal && modalContent === ForgotPasswordModalContent}
+      />      
       )}
 
       <div
