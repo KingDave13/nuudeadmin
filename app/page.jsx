@@ -10,7 +10,7 @@ import { signIn } from "next-auth/react";
 import emailjs from '@emailjs/browser';
 import SectionWrapperAlt from '@hoc/SectionWrapperAlt';
 
-const Modal = ({ onClose, setModalContent }) => {
+const Modal = ({ onClose, setModalContent, showOkButton }) => {
   const modalRef = useRef(null);
 
   const enableScroll = () => {
@@ -30,16 +30,18 @@ const Modal = ({ onClose, setModalContent }) => {
       rounded-md shadow-xl flex flex-col justify-center w-auto h-auto 
       font-manierRegular items-center">
         <div className='flex flex-col w-full justify-center items-center'>
-          {setModalContent()}
-          <button
-          onClick={handleClick}
-          className='grow4 bg-secondary border-none md:text-[13px] 
-          ss:text-[14px] text-[13px] md:py-2 ss:py-3 py-2 md:px-7 
-          ss:px-7 px-5 text-primary md:rounded-[3px] ss:rounded-[3px]
-          rounded-[3px] font-manierMedium cursor-pointer'
-          >
-            OK
-          </button>
+          {setModalContent && setModalContent()}
+          {showOkButton && (
+            <button
+              onClick={handleClick}
+              className='grow4 bg-secondary border-none md:text-[13px] 
+              ss:text-[14px] text-[13px] md:py-2 ss:py-3 py-2 md:px-7 
+              ss:px-7 px-5 text-primary md:rounded-[3px] ss:rounded-[3px]
+              rounded-[3px] font-manierMedium cursor-pointer'
+            >
+              OK
+            </button>
+          )}
         </div>
       </div>
     </div>
@@ -81,6 +83,7 @@ const Login = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState(null);
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [isIncorrectPasswordModal, setIsIncorrectPasswordModal] = useState(false);
 
   useEffect(() => {
     if (status === 'authenticated') {
@@ -120,6 +123,7 @@ const Login = () => {
           })
           if (res.error) {
             console.log(res.error, 'invalid credentials');
+            setIsIncorrectPasswordModal(true);
             setModalContent(() => () => (
               <h1 className='text-white md:text-[16px] ss:text-[20px] 
               text-[15px] text-center md:mb-4 ss:mb-4 mb-3'>
@@ -202,7 +206,11 @@ const Login = () => {
     <section className="flex w-full items-center justify-center 
     md:h-[70vh] ss:h-[80vh] h-[80vh] md:px-16 px-6 md:mt-40 ss:mt-52 mt-52">
       {modalOpen && (
-        <Modal onClose={() => setModalOpen(false)} setModalContent={modalContent} />
+        <Modal 
+          onClose={() => setModalOpen(false)} 
+          setModalContent={modalContent}
+          showOkButton={isIncorrectPasswordModal}
+        />
       )}
 
       <div
@@ -303,13 +311,21 @@ const Login = () => {
               Login
             </button>
 
-            <a 
-              href=""
+            <button
+              onClick={(event) => {
+                event.preventDefault();
+                setModalContent(() => () => 
+                  <ForgotPasswordModalContent
+                    onSubmit={handleForgotPassword} 
+                  />);
+                setModalOpen(true);
+                disableScroll();
+              }}
               className='text-secondary md:text-[16px] ss:text-[15px]
               text-[13px] grow2'
             >
               Forgot password?
-            </a>
+            </button>
           </div>
         </form>
       </div>
