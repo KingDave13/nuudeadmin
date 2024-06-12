@@ -154,7 +154,7 @@ const Login = () => {
     event.preventDefault();
     const email = event.target.email.value;
 
-    const response = await fetch('/api/check-email', {
+    const response = await fetch('/api/request-password-reset', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -163,42 +163,35 @@ const Login = () => {
     });
     const data = await response.json();
 
-    if (data.exists) {
-      const resetToken = Math.random().toString(36).substr(2);
-      const resetLink = `http://localhost:3001/password-reset?token=${resetToken}`;
-
-      // Save the reset token to the database
-      await fetch('/api/save-reset-token', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, resetToken }),
-      });
-
-      emailjs.send('your_service_id', 'your_template_id', {
-        email,
-        reset_link: resetLink,
-      }).then((result) => {
-        console.log('Password reset email sent:', result.text);
-      }, (error) => {
-        console.error('Failed to send password reset email:', error.text);
-      });
-
+    if (data.message === 'Email not found') {
       setModalContent(() => () => (
-        <h1 className='text-white md:text-[16px] ss:text-[20px] 
-        text-[15px] text-center md:mb-4 ss:mb-4 mb-3'>
-          Password reset link has been sent to your email.
-        </h1>
-      ));
-    } else {
-      setModalContent(() => () => (
-        <h1 className='text-white md:text-[16px] ss:text-[20px] 
-        text-[15px] text-center md:mb-4 ss:mb-4 mb-3'>
+        <h1 className='text-white md:text-[16px] ss:text-[20px] text-[15px] text-center md:mb-4 ss:mb-4 mb-3'>
           Email not found.
         </h1>
       ));
+      setModalOpen(true);
+      disableScroll();
+      return;
     }
+
+    const resetToken = data.resetToken;
+    const resetLink = `http://localhost:3001/password-reset?token=${resetToken}`;
+
+    emailjs.send('your_service_id', 'your_template_id', {
+      email,
+      reset_link: resetLink,
+    }).then((result) => {
+      console.log('Password reset email sent:', result.text);
+    }, (error) => {
+      console.error('Failed to send password reset email:', error.text);
+    });
+
+    setModalContent(() => () => (
+      <h1 className='text-white md:text-[16px] ss:text-[20px] text-[15px] 
+      text-center md:mb-4 ss:mb-4 mb-3'>
+        Password reset link has been sent to your email.
+      </h1>
+    ));
     setModalOpen(true);
     disableScroll();
   };
