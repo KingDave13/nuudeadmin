@@ -396,7 +396,6 @@ const RequestsPage = () => {
           </div>
           
           <div className='block md:hidden'>
-
             {displayedRows.map((data, index) => (
               <div key={data._id} 
               className='border-b border-textalt flex flex-col 
@@ -445,6 +444,7 @@ const RequestsPage = () => {
               </div>
             ))}
           </div>
+
           <div className="flex md:justify-end justify-between items-center 
           mt-6 text-textalt md:text-[15px] ss:text-[15px] text-[14px]">
             <div className="flex items-center">

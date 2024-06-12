@@ -26,30 +26,32 @@ const DeleteModal = ({ isOpen, onClose, onDelete }) => {
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 10, opacity: 0 }}
         transition={{ duration: 0.1 }}
-        className="bg-primaryalt md:p-12 ss:p-10 p-4 rounded-md shadow-xl 
-        flex flex-col justify-center w-auto h-auto items-center gap-5">
+        className="bg-primaryalt md:p-12 ss:p-10 p-6 rounded-md shadow-xl 
+        flex flex-col justify-center w-auto h-auto items-center md:gap-5
+        ss:gap-5 gap-3">
           <HiOutlineInformationCircle
-            className='text-[70px] text-secondary'
+            className='md:text-[70px] ss:text-[70px] text-[60px] 
+            text-secondary'
           />
 
           <div className='flex flex-col w-full justify-center 
-          items-center gap-5'>
+          items-center md:gap-5 ss:gap-5 gap-4'>
             <h1 className='text-white md:text-[30px] ss:text-[30px]
-            text-[20px] text-center font-manierMedium'>
+            text-[22px] text-center font-manierMedium'>
               Are you sure?
             </h1>
 
             <p className='text-white md:text-[16px] ss:text-[16px]
             text-[14px] text-center'>
-              Are you sure you want to delete this member?
+              Are you sure you want to delete this request?
             </p>
 
-            <div className='flex gap-5'>
+            <div className='flex md:gap-5 ss:gap-5 gap-4'>
               <button
               onClick={onDelete}
               className='grow4 bg-secondary border-none w-full
               md:text-[15px] ss:text-[15px] text-[13px] md:py-2.5
-              ss:py-2.5 py-2 md:px-12 ss:px-10 px-6 text-primary 
+              ss:py-2.5 py-2 md:px-12 ss:px-10 px-8 text-primary 
               rounded-md cursor-pointer'
               >
                 Delete
@@ -59,7 +61,7 @@ const DeleteModal = ({ isOpen, onClose, onDelete }) => {
               onClick={onClose}
               className='grow4 border-[1px] border-secondary w-full
               md:text-[15px] ss:text-[15px] text-[13px] md:py-2.5
-              ss:py-2.5 py-2 md:px-12 ss:px-10 px-6 text-secondary 
+              ss:py-2.5 py-2 md:px-12 ss:px-10 px-8 text-secondary 
               rounded-md cursor-pointer'
               >
                 Cancel
@@ -172,7 +174,8 @@ const MembersPage = () => {
   };
 
   return (
-    <section className="flex items-center md:px-16 px-6 md:mt-60 pb-20">
+    <section className="flex items-center md:px-16 px-6 md:mt-60 ss:mt-60
+    mt-56 pb-20">
       <div className="items-center w-full flex flex-col md:gap-8 
       font-manierRegular">
         <div className='w-full'>
@@ -183,7 +186,7 @@ const MembersPage = () => {
         </div>
 
         <div className="w-full">
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto hidden md:block">
             <table className="w-full text-white">
               <thead className='text-textalt md:text-[17px] ss:text-[17px]
               text-[15px]'>
@@ -223,10 +226,51 @@ const MembersPage = () => {
             </table>
           </div>
 
-          <div className="flex justify-end items-center mt-6 text-textalt
-          md:text-[15px] ss:text-[14px] text-[12px]">
+          <div className='block md:hidden'>
+            {displayedRows.map((data, index) => (
+              <div key={data._id} 
+              className='border-b border-textalt flex flex-col 
+              ss:text-[16px] text-[14px] ss:mt-6 mt-5 ss:pb-6 pb-5'>
+                <div className='flex flex-col ss:gap-5 gap-4 text-white'>
+                  <h1 className="flex ss:gap-5 gap-4">
+                    <span className='text-textalt'>Full Name:</span>
+                    {`${data.firstName} ${data.lastName}`}
+                  </h1>
+
+                  <h1 className="flex ss:gap-5 gap-4 text-secondary">
+                    <span className='text-textalt'>Membership Status</span>
+                    Active
+                  </h1>
+
+                  <h1 className="flex ss:gap-5 gap-4">
+                    <span className='text-textalt'>Email:</span>
+                    {data.email}
+                  </h1>
+                </div>
+                
+                <div className="ss:mt-6 mt-5 flex ss:gap-5 gap-4 
+                ss:text-[22px] text-[22px] font-bold text-white">
+                  <button onClick={() => handleUserDetail(data)}>
+                    <HiOutlineInformationCircle />
+                  </button>
+
+                  <button onClick={() => handleUserMail(data)}>
+                    <CiMail />
+                  </button>
+
+                  <button className='hover:text-brightRed navsmooth'
+                  onClick={() => handleOpenDeleteModal(data)}>
+                    <HiOutlineTrash />
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex md:justify-end justify-between items-center 
+          mt-6 text-textalt md:text-[15px] ss:text-[15px] text-[14px]">
             <div className="flex items-center">
-              <span className="mr-2">Rows per page:</span>
+              <span className="ss:mr-2 mr-1">Rows per page:</span>
 
               <div className='relative flex items-center'>
                 <select 
@@ -246,13 +290,13 @@ const MembersPage = () => {
               </div>
             </div>
 
-            <div className="flex items-center ml-10 mr-5">
+            <div className="flex items-center ss:ml-8 ml-6 md:mr-5">
               <span>{`${(currentPage - 1) * rowsPerPage + 1}-${Math.min(currentPage * rowsPerPage, totalRows)} 
                 of ${totalRows}`}
               </span>
 
               <button onClick={handleFirstPage} 
-              className="ml-10">
+              className="ss:ml-10 ml-8">
                 <AiOutlineDoubleLeft />
               </button>
 
