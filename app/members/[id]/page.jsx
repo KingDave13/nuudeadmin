@@ -37,9 +37,10 @@ const UserDetails = ({ params }) => {
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <section className="flex items-center md:px-16 px-6 md:mt-60 pb-20">
-      <div className="items-center w-full flex flex-col md:gap-8 
-      font-manierRegular">
+    <section className="flex items-center md:px-16 px-6 md:mt-60 ss:mt-60
+    mt-56 pb-20">
+      <div className="items-center w-full flex flex-col md:gap-8 ss:gap-8
+      gap-6 font-manierRegular">
         <div className='w-full flex justify-between items-center'>
           <div className='flex'>
             <h1 className='text-secondary md:text-[25px] ss:text-[20px] 
@@ -54,7 +55,7 @@ const UserDetails = ({ params }) => {
             <HiArrowNarrowLeft />
 
             <p className='text-primary md:text-[16px] ss:text-[16px]
-            text-[14px]'>
+            text-[13px]'>
               Go Back
             </p>
           </div>
@@ -63,7 +64,7 @@ const UserDetails = ({ params }) => {
         <div className="w-full grid grid-cols-2 md:gap-5 ss:gap-5 gap-3">
           <div className='flex flex-col gap-1'>
             <p className='text-textalt md:text-[16px] ss:text-16px]
-            text-[13px]'>
+            text-[14px]'>
               Full Name
             </p>
             <p className='text-white md:text-[17px] ss:text-17px]
@@ -74,7 +75,7 @@ const UserDetails = ({ params }) => {
           
           <div className='flex flex-col gap-1'>
             <p className='text-textalt md:text-[16px] ss:text-16px]
-            text-[13px]'>
+            text-[14px]'>
               Email Address
             </p>
             <p className='text-white md:text-[17px] ss:text-17px]
@@ -85,7 +86,7 @@ const UserDetails = ({ params }) => {
 
           <div className='flex flex-col gap-1'>
             <p className='text-textalt md:text-[16px] ss:text-16px]
-            text-[13px]'>
+            text-[14px]'>
               Phone Number
             </p>
             <p className='text-white md:text-[17px] ss:text-17px]
@@ -96,7 +97,7 @@ const UserDetails = ({ params }) => {
 
           <div className='flex flex-col gap-1'>
             <p className='text-textalt md:text-[16px] ss:text-16px]
-            text-[13px]'>
+            text-[14px]'>
               Date of Birth
             </p>
             <p className='text-white md:text-[17px] ss:text-17px]
@@ -107,7 +108,7 @@ const UserDetails = ({ params }) => {
 
           <div className='flex flex-col gap-1'>
             <p className='text-textalt md:text-[16px] ss:text-16px]
-            text-[13px]'>
+            text-[14px]'>
               Gender
             </p>
             <p className='text-white md:text-[17px] ss:text-17px]
@@ -118,7 +119,7 @@ const UserDetails = ({ params }) => {
 
           <div className='flex flex-col gap-1'>
             <p className='text-textalt md:text-[16px] ss:text-16px]
-            text-[13px]'>
+            text-[14px]'>
               Employer
             </p>
             <p className='text-white md:text-[17px] ss:text-17px]
@@ -129,7 +130,7 @@ const UserDetails = ({ params }) => {
 
           <div className='flex flex-col gap-1'>
             <p className='text-textalt md:text-[16px] ss:text-16px]
-            text-[13px]'>
+            text-[14px]'>
               Occupation
             </p>
             <p className='text-white md:text-[17px] ss:text-17px]
@@ -141,7 +142,7 @@ const UserDetails = ({ params }) => {
           <div className='flex justify-between items-center'>
             <div className='flex flex-col gap-1'>
               <p className='text-textalt md:text-[16px] ss:text-16px]
-              text-[13px]'>
+              text-[14px]'>
                 Instagram Handle
               </p>
               <p className='text-white md:text-[17px] ss:text-17px]
@@ -162,7 +163,7 @@ const UserDetails = ({ params }) => {
           <div className='flex justify-between items-center'>
             <div className='flex flex-col gap-1'>
               <p className='text-textalt md:text-[16px] ss:text-16px]
-              text-[13px]'>
+              text-[14px]'>
                 X (Twitter) Handle
               </p>
               <p className='text-white md:text-[17px] ss:text-17px]
@@ -183,7 +184,7 @@ const UserDetails = ({ params }) => {
           <div className='flex justify-between items-center'>
             <div className='flex flex-col gap-1'>
               <p className='text-textalt md:text-[16px] ss:text-16px]
-              text-[13px]'>
+              text-[14px]'>
                 Facebook Handle
               </p>
               <p className='text-white md:text-[17px] ss:text-17px]
@@ -203,7 +204,7 @@ const UserDetails = ({ params }) => {
 
           <div className='flex flex-col gap-1'>
             <p className='text-textalt md:text-[16px] ss:text-16px]
-            text-[13px]'>
+            text-[14px]'>
               What turns you on the most?
             </p>
             <p className='text-white md:text-[17px] ss:text-17px]
@@ -214,7 +215,7 @@ const UserDetails = ({ params }) => {
 
           <div className='flex flex-col gap-1'>
             <p className='text-textalt md:text-[16px] ss:text-16px]
-            text-[13px]'>
+            text-[14px]'>
               If you could amplify an erotic trait within yourself? 
               What would it be?
             </p>
@@ -226,7 +227,7 @@ const UserDetails = ({ params }) => {
 
           <div className='flex flex-col gap-1'>
             <p className='text-textalt md:text-[16px] ss:text-16px]
-            text-[13px]'>
+            text-[14px]'>
               What would you contribute to the Nuude! community?
             </p>
             <p className='text-white md:text-[17px] ss:text-17px]
@@ -237,7 +238,7 @@ const UserDetails = ({ params }) => {
 
           <div className='flex flex-col gap-1'>
             <p className='text-textalt md:text-[16px] ss:text-16px]
-            text-[13px]'>
+            text-[14px]'>
               And finally, how did you find us?
             </p>
             <p className='text-white md:text-[17px] ss:text-17px]

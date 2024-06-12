@@ -153,7 +153,7 @@ const MessagePage = ({ params }) => {
 
             <div className='w-full'>
                 <form onSubmit={formik.handleSubmit}
-                className="flex flex-col md:w-1/2 md:gap-8 ss:gap-6 gap-4">
+                className="flex flex-col md:w-1/2 ss:w-3/4 md:gap-8 ss:gap-6 gap-4">
                     <div className="flex flex-col">
                         <label className="text-white md:mb-3 ss:mb-2 mb-2 
                         md:text-[16px] ss:text-[15px] text-[14px]">
