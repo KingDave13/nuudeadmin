@@ -115,19 +115,20 @@ const MessagePage = ({ params }) => {
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <section className="flex items-center md:px-16 px-6 md:mt-60 pb-20">
+    <section className="flex items-center md:px-16 px-6 md:mt-60 ss:mt-60
+    mt-56 pb-20">
         <div className="items-center w-full flex flex-col md:gap-10 
-        font-manierRegular">
+        ss:gap-10 gap-8 font-manierRegular">
             <div className='w-full flex justify-between items-center'>
-                <div className='flex flex-col gap-2'>
+                <div className='flex flex-col md:gap-2 ss:gap-2 gap-1'>
                     <h1 className='text-secondary md:text-[23px] ss:text-[20px] 
                     text-[18px]'>
-                    {userData.firstName} {userData.lastName}
+                        {userData.firstName} {userData.lastName}
                     </h1>
 
                     <h1 className='text-white md:text-[17px] ss:text-[17px] 
                     text-[14px]'>
-                    {userData.paymentType} Request
+                        {userData.paymentType} Request
                     </h1>
                 </div>
 
@@ -137,7 +138,7 @@ const MessagePage = ({ params }) => {
                     <HiArrowNarrowLeft />
 
                     <p className='text-primary md:text-[16px] ss:text-[16px]
-                    text-[14px]'>
+                    text-[13px]'>
                     Go Back
                     </p>
                 </div>
@@ -146,7 +147,7 @@ const MessagePage = ({ params }) => {
             <div className='w-full'>
                 <h1 className='text-white md:text-[17px] ss:text-[17px] 
                 text-[14px]'>
-                Send Message
+                    Send Message
                 </h1>
             </div>
 
@@ -209,12 +210,12 @@ const MessagePage = ({ params }) => {
                         </p>
                     </div>
 
-                    <div className="col-span-2 md:mt-0 ss:mt-0 mt-5">
+                    <div className="col-span-2 md:mt-0 ss:mt-0 mt-3">
                         <button
                         type="submit"
                         className="bg-secondary grow4 cursor-pointer rounded-md
                         md:text-[16px] ss:text-[14px] text-[14px] md:py-3.5 
-                        ss:py-3 py-3 md:px-16 ss:px-16 px-14
+                        ss:py-3 py-3 md:px-16 ss:px-16 px-10
                         "
                         >
                             {loading2 ? 'Sending...' : 'Send Message'}
