@@ -104,7 +104,7 @@ const Navbar = () => {
 
         {/* FOR MOBILE */}
         
-        <div className="md:hidden flex-1 items-center
+        <div className="md:hidden flex-1 items-center 
           mt-3">
           <div className='flex justify-between w-full border-b-[1px]
           border-primaryalt pb-4'>
@@ -211,7 +211,7 @@ const Navbar = () => {
           <div
             ref={menuRef}
             className='p-6 bg-white absolute ss:top-20 top-20 rounded-lg 
-            z-10 flex-col shadow-xl ss:mt-4 mt-3'
+            z-20 flex-col shadow-xl ss:mt-4 mt-3'
             style={{ height: toggle ? 'auto' : 0, opacity: toggle ? 1 : 0, 
             visibility: toggle ? 'visible' : 'hidden', 
             transition: 'height 0.3s, opacity 0.3s, visibility 0.3s' }}
