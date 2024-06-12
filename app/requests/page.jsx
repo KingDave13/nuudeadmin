@@ -397,10 +397,21 @@ const RequestsPage = () => {
               className='border-b border-textalt flex flex-col 
               ss:text-[16px] text-[14px] ss:mt-6 mt-5 ss:pb-6 pb-5'>
                 <div className='flex flex-col ss:gap-5 gap-4 text-white'>
-                  <h1 className="">{`${data.firstName} ${data.lastName}`}</h1>
-                  <h1 className="">Successful</h1>
-                  <h1 className="">{data.paymentType}</h1>
-                  <h1 className="">{data.email}</h1>
+                  <h1 className="">
+                    {`${data.firstName} ${data.lastName}`}
+                  </h1>
+
+                  <h1 className="">
+                    Successful
+                  </h1>
+
+                  <h1 className="">
+                    {data.paymentType}
+                  </h1>
+
+                  <h1 className="">
+                    {data.email}
+                  </h1>
                 </div>
                 
                 <div className="ss:mt-6 mt-5 flex gap-5 ss:text-[22px]
