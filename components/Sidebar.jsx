@@ -63,10 +63,10 @@ const Sidebar = () => {
                 key={link.id}
                 className={`${
                   active === link.title
-                    ? 'bg-secondary rounded-md text-black hover:text-black'
-                    : 'bg-none'
+                    ? 'bg-secondary rounded-md text-primary hover:text-primary'
+                    : 'bg-none text-textalt'
                 } ${!session ? 'opacity-50' : 'cursor-pointer hover:text-secondary grow3'}  
-                text-[19px] text-textalt list-item`}
+                text-[19px] list-item`}
                 onClick={() => {
                   handleSideItemClick(link);
                 }}

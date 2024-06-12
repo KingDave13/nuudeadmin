@@ -332,18 +332,19 @@ const RequestsPage = () => {
 
 
   return (
-    <section className="flex items-center md:px-16 px-6 md:mt-60 pb-20">
+    <section className="flex items-center md:px-16 px-6 md:mt-60 ss:mt-60
+    mt-56 pb-20">
       <div className="items-center w-full flex flex-col md:gap-8 
       font-manierRegular">
         <div className='w-full'>
           <h1 className='text-secondary md:text-[22px] 
-          ss:text-[20px] text-[18px]'>
+          ss:text-[20px] text-[17px]'>
             Membership/Guest Requests
           </h1>
         </div>
 
         <div className="w-full">
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto hidden md:block">
             <table className="w-full text-white">
               <thead className='text-textalt md:text-[17px] ss:text-[17px]
               text-[15px]'>
@@ -389,8 +390,8 @@ const RequestsPage = () => {
             </table>
           </div>
 
-          <div className="flex justify-end items-center mt-6 text-textalt
-          md:text-[15px] ss:text-[14px] text-[12px]">
+          <div className="flex md:justify-end justify-between items-center 
+          mt-6 text-textalt md:text-[15px] ss:text-[15px] text-[14px]">
             <div className="flex items-center">
               <span className="mr-2">Rows per page:</span>
 
@@ -412,7 +413,7 @@ const RequestsPage = () => {
               </div>
             </div>
 
-            <div className="flex items-center ml-10 mr-5">
+            <div className="flex items-center ml-10 md:mr-5">
               <span>{`${(currentPage - 1) * rowsPerPage + 1}-${Math.min(currentPage * rowsPerPage, totalRows)} 
                 of ${totalRows}`}
               </span>
