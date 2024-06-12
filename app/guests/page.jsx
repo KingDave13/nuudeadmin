@@ -193,7 +193,7 @@ const GuestsPage = () => {
           </h1>
 
           <p className='text-white md:text-[17px] 
-          ss:text-[18px] text-[16px]'>
+          ss:text-[16px] text-[14px]'>
             A list of guest members for a specific Nuude! Event
           </p>
         </div>
