@@ -83,21 +83,22 @@ const MessagePage = () => {
   });
 
   const handleSendToMembers = async () => {
-    
-    const response = await fetch('/api/members');
-    if (!response.ok) {
-      console.error('Failed to fetch members:', response.status, response.statusText);
-      return;
+    try {
+      const response = await fetch('/api/members');
+      if (!response.ok) {
+        throw new Error(`Failed to fetch members: ${response.status} ${response.statusText}`);
+      }
+      const result = await response.json();
+      if (!result.success) {
+        throw new Error(`API returned an error: ${result.message}`);
+      }
+      const membersEmails = result.data.map(member => member.email);
+      const membersNames = result.data.map(member => member.name);
+
+      handleEmailSend('members', membersEmails, membersNames);
+    } catch (error) {
+      console.error(error);
     }
-    const result = await response.json();
-    if (!result.success) {
-      console.error('API returned an error:', result.message);
-      return;
-    }
-    const membersEmails = result.data.map(member => member.email);
-  
-    
-    handleEmailSend('members', membersEmails);
   };
   
   const handleSendToBoth = async () => {
@@ -113,38 +114,44 @@ const MessagePage = () => {
       return;
     }
     const guestsEmails = result.data.map(guest => guest.email);
+    const guestsNames = guestsResult.data.map(guest => guest.name);
   
-    handleEmailSend('both', [...membersEmails, ...guestsEmails]);
+    handleEmailSend('both', guestsEmails, guestsNames);
   };
   
-  const handleEmailSend = (recipientType, emailList) => {
+  const handleEmailSend = async (recipientType, emailList, nameList) => {
     setLoading(true);
-    emailjs.send(
-      'service_skvhseu',
-      'template_bu4q17u',
-      {
-        from_name: 'Nuude!',
-        to_name: 'Anayo Okpala Global Concept',
-        from_email: 'contact@nuude.club',
-        to_email: emailList.join(','),
-        subject: formik.values.subject,
-        message: `${formik.values.message} [Send to: ${recipientType}]`,
-      },
-      'u4mJjP_i8Ayoq1SU-'
-    )
-    .then(
-      () => {
-        setLoading(false);
-        setModalOpen(false);
-        enableScroll();
-        formik.resetForm();
-      },
-      (error) => {
-        setLoading(false);
-        console.log(error);
-      }
-    );
+    
+    const sendEmailPromises = emailList.map((email, index) => {
+      const toName = nameList[index];
+      
+      return emailjs.send(
+        'service_skvhseu',
+        'template_bu4q17u',
+        {
+          from_name: 'Nuude!',
+          to_name: toName,
+          from_email: 'contact@nuude.club',
+          to_email: email,
+          subject: formik.values.subject,
+          message: `${formik.values.message} [Send to: ${recipientType}]`,
+        },
+        'u4mJjP_i8Ayoq1SU-'
+      );
+    });
+  
+    try {
+      await Promise.all(sendEmailPromises);
+      setLoading(false);
+      setModalOpen(false);
+      enableScroll();
+      formik.resetForm();
+    } catch (error) {
+      setLoading(false);
+      console.error(error);
+    }
   };
+  
 
   return (
     <section className="flex items-center md:px-16 px-6 md:mt-60 ss:mt-60 
