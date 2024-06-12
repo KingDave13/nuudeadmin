@@ -14,7 +14,7 @@ const AdminSchema = new Schema(
 		password: {
 			type: String,
 			required: true,
-			min: 5
+			min: 8
 		},
     },
 
