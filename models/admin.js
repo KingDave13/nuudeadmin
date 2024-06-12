@@ -16,6 +16,10 @@ const AdminSchema = new Schema(
 			required: true,
 			min: 8
 		},
+		resetToken: {
+			type: String,
+			default: null,
+		},
     },
 
     { timestamps: true }
