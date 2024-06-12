@@ -224,9 +224,9 @@ const Navbar = () => {
                   className={`${
                     active === link.title
                       ? 'text-secondary'
-                      : ''
-                  } ss:text-[21px] text-[16px] 
-                  text-decoration-none text-textalt list-item`}
+                      : 'text-textalt'
+                  } ${!session ? 'opacity-50' : ''}  
+                  ss:text-[21px] text-[16px] list-item`}
                   onClick={() => {
                     handleSideItemClick(link);
                   }}
