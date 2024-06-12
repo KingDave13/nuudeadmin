@@ -28,14 +28,16 @@ const ApproveModal = ({ isOpen, onClose, onApprove}) => {
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 10, opacity: 0 }}
         transition={{ duration: 0.1 }}
-        className="bg-primaryalt md:p-12 ss:p-10 p-4 rounded-md shadow-xl 
-        flex flex-col justify-center w-auto h-auto items-center gap-5">
+        className="bg-primaryalt md:p-12 ss:p-10 p-6 rounded-md shadow-xl 
+        flex flex-col justify-center w-auto h-auto items-center md:gap-5 
+        ss:gap-5 gap-3">
           <HiOutlineInformationCircle
-            className='text-[70px] text-secondary'
+            className='md:text-[70px] ss:text-[70px] text-[60px] 
+            text-secondary'
           />
 
           <div className='flex flex-col w-full justify-center 
-          items-center gap-5'>
+          items-center md:gap-5 ss:gap-5 gap-4'>
             <h1 className='text-white md:text-[30px] ss:text-[30px]
             text-[20px] text-center font-manierMedium'>
               Are you sure?
@@ -46,12 +48,12 @@ const ApproveModal = ({ isOpen, onClose, onApprove}) => {
               Are you sure you want to approve this request?
             </p>
 
-            <div className='flex gap-5'>
+            <div className='flex md:gap-5 ss:gap-5 gap-4'>
               <button
               onClick={onApprove}
               className='grow4 bg-secondary border-none w-full
               md:text-[15px] ss:text-[15px] text-[13px] md:py-2.5
-              ss:py-2.5 py-2 md:px-12 ss:px-10 px-6 text-primary 
+              ss:py-2.5 py-2 md:px-12 ss:px-10 px-8 text-primary 
               rounded-md cursor-pointer'
               >
                 Approve
@@ -61,7 +63,7 @@ const ApproveModal = ({ isOpen, onClose, onApprove}) => {
               onClick={onClose}
               className='grow4 border-[1px] border-secondary w-full
               md:text-[15px] ss:text-[15px] text-[13px] md:py-2.5
-              ss:py-2.5 py-2 md:px-12 ss:px-10 px-6 text-secondary 
+              ss:py-2.5 py-2 md:px-12 ss:px-10 px-8 text-secondary 
               rounded-md cursor-pointer'
               >
                 Cancel
@@ -97,12 +99,13 @@ const NotificationModal = ({ isOpen, onClose }) => {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 10, opacity: 0 }}
           transition={{ duration: 0.1 }}
-          className="bg-primaryalt md:p-12 ss:p-10 p-4 rounded-md shadow-xl 
-          flex flex-col justify-center w-auto h-auto items-center gap-5">
+          className="bg-primaryalt md:p-12 ss:p-10 p-6 rounded-md shadow-xl 
+          flex flex-col justify-center w-auto h-auto items-center">
           <div className='flex flex-col w-full justify-center 
-          items-center gap-5'>
+          items-center md:gap-5 ss:gap-5 gap-4'>
             <GoCheckCircle
-              className='text-[70px] text-secondary'
+              className='md:text-[70px] ss:text-[70px] text-[60px] 
+              text-secondary'
             />
 
             <h1 className='text-white md:text-[30px] ss:text-[30px]
