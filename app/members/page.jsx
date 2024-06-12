@@ -231,7 +231,7 @@ const MembersPage = () => {
               <div key={data._id} 
               className='border-b border-textalt flex flex-col 
               ss:text-[16px] text-[14px] ss:mt-6 mt-5 ss:pb-6 pb-5'>
-                <div className='flex flex-col ss:gap-5 gap-4 text-white'>
+                <div className='flex flex-col ss:gap-4 gap-3 text-white'>
                   <h1 className="flex ss:gap-5 gap-4">
                     <span className='text-textalt'>Full Name:</span>
                     {`${data.firstName} ${data.lastName}`}
@@ -248,7 +248,7 @@ const MembersPage = () => {
                   </h1>
                 </div>
                 
-                <div className="ss:mt-6 mt-5 flex ss:gap-5 gap-4 
+                <div className="ss:mt-6 mt-5 flex ss:gap-4 gap-3 
                 ss:text-[22px] text-[22px] font-bold text-white">
                   <button onClick={() => handleUserDetail(data)}>
                     <HiOutlineInformationCircle />
