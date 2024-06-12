@@ -147,14 +147,14 @@ const MessagePage = () => {
   };
 
   return (
-    <section className="md:min-h-[500px] ss:min-h-[600px] min-h-[500px] 
-    flex items-center md:px-16 px-6 mt-56">
-      <div className="items-center w-full flex flex-col md:gap-10 
-      font-manierRegular">
+    <section className="flex items-center md:px-16 px-6 md:mt-60 ss:mt-60 
+    mt-60">
+      <div className="items-center w-full flex flex-col md:gap-10 ss:gap-10
+      gap-8 font-manierRegular">
         <div className='w-full flex justify-between items-center'>
           <div className='flex'>
             <h1 className='text-secondary md:text-[23px] ss:text-[20px] 
-            text-[18px]'>
+            text-[17px]'>
               Send messages to members, guests or both! 
             </h1>
           </div>
@@ -162,7 +162,8 @@ const MessagePage = () => {
 
         <div className='w-full'>
           <form onSubmit={formik.handleSubmit}
-            className="flex flex-col md:w-1/2 md:gap-8 ss:gap-6 gap-4">
+            className="flex flex-col md:w-1/2 ss:w-3/4 md:gap-8 ss:gap-6 
+            gap-4">
             <div className="flex flex-col">
               <label className="text-white md:mb-3 ss:mb-2 mb-2 
               md:text-[16px] ss:text-[15px] text-[14px]">
@@ -219,12 +220,12 @@ const MessagePage = () => {
               </p>
             </div>
 
-            <div className="col-span-2 md:mt-0 ss:mt-0 mt-5">
+            <div className="col-span-2 md:mt-0 ss:mt-0 mt-3">
               <button
                 type="submit"
                 className="bg-secondary grow4 cursor-pointer rounded-md
                 md:text-[16px] ss:text-[14px] text-[14px] md:py-3.5 
-                ss:py-3 py-3 md:px-16 ss:px-16 px-14"
+                ss:py-3 py-3 md:px-16 ss:px-12 px-10"
               >
                 {loading ? 'Sending...' : 'Send Message'}
               </button>

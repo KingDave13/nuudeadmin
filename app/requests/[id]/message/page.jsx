@@ -215,7 +215,7 @@ const MessagePage = ({ params }) => {
                         type="submit"
                         className="bg-secondary grow4 cursor-pointer rounded-md
                         md:text-[16px] ss:text-[14px] text-[14px] md:py-3.5 
-                        ss:py-3 py-3 md:px-16 ss:px-16 px-10
+                        ss:py-3 py-3 md:px-16 ss:px-12 px-10
                         "
                         >
                             {loading2 ? 'Sending...' : 'Send Message'}

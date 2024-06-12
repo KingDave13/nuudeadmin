@@ -228,6 +228,7 @@ const Navbar = () => {
                   } ${!session ? 'opacity-50' : ''}  
                   ss:text-[21px] text-[16px] list-item`}
                   onClick={() => {
+                    setToggle(!toggle);
                     handleSideItemClick(link);
                   }}
                 >
