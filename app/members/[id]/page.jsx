@@ -156,7 +156,7 @@ const UserDetails = ({ params }) => {
             className='mr-16'>
               <HiOutlineArrowTopRightOnSquare 
               className='text-secondary font-bold md:text-[20px]
-              ss:text-[20px] text-[18px]'/>
+              ss:text-[20px] text-[20px]'/>
             </a>
           </div>
 
@@ -177,7 +177,7 @@ const UserDetails = ({ params }) => {
             className='mr-16'>
               <HiOutlineArrowTopRightOnSquare 
               className='text-secondary font-bold md:text-[20px]
-              ss:text-[20px] text-[18px]'/>
+              ss:text-[20px] text-[20px]'/>
             </a>
           </div>
 
@@ -198,7 +198,7 @@ const UserDetails = ({ params }) => {
             className='mr-16'>
               <HiOutlineArrowTopRightOnSquare 
               className='text-secondary font-bold md:text-[20px]
-              ss:text-[20px] text-[18px]'/>
+              ss:text-[20px] text-[20px]'/>
             </a>
           </div>
 

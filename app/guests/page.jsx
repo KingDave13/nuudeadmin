@@ -193,13 +193,13 @@ const GuestsPage = () => {
           </h1>
 
           <p className='text-white md:text-[17px] 
-          ss:text-[16px] text-[14px]'>
+          ss:text-[16px] text-[14px] md:mb-0 ss:mb-3 mb-3'>
             A list of guest members for a specific Nuude! Event
           </p>
         </div>
 
         <div className="w-full">
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto hidden md:block">
             <table className="w-full text-white">
               <thead className='text-textalt md:text-[17px] ss:text-[17px]
               text-[15px]'>
@@ -237,6 +237,47 @@ const GuestsPage = () => {
                 ))}
               </tbody>
             </table>
+          </div>
+
+          <div className='block md:hidden'>
+            {displayedRows.map((data, index) => (
+              <div key={data._id} 
+              className='border-b border-textalt flex flex-col 
+              ss:text-[16px] text-[14px] ss:mt-6 mt-5 ss:pb-6 pb-5'>
+                <div className='flex flex-col ss:gap-4 gap-3 text-white'>
+                  <h1 className="flex ss:gap-5 gap-4">
+                    <span className='text-textalt'>Full Name:</span>
+                    {`${data.firstName} ${data.lastName}`}
+                  </h1>
+
+                  <h1 className="flex ss:gap-5 gap-4">
+                    <span className='text-textalt'>Payment Type:</span>
+                    {data.paymentType}
+                  </h1>
+
+                  <h1 className="flex ss:gap-5 gap-4">
+                    <span className='text-textalt'>Email:</span>
+                    {data.email}
+                  </h1>
+                </div>
+                
+                <div className="ss:mt-6 mt-5 flex ss:gap-4 gap-3 
+                ss:text-[22px] text-[22px] font-bold text-white">
+                  <button onClick={() => handleUserDetail(data)}>
+                    <HiOutlineInformationCircle />
+                  </button>
+
+                  <button onClick={() => handleUserMail(data)}>
+                    <CiMail />
+                  </button>
+
+                  <button className='hover:text-brightRed navsmooth'
+                  onClick={() => handleOpenDeleteModal(data)}>
+                    <HiOutlineTrash />
+                  </button>
+                </div>
+              </div>
+            ))}
           </div>
 
           <div className="flex md:justify-end justify-between items-center 

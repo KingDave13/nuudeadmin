@@ -238,7 +238,7 @@ const MembersPage = () => {
                   </h1>
 
                   <h1 className="flex ss:gap-5 gap-4 text-secondary">
-                    <span className='text-textalt'>Membership Status</span>
+                    <span className='text-textalt'>Membership Status:</span>
                     Active
                   </h1>
 
