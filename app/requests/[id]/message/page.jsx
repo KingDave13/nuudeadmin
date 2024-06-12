@@ -223,7 +223,6 @@ const MessagePage = ({ params }) => {
                     </div>
                 </form>
             </div>
-            
         </div>
 
 

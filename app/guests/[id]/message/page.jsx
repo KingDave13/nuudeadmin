@@ -115,9 +115,10 @@ const MessagePage = ({ params }) => {
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <section className="flex items-center md:px-16 px-6 md:mt-60 pb-20">
+    <section className="flex items-center md:px-16 px-6 md:mt-60 ss:mt-60
+    mt-56 pb-20">
         <div className="items-center w-full flex flex-col md:gap-10 
-        font-manierRegular">
+        ss:gap-10 gap-8 font-manierRegular">
             <div className='w-full flex justify-between items-center'>
                 <div className='flex'>
                     <h1 className='text-secondary md:text-[25px] ss:text-[20px] 
@@ -132,7 +133,7 @@ const MessagePage = ({ params }) => {
                     <HiArrowNarrowLeft />
 
                     <p className='text-primary md:text-[16px] ss:text-[16px]
-                    text-[14px]'>
+                    text-[13px]'>
                     Go Back
                     </p>
                 </div>
@@ -147,7 +148,7 @@ const MessagePage = ({ params }) => {
 
             <div className='w-full'>
                 <form onSubmit={formik.handleSubmit}
-                className="flex flex-col md:w-1/2 md:gap-8 ss:gap-6 gap-4">
+                className="flex flex-col md:w-1/2 ss:w-3/4 md:gap-8 ss:gap-6 gap-4">
                     <div className="flex flex-col">
                         <label className="text-white md:mb-3 ss:mb-2 mb-2 
                         md:text-[16px] ss:text-[15px] text-[14px]">
@@ -204,12 +205,12 @@ const MessagePage = ({ params }) => {
                         </p>
                     </div>
 
-                    <div className="col-span-2 md:mt-0 ss:mt-0 mt-5">
+                    <div className="col-span-2 md:mt-0 ss:mt-0 mt-3">
                         <button
                         type="submit"
                         className="bg-secondary grow4 cursor-pointer rounded-md
                         md:text-[16px] ss:text-[14px] text-[14px] md:py-3.5 
-                        ss:py-3 py-3 md:px-16 ss:px-16 px-14
+                        ss:py-3 py-3 md:px-16 ss:px-12 px-10
                         "
                         >
                             {loading2 ? 'Sending...' : 'Send Message'}
@@ -217,7 +218,6 @@ const MessagePage = ({ params }) => {
                     </div>
                 </form>
             </div>
-            
         </div>
 
 
