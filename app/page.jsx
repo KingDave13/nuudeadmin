@@ -7,9 +7,10 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useFormik } from "formik";
 import * as Yup from 'yup';
 import { signIn } from "next-auth/react";
+import emailjs from '@emailjs/browser';
 import SectionWrapperAlt from '@hoc/SectionWrapperAlt';
 
-const Modal = ({ onClose }) => {
+const Modal = ({ onClose, setModalContent }) => {
   const modalRef = useRef(null);
 
   const enableScroll = () => {
@@ -23,39 +24,62 @@ const Modal = ({ onClose }) => {
   };
 
   return (
-      <div className="fixed inset-0 flex items-center justify-center
-      bg-black bg-opacity-80 z-50">
-        <div ref={modalRef} 
-        className="bg-primaryalt md:p-8 ss:p-8 p-6 rounded-md shadow-xl 
-        flex flex-col justify-center w-auto h-auto font-manierRegular
-        items-center">
-          <div className='flex flex-col w-full justify-center 
-          items-center'>
-            <h1 className='text-white md:text-[16px] ss:text-[20px]
-            text-[15px] text-center md:mb-4 ss:mb-4 mb-3'>
-              Incorrect username or password.
-            </h1>
-
-            <button
-            onClick={handleClick}
-            className='grow4 bg-secondary border-none
-            md:text-[13px] ss:text-[14px] text-[13px] md:py-2
-            ss:py-3 py-2 md:px-7 ss:px-7 px-5 text-primary 
-            md:rounded-[3px] ss:rounded-[3px] rounded-[3px] 
-            font-manierMedium cursor-pointer'
-            >
-              OK
-            </button>
-          </div>
+    <div className="fixed inset-0 flex items-center justify-center 
+    bg-black bg-opacity-80 z-50">
+      <div ref={modalRef} className="bg-primaryalt md:p-8 ss:p-8 p-6 
+      rounded-md shadow-xl flex flex-col justify-center w-auto h-auto 
+      font-manierRegular items-center">
+        <div className='flex flex-col w-full justify-center items-center'>
+          {setModalContent()}
+          <button
+          onClick={handleClick}
+          className='grow4 bg-secondary border-none md:text-[13px] 
+          ss:text-[14px] text-[13px] md:py-2 ss:py-3 py-2 md:px-7 
+          ss:px-7 px-5 text-primary md:rounded-[3px] ss:rounded-[3px]
+          rounded-[3px] font-manierMedium cursor-pointer'
+          >
+            OK
+          </button>
         </div>
       </div>
+    </div>
   );
 };
+
+const ForgotPasswordModalContent = ({ onSubmit }) => (
+  <>
+    <h1 className='text-white md:text-[16px] ss:text-[20px] text-[15px] 
+    text-center md:mb-4 ss:mb-4 mb-3'>
+      Enter your email to reset password.
+    </h1>
+    <form onSubmit={onSubmit} className='flex flex-col w-full'>
+      <input 
+      type="email" 
+      name="email" 
+      placeholder="Enter your email" 
+      required 
+      className="md:py-3 ss:py-2 py-2 px-4 border-none outline-none 
+      text-white md:rounded-[5px] ss:rounded-[3px] rounded-[3px]
+      placeholder:text-textalt focus:outline-none 
+      md:placeholder:text-[14px] ss:placeholder:text-[12px] 
+      placeholder:text-[12px] bg-primary mb-4" 
+      />
+      <button type="submit" 
+      className="grow4 bg-secondary border-none md:text-[13px] 
+      ss:text-[14px] text-[13px] md:py-2 ss:py-3 py-2 md:px-7 ss:px-7 
+      px-5 text-primary md:rounded-[3px] ss:rounded-[3px] rounded-[3px] 
+      font-manierMedium cursor-pointer">
+        Send Reset Link
+      </button>
+    </form>
+  </>
+);
 
 const Login = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
   const [modalOpen, setModalOpen] = useState(false);
+  const [modalContent, setModalContent] = useState(null);
   const [scrollPosition, setScrollPosition] = useState(0);
 
   useEffect(() => {
@@ -94,8 +118,14 @@ const Login = () => {
             password: values.password,
             redirect: false,
           })
-          if(res.error) {
+          if (res.error) {
             console.log(res.error, 'invalid credentials');
+            setModalContent(() => () => (
+              <h1 className='text-white md:text-[16px] ss:text-[20px] 
+              text-[15px] text-center md:mb-4 ss:mb-4 mb-3'>
+                Incorrect username or password.
+              </h1>
+            ));
             setModalOpen(true);
             disableScroll();
             return;
@@ -106,6 +136,59 @@ const Login = () => {
         }
       },
   });
+
+  const handleForgotPassword = async (event) => {
+    event.preventDefault();
+    const email = event.target.email.value;
+
+    const response = await fetch('/api/check-email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email }),
+    });
+    const data = await response.json();
+
+    if (data.exists) {
+      const resetToken = Math.random().toString(36).substr(2);
+      const resetLink = `http://localhost:3001/password-reset?token=${resetToken}`;
+
+      // Save the reset token to the database
+      await fetch('/api/save-reset-token', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, resetToken }),
+      });
+
+      emailjs.send('your_service_id', 'your_template_id', {
+        email,
+        reset_link: resetLink,
+      }).then((result) => {
+        console.log('Password reset email sent:', result.text);
+      }, (error) => {
+        console.error('Failed to send password reset email:', error.text);
+      });
+
+      setModalContent(() => () => (
+        <h1 className='text-white md:text-[16px] ss:text-[20px] 
+        text-[15px] text-center md:mb-4 ss:mb-4 mb-3'>
+          Password reset link has been sent to your email.
+        </h1>
+      ));
+    } else {
+      setModalContent(() => () => (
+        <h1 className='text-white md:text-[16px] ss:text-[20px] 
+        text-[15px] text-center md:mb-4 ss:mb-4 mb-3'>
+          Email not found.
+        </h1>
+      ));
+    }
+    setModalOpen(true);
+    disableScroll();
+  };
 
   if (status === 'loading') {
     return <div>Loading...</div>;
@@ -119,7 +202,7 @@ const Login = () => {
     <section className="flex w-full items-center justify-center 
     md:h-[70vh] ss:h-[80vh] h-[80vh] md:px-16 px-6 md:mt-40 ss:mt-52 mt-52">
       {modalOpen && (
-        <Modal onClose={() => setModalOpen(false)} />
+        <Modal onClose={() => setModalOpen(false)} setModalContent={modalContent} />
       )}
 
       <div
