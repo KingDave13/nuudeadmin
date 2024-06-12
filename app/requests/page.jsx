@@ -397,25 +397,29 @@ const RequestsPage = () => {
               className='border-b border-textalt flex flex-col 
               ss:text-[16px] text-[14px] ss:mt-6 mt-5 ss:pb-6 pb-5'>
                 <div className='flex flex-col ss:gap-5 gap-4 text-white'>
-                  <h1 className="">
+                  <h1 className="flex ss:gap-5 gap-4">
+                    <span className='text-textalt'>Full Name:</span>
                     {`${data.firstName} ${data.lastName}`}
                   </h1>
 
-                  <h1 className="">
+                  <h1 className="flex ss:gap-5 gap-4">
+                    <span className='text-textalt'>Payment Status:</span>
                     Successful
                   </h1>
 
-                  <h1 className="">
+                  <h1 className="flex ss:gap-5 gap-4">
+                    <span className='text-textalt'>Payment Type:</span>
                     {data.paymentType}
                   </h1>
 
-                  <h1 className="">
+                  <h1 className="flex ss:gap-5 gap-4">
+                    <span className='text-textalt'>Email:</span>
                     {data.email}
                   </h1>
                 </div>
                 
-                <div className="ss:mt-6 mt-5 flex gap-5 ss:text-[22px]
-                text-[22px] font-bold text-white">
+                <div className="ss:mt-6 mt-5 flex ss:gap-5 gap-4 
+                ss:text-[22px] text-[22px] font-bold text-white">
                   <button onClick={() => handleUserDetail(data)}>
                     <HiOutlineInformationCircle />
                   </button>
