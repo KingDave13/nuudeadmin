@@ -346,7 +346,7 @@ const RequestsPage = () => {
         <div className="w-full">
           <div className="overflow-x-auto hidden md:block">
             <table className="w-full text-white">
-              <thead className='text-textalt md:text-[17px] ss:text-[17px]
+              <thead className='text-textalt text-[17px] ss:text-[17px]
               text-[15px]'>
                 <tr>
                   <th className="py-4 px-4 text-left w-1/6">Full Name</th>
@@ -389,7 +389,42 @@ const RequestsPage = () => {
               </tbody>
             </table>
           </div>
+          
+          <div className='block md:hidden'>
 
+            {displayedRows.map((data, index) => (
+              <div key={data._id} 
+              className='border-b border-textalt flex flex-col 
+              ss:text-[16px] text-[14px] ss:mt-6 mt-5 ss:pb-6 pb-5'>
+                <div className='flex flex-col ss:gap-5 gap-4 text-white'>
+                  <h1 className="">{`${data.firstName} ${data.lastName}`}</h1>
+                  <h1 className="">Successful</h1>
+                  <h1 className="">{data.paymentType}</h1>
+                  <h1 className="">{data.email}</h1>
+                </div>
+                
+                <div className="ss:mt-6 mt-5 flex gap-5 ss:text-[22px]
+                text-[22px] font-bold text-white">
+                  <button onClick={() => handleUserDetail(data)}>
+                    <HiOutlineInformationCircle />
+                  </button>
+                  
+                  <button onClick={() => handleOpenApproveModal(data)}>
+                    <BsPersonCheck />
+                  </button>
+
+                  <button onClick={() => handleUserMail(data)}>
+                    <CiMail />
+                  </button>
+
+                  <button className='hover:text-brightRed navsmooth'
+                  onClick={() => handleOpenDeleteModal(data)}>
+                    <HiOutlineTrash />
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
           <div className="flex md:justify-end justify-between items-center 
           mt-6 text-textalt md:text-[15px] ss:text-[15px] text-[14px]">
             <div className="flex items-center">
