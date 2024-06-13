@@ -43,7 +43,7 @@ const DeleteModal = ({ isOpen, onClose, onDelete }) => {
 
             <p className='text-white md:text-[16px] ss:text-[16px]
             text-[14px] text-center'>
-              Are you sure you want to delete this request?
+              Are you sure you want to delete this guest?
             </p>
 
             <div className='flex md:gap-5 ss:gap-5 gap-4'>
