@@ -296,7 +296,7 @@ const MembersPage = () => {
               </span>
 
               <button onClick={handleFirstPage} 
-              className="ss:ml-10 ml-8">
+              className="ss:ml-10 ml-6">
                 <AiOutlineDoubleLeft />
               </button>
 

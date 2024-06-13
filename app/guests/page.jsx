@@ -184,8 +184,8 @@ const GuestsPage = () => {
   return (
     <section className="flex items-center md:px-16 px-6 md:mt-60 ss:mt-60
     mt-56 pb-20">
-      <div className="items-center w-full flex flex-col md:gap-8 
-      font-manierRegular">
+      <div className="items-center w-full flex flex-col md:gap-8 ss:gap-5
+      gap-3 font-manierRegular">
         <div className='w-full'>
           <h1 className='text-secondary md:text-[25px] 
           ss:text-[20px] text-[18px]'>
@@ -196,6 +196,21 @@ const GuestsPage = () => {
           ss:text-[16px] text-[14px] md:mb-0 ss:mb-3 mb-3'>
             A list of guest members for a specific Nuude! Event
           </p>
+        </div>
+
+        <div className='w-full'>
+          <div className="md:w-1/2 ss:w-3/4 text-white rounded-md 
+          bg-primaryalt"
+          >
+            <div className='md:py-3 ss:py-2 py-2 px-5 cursor-pointer flex
+            justify-between items-center'>
+              <h1 className="md:text-[16px] ss:text-[16px] text-[14px]">
+                Nuude! Event 01
+              </h1>
+
+              <TiArrowSortedDown className='text-textalt md:text-[20px]'/>
+            </div>
+          </div>
         </div>
 
         <div className="w-full">
@@ -309,7 +324,7 @@ const GuestsPage = () => {
               </span>
 
               <button onClick={handleFirstPage} 
-              className="ss:ml-10 ml-8">
+              className="ss:ml-10 ml-6">
                 <AiOutlineDoubleLeft />
               </button>
 
