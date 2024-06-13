@@ -25,7 +25,7 @@ const ApproveModal = ({ isOpen, onClose, onApprove}) => {
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 10, opacity: 0 }}
         transition={{ duration: 0.1 }}
-        className="bg-primaryalt md:p-12 ss:p-10 p-6 rounded-md shadow-xl 
+        className="bg-primaryalt md:p-12 ss:p-10 p-5 rounded-md shadow-xl 
         flex flex-col justify-center w-auto h-auto items-center md:gap-5 
         ss:gap-5 gap-3">
           <HiOutlineInformationCircle
@@ -523,18 +523,18 @@ const UserDetails = ({ params }) => {
         </div>
 
         <div className='w-full flex gap-5 md:mt-5 ss:mt-5 mt-3'>
-          <button className='bg-secondary md:px-10 ss:px-10 px-6 md:py-3.5 
+          <button className='bg-secondary md:px-10 ss:px-10 px-4 md:py-3.5 
           ss:py-3 py-3 rounded-md grow4 cursor-pointer text-primary 
-          md:text-[15px] ss:text-[15px] text-[12px]'
+          md:text-[15px] ss:text-[15px] text-[12px] buttonfull'
           onClick={() => handleOpenApproveModal(userData)}
           >
             Approve {userData.paymentType}
           </button>
 
           <button className='bg-none border-secondary border-[1px] 
-          md:px-10 ss:px-10 px-12 md:py-3.5 ss:py-3 py-3 rounded-md grow4 
+          md:px-10 ss:px-10 px-6 md:py-3.5 ss:py-3 py-3 rounded-md grow4 
           cursor-pointer text-secondary md:text-[15px] ss:text-[15px] 
-          text-[12px]'
+          text-[12px] buttonfull'
           onClick={handleOpenModal}
           >
             Reject Request

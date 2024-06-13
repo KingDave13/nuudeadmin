@@ -28,7 +28,7 @@ const ApproveModal = ({ isOpen, onClose, onApprove}) => {
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 10, opacity: 0 }}
         transition={{ duration: 0.1 }}
-        className="bg-primaryalt md:p-12 ss:p-10 p-6 rounded-md shadow-xl 
+        className="bg-primaryalt md:p-12 ss:p-10 p-5 rounded-md shadow-xl 
         flex flex-col justify-center w-auto h-auto items-center md:gap-5 
         ss:gap-5 gap-3">
           <HiOutlineInformationCircle

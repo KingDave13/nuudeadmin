@@ -116,7 +116,6 @@ textarea:focus {
 @media (max-width: 480px) {
   .buttonfull {
     width: 100%;
-    justify-content: space-between;
   }  
 }
 
