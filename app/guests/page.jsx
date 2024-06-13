@@ -184,8 +184,8 @@ const GuestsPage = () => {
   return (
     <section className="flex items-center md:px-16 px-6 md:mt-60 ss:mt-60
     mt-56 pb-20">
-      <div className="items-center w-full flex flex-col md:gap-8 ss:gap-5
-      gap-3 font-manierRegular">
+      <div className="items-center w-full flex flex-col md:gap-10 ss:gap-5
+      gap-4 font-manierRegular">
         <div className='w-full'>
           <h1 className='text-secondary md:text-[25px] 
           ss:text-[20px] text-[18px]'>
@@ -199,10 +199,10 @@ const GuestsPage = () => {
         </div>
 
         <div className='w-full'>
-          <div className="md:w-1/2 ss:w-3/4 text-white rounded-md 
+          <div className="md:w-1/2 ss:w-1/2 text-white rounded-md 
           bg-primaryalt"
           >
-            <div className='md:py-3 ss:py-2 py-2 px-5 cursor-pointer flex
+            <div className='md:py-3 ss:py-2 py-2 md:px-5 px-3 cursor-pointer flex
             justify-between items-center'>
               <h1 className="md:text-[16px] ss:text-[16px] text-[14px]">
                 Nuude! Event 01
@@ -295,8 +295,9 @@ const GuestsPage = () => {
             ))}
           </div>
 
-          <div className="flex md:justify-end justify-between items-center 
-          mt-6 text-textalt md:text-[15px] ss:text-[15px] text-[14px]">
+          <div className="flex md:justify-end ss:justify-end 
+          justify-between items-center mt-6 text-textalt md:text-[15px] 
+          ss:text-[15px] text-[14px]">
             <div className="flex items-center">
               <span className="ss:mr-2 mr-1">Rows per page:</span>
 

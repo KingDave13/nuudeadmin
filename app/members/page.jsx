@@ -267,8 +267,9 @@ const MembersPage = () => {
             ))}
           </div>
 
-          <div className="flex md:justify-end justify-between items-center 
-          mt-6 text-textalt md:text-[15px] ss:text-[15px] text-[14px]">
+          <div className="flex md:justify-end ss:justify-end 
+          justify-between items-center mt-6 text-textalt md:text-[15px] 
+          ss:text-[15px] text-[14px]">
             <div className="flex items-center">
               <span className="ss:mr-2 mr-1">Rows per page:</span>
 
