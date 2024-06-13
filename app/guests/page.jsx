@@ -215,7 +215,7 @@ const GuestsPage = () => {
                   <tr key={data._id} 
                   className='hover:bg-gray-800 border-b border-textalt'>
                     <td className="px-4 py-3.5">{`${data.firstName} ${data.lastName}`}</td>
-                    <td className="px-4 py-3.5 text-secondary">{data.paymentType}</td>
+                    <td className="px-4 py-3.5">{data.paymentType}</td>
                     <td className="px-4 py-3.5">{data.email}</td>
                     
                     <td className="ml-32 mt-4 flex gap-4 text-[21px]
