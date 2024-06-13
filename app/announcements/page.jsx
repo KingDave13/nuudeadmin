@@ -9,8 +9,8 @@ const Modal = ({ onClose, onSendToMembers, onSendToBoth }) => {
   return (
     <div className="fixed inset-0 flex items-center justify-center
       bg-black bg-opacity-50 z-50 font-manierRegular">
-      <div className="bg-primaryalt p-12 rounded-md shadow-xl flex flex-col
-        items-center justify-center h-auto w-auto">
+      <div className="bg-primaryalt md:p-12 ss:p-10 p-6 rounded-md 
+      shadow-xl flex flex-col items-center justify-center h-auto w-auto">
         <p className="text-center md:text-[20px] ss:text-[20px] text-[17px] 
         mb-6 text-white">
           Choose the recipients of your message
