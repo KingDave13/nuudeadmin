@@ -63,9 +63,9 @@ const Sidebar = () => {
                 key={link.id}
                 className={`${
                   active === link.title
-                    ? 'bg-secondary rounded-md text-primary hover:text-black'
-                    : 'bg-none text-textalt'
-                } ${!session ? 'opacity-50' : 'cursor-pointer hover:text-secondary grow3'}  
+                    ? 'bg-secondary rounded-md text-primary'
+                    : 'bg-none text-textalt hover:text-secondary grow3'
+                } ${!session ? 'opacity-50' : 'cursor-pointer'}  
                 text-[19px] list-item`}
                 onClick={() => {
                   handleSideItemClick(link);
