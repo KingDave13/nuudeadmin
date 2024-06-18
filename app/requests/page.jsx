@@ -299,6 +299,11 @@ const RequestsPage = () => {
 
       setFormData((prevData) => prevData.filter(request => request._id !== selectedRequest._id));
       handleCloseDeleteModal();
+
+      session.update({
+        requests: formData.filter(request => request._id !== selectedRequest._id),
+      });
+
     } catch (error) {
       console.error('Failed to delete request:', error);
     }
@@ -326,6 +331,11 @@ const RequestsPage = () => {
       setFormData((prevData) => prevData.filter(request => request._id !== selectedRequest._id));
       handleCloseApproveModal();
       setIsNotificationOpen(true);
+
+      session.update({
+        requests: formData.filter(request => request._id !== selectedRequest._id),
+      });
+      
     } catch (error) {
       console.error('Failed to approve request:', error);
     }
