@@ -171,7 +171,7 @@ const MembersPage = () => {
       handleCloseDeleteModal();
 
       session.update({
-        members: membersData.filter(member => member._id !== selectedMember._id),
+        members: membersData,
       });
 
     } catch (error) {

@@ -301,7 +301,7 @@ const RequestsPage = () => {
       handleCloseDeleteModal();
 
       session.update({
-        requests: formData.filter(request => request._id !== selectedRequest._id),
+        requests: formData
       });
 
     } catch (error) {
@@ -333,7 +333,7 @@ const RequestsPage = () => {
       setIsNotificationOpen(true);
 
       session.update({
-        requests: formData.filter(request => request._id !== selectedRequest._id),
+        requests: formData
       });
       
     } catch (error) {

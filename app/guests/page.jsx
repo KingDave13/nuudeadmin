@@ -178,7 +178,7 @@ const GuestsPage = () => {
       handleCloseDeleteModal();
 
       session.update({
-        guests: guestsData.filter(guest => guest._id !== selectedGuest._id),
+        guests: guestsData,
       });
 
     } catch (error) {
