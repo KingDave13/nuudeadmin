@@ -176,6 +176,11 @@ const GuestsPage = () => {
 
       setGuestsData((prevData) => prevData.filter(guest => guest._id !== selectedGuest._id));
       handleCloseDeleteModal();
+
+      session.update({
+        guests: guestsData.filter(guest => guest._id !== selectedGuest._id),
+      });
+
     } catch (error) {
       console.error('Failed to delete guest:', error);
     }

@@ -8,6 +8,7 @@ import { CiMail } from "react-icons/ci";
 import { motion, AnimatePresence } from 'framer-motion';
 import { useSession } from 'next-auth/react';
 import { AiOutlineDoubleLeft, AiOutlineLeft, AiOutlineRight, AiOutlineDoubleRight } from 'react-icons/ai';
+import { members } from '@public/assets';
 
 
 const DeleteModal = ({ isOpen, onClose, onDelete }) => {
@@ -168,6 +169,11 @@ const MembersPage = () => {
 
       setMembersData((prevData) => prevData.filter(member => member._id !== selectedMember._id));
       handleCloseDeleteModal();
+
+      session.update({
+        members: membersData.filter(member => member._id !== selectedMember._id),
+      });
+
     } catch (error) {
       console.error('Failed to delete member:', error);
     }
