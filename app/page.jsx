@@ -218,7 +218,7 @@ const Login = () => {
       <div
         className='md:w-1/2 ss:w-2/3 w-full font-manierRegular flex 
         items-center justify-center flex-col bg-primaryalt rounded-lg 
-        md:p-10 ss:p-10 p-6 shadow-xl md:mb-0 ss:mb-60 mb-52'
+        md:p-10 ss:p-10 p-6 shadow-xl md:mb-0 ss:mb-60 mb-44'
       >
         <p className='text-white md:text-[20px] ss:text-[20px] 
         text-[16px] border-b-[1px] border-textalt w-full text-center
