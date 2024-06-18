@@ -1,7 +1,7 @@
 
 import { connectToDb } from "@utils/database";
 import Admin from "@models/admin";
-import bcrypt from 'bcryptjs';
+import bcrypt from 'bcrypt';
 
 export const POST = async (req) => {
     try {
