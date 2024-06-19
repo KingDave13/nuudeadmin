@@ -200,28 +200,28 @@ const RequestsPage = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
 
-  useEffect(() => {
-    const fetchFormData = async () => {
-      try {
-        const response = await fetch('/api/requests');
-        if (!response.ok) {
-          console.error('Failed to fetch:', response.status, response.statusText);
-          return;
-        }
-        const result = await response.json();
-        if (result.success) {
-          setFormData(result.data);
-        } else {
-          console.error('API returned an error:', result.message);
-        }
-      } catch (error) {
-        console.error('Failed to fetch form data:', error);
+  const fetchFormData = async () => {
+    try {
+      const response = await fetch('/api/requests');
+      if (!response.ok) {
+        console.error('Failed to fetch:', response.status, response.statusText);
+        return;
       }
-    };
+      const result = await response.json();
+      if (result.success) {
+        setFormData(result.data);
+      } else {
+        console.error('API returned an error:', result.message);
+      }
+    } catch (error) {
+      console.error('Failed to fetch form data:', error);
+    }
+  };
 
+  useEffect(() => {
     fetchFormData();
   }, []);
-
+  
   const totalRows = formData.length;
   const totalPages = Math.ceil(totalRows / rowsPerPage);
   const displayedRows = formData.slice((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage);
@@ -299,10 +299,7 @@ const RequestsPage = () => {
 
       setFormData((prevData) => prevData.filter(request => request._id !== selectedRequest._id));
       handleCloseDeleteModal();
-
-      session.update({
-        requests: formData
-      });
+      fetchFormData();
 
     } catch (error) {
       console.error('Failed to delete request:', error);
@@ -330,11 +327,8 @@ const RequestsPage = () => {
 
       setFormData((prevData) => prevData.filter(request => request._id !== selectedRequest._id));
       handleCloseApproveModal();
+      fetchFormData();
       setIsNotificationOpen(true);
-
-      session.update({
-        requests: formData
-      });
       
     } catch (error) {
       console.error('Failed to approve request:', error);

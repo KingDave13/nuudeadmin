@@ -85,25 +85,25 @@ const MembersPage = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
 
-  useEffect(() => {
-    const fetchMembersData = async () => {
-      try {
-        const response = await fetch('/api/members');
-        if (!response.ok) {
-          console.error('Failed to fetch:', response.status, response.statusText);
-          return;
-        }
-        const result = await response.json();
-        if (result.success) {
-          setMembersData(result.data);
-        } else {
-          console.error('API returned an error:', result.message);
-        }
-      } catch (error) {
-        console.error('Failed to fetch members data:', error);
+  const fetchMembersData = async () => {
+    try {
+      const response = await fetch('/api/members');
+      if (!response.ok) {
+        console.error('Failed to fetch:', response.status, response.statusText);
+        return;
       }
-    };
+      const result = await response.json();
+      if (result.success) {
+        setMembersData(result.data);
+      } else {
+        console.error('API returned an error:', result.message);
+      }
+    } catch (error) {
+      console.error('Failed to fetch members data:', error);
+    }
+  };
 
+  useEffect(() => {
     fetchMembersData();
   }, []);
 
@@ -168,11 +168,8 @@ const MembersPage = () => {
       }
 
       setMembersData((prevData) => prevData.filter(member => member._id !== selectedMember._id));
+      fetchMembersData();
       handleCloseDeleteModal();
-
-      session.update({
-        members: membersData,
-      });
 
     } catch (error) {
       console.error('Failed to delete member:', error);
