@@ -84,25 +84,25 @@ const GuestsPage = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
 
-  const fetchGuestsData = async () => {
-    try {
-      const response = await fetch('/api/guests');
-      if (!response.ok) {
-        console.error('Failed to fetch:', response.status, response.statusText);
-        return;
-      }
-      const result = await response.json();
-      if (result.success) {
-        setGuestsData(result.data);
-      } else {
-        console.error('API returned an error:', result.message);
-      }
-    } catch (error) {
-      console.error('Failed to fetch guests data:', error);
-    }
-  };
-
   useEffect(() => {
+    const fetchGuestsData = async () => {
+      try {
+        const response = await fetch('/api/guests');
+        if (!response.ok) {
+          console.error('Failed to fetch:', response.status, response.statusText);
+          return;
+        }
+        const result = await response.json();
+        if (result.success) {
+          setGuestsData(result.data);
+        } else {
+          console.error('API returned an error:', result.message);
+        }
+      } catch (error) {
+        console.error('Failed to fetch guests data:', error);
+      }
+    };
+
     fetchGuestsData();
   }, []);
 
@@ -175,8 +175,11 @@ const GuestsPage = () => {
       }
 
       setGuestsData((prevData) => prevData.filter(guest => guest._id !== selectedGuest._id));
-      fetchGuestsData();
       handleCloseDeleteModal();
+
+      session.update({
+        guests: guestsData.filter(guest => guest._id !== selectedGuest._id),
+      });
 
     } catch (error) {
       console.error('Failed to delete guest:', error);
