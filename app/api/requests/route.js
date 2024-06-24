@@ -11,6 +11,7 @@ export const GET = async (req) => {
         
         return new Response(JSON.stringify({ success: true, data: formDataList }), {
             status: 200,
+            headers: { 'Cache-Control': 'no-store' }
         });
     } catch (error) {
         console.error('Error fetching data:', error); // Log the error for debugging

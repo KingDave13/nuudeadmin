@@ -203,7 +203,12 @@ const RequestsPage = () => {
   useEffect(() => {
     const fetchFormData = async () => {
       try {
-        const response = await fetch('/api/requests');
+        const response = await fetch('/api/requests', {
+          headers: {
+              'Cache-Control': 'no-store'
+          }
+        });
+        
         if (!response.ok) {
           console.error('Failed to fetch:', response.status, response.statusText);
           return;
