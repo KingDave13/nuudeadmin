@@ -1,6 +1,8 @@
 import { connectToDb } from "@utils/database";
 import Member from "@models/members";
 
+export const fetchCache = 'force-no-store';
+
 export const GET = async (req) => {
     try {
         await connectToDb();
